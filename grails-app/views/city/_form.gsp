@@ -2,6 +2,15 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: cityInstance, field: 'country', 'error')} required">
+	<label for="country">
+		<g:message code="city.country.label" default="Country" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="country" name="country.id" from="${tripswebapp.model.Country.list()}" optionKey="id" required="" value="${cityInstance?.country?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: cityInstance, field: 'attractions', 'error')} ">
 	<label for="attractions">
 		<g:message code="city.attractions.label" default="Attractions" />

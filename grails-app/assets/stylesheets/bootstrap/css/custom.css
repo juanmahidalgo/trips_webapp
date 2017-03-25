@@ -1,0 +1,248 @@
+/*General Styles*/
+.fullPage{
+    height: 100%;
+    min-height: 100%;
+    min-width:100%;
+    margin:0;
+    padding:0;
+}
+
+body.fullPage {
+    position: relative;
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+
+body {
+    padding-top: 0;
+}
+
+.body-container {
+    padding-top: 50px;
+}
+
+.footer {
+    position: absolute;
+    bottom:0;
+    display: none;
+}
+
+.dInline {display: inline;}
+.dInlineBlock{display: inline-block;}
+.dBlock{display: block}
+.dNone{display: none}
+
+.fl{float:left}
+.fr{float:right}
+.fn{float:none}
+
+.clearLeft{clear: left}
+.clearRight{clear: right}
+.clearBoth{clear: both}
+
+/*Paddings & Margins*/
+.m0px {margin: 0}
+
+.mr5px {margin-right: 5px}
+.ml5px {margin-left: 5px}
+.mt5px {margin-top: 5px}
+.mb5px {margin-bottom: 5px}
+.m5px {margin: 5px}
+
+.mr10px {margin-right: 10px}
+.ml10px {margin-left: 10px}
+.mt10px {margin-top: 10px}
+.mb10px {margin-bottom: 10px}
+.m10px {margin: 10px}
+
+.mr15px {margin-right: 15px}
+.ml15px {margin-left: 15px}
+.mt15px {margin-top: 15px}
+.mb15px {margin-bottom: 15px}
+.m15px {margin: 15px}
+
+.mr20px {margin-right: 20px}
+.ml20px {margin-left: 20px}
+.mt20px {margin-top: 20px}
+.mb20px {margin-bottom: 20px}
+.m20px {margin: 20px}
+
+.mr25px {margin-right: 25px}
+.ml25px {margin-left: 25px}
+.mt25px {margin-top: 25px}
+.mb25px {margin-bottom: 25px}
+.m25px {margin: 25px}
+
+.pr5px {padding-right: 5px}
+.pl5px {padding-left: 5px}
+.pt5px {padding-top: 5px}
+.pb5px {padding-bottom: 5px}
+.p5px {padding: 5px}
+
+.p0px{padding:0}
+
+.pr10px {padding-right: 10px}
+.pl10px {padding-left: 10px}
+.pt10px {padding-top: 10px}
+.pb10px {padding-bottom: 10px}
+.p10px {padding: 10px}
+
+.pr15px {padding-right: 15px}
+.pl15px {padding-left: 15px}
+.pt15px {padding-top: 15px}
+.pb15px {padding-bottom: 15px}
+.p15px {padding: 15px}
+
+.pr20px {padding-right: 20px}
+.pl20px {padding-left: 20px}
+.pt20px {padding-top: 20px}
+.pb20px {padding-bottom: 20px}
+.p20px {padding: 20px}
+
+.pr25px {padding-right: 25px}
+.pl25px {padding-left: 25px}
+.pt25px {padding-top: 25px}
+.pb25px {padding-bottom: 25px}
+.p25px {padding: 25px}
+
+/*Fonts*/
+.italic{font-style: italic}
+.normal{font-style: normal}
+.bold {font-weight: bold}
+.fwThin{font-weight: 100}
+
+.ts-08em {font-size: 0.8em}
+.ts-09em {font-size: 0.9em}
+.ts-10em {font-size: 1em}
+.ts-11em {font-size: 1.1em}
+
+.ts-15em {font-size: 1.5em}
+.ts-20em {font-size: 2em}
+
+/*Text*/
+.taCenter {text-align: center}
+.taRight {text-align: right}
+.taLeft{text-align: left}
+.noWrap {white-space: nowrap;}
+
+
+.white {color: white;}
+.black {color: #333333;}
+
+.dropdown.open a.dropdown-toggle .caret.black {
+    border-top: 4px solid #333333;
+}
+
+
+.unstyledList {
+    list-style: none;
+}
+
+.ellipses {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    -o-text-overflow: ellipsis;
+}
+
+.noBorder {
+    border-width: 0;
+}
+
+/*Links*/
+.noUnderline, .noUnderline:hover, .noUnderline:focus {
+    text-decoration: none;
+}
+
+
+
+
+
+/**Custom */
+
+.container.left {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+div.customFieldContain input.form-control,
+div.customFieldContain select.form-control {
+    width: 100%;
+    height: 26px;
+}
+
+div.customFieldContain input,
+div.customFieldContain textarea,
+div.customFieldContain select {
+    display: block;
+    padding: 2px 5px;
+    font-size: 12px;
+    line-height: 1.1;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+div.customFieldContain textarea {
+    max-width: 100%;
+    width: 80%;
+}
+
+div.select-field.customFieldContain {
+    min-height: 78px;
+}
+
+div.customFieldContain input[type="checkbox"] {
+    height: 1em;
+    width: auto;
+    float: left;
+    clear: right;
+    margin-left: 14px;
+    margin-top: 8px;
+}
+
+div.customFieldContain .checkbox-label {
+    text-align: left;
+    float: left;
+}
+
+
+.ok {
+    color: #217f3d;
+}
+
+.error {
+    color: #cd0000;
+}
+
+/*Taglibs custom*/
+.customFieldContain.error label.control-label {
+    color: rgb(83, 91, 96);
+}
+
+div.customFieldContain.error input,
+div.customFieldContain.error select{
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+div.customFieldContain.error input:focus,
+div.customFieldContain.error select:focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;
+}

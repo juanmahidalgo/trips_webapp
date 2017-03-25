@@ -1,7 +1,7 @@
 package tripswebapp.model
 
+import grails.rest.Resource
 import tripswebapp.media.AttractionMap
-import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
 import tripswebapp.media.Video
 import tripswebapp.utils.Classification
@@ -22,6 +22,12 @@ class Attraction extends Stop{
     static hasMany = [images : Image, videos: Video, maps: AttractionMap, pointsOfInterest : PointOfInterest]
 
     static constraints = {
-
+        schedule nullable: true
+        cost nullable: true
+        averageTime nullable: true
+        images nullable: true
+        videos nullable: true
+        maps nullable: true
+        pointsOfInterest nullable:true
     }
 }

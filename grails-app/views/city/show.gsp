@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list city">
 			
+				<g:if test="${cityInstance?.country}">
+				<li class="fieldcontain">
+					<span id="country-label" class="property-label"><g:message code="city.country.label" default="Country" /></span>
+					
+						<span class="property-value" aria-labelledby="country-label"><g:link controller="country" action="show" id="${cityInstance?.country?.id}">${cityInstance?.country?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${cityInstance?.attractions}">
 				<li class="fieldcontain">
 					<span id="attractions-label" class="property-label"><g:message code="city.attractions.label" default="Attractions" /></span>
