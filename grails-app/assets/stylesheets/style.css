@@ -2,3 +2,29 @@
     margin-top:15px;
     margin-bottom: 15px;
 }
+
+.fieldcontain{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+fieldset.form label {
+    min-width: 90px;
+}
+
+.inputField input{
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    min-width:350px;
+}
+
+.contentList {
+    font-size: 18px;
+}
+
+
+
+.contentList li {
+    margin-top:5px;
+    margin-bottom:5px;
+}
