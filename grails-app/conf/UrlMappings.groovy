@@ -6,6 +6,7 @@ class UrlMappings {
                 // apply constraints here
             }
         }
+        "/cities"(resources:'city')
 
         "/"(view:"/index")
         "500"(view:'/error')

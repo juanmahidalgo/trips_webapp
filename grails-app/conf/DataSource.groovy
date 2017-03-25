@@ -17,7 +17,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create"
+            dbCreate = "update"
             driverClassName = "com.mysql.jdbc.Driver"
             username = "root"
             password = ""
