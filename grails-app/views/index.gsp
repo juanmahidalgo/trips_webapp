@@ -125,9 +125,25 @@
 <!doctype html>
 <html>
 <head>
+	<style>
+
+		.contentList {
+			font-size: 18px;
+		}
+
+
+
+		.contentList li {
+			margin-top:5px;
+			margin-bottom:5px;
+		}
+
+	</style>
+	<meta name="layout" content="mainLayout">
 	<asset:stylesheet src="bootstrap/css/bootstrap.min.css"></asset:stylesheet>
 	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 </head>
 <body>
 <div role="main">
@@ -166,8 +182,14 @@
 				<h3 class="panel-title"> ABM contenido</h3>
 			</div>
 			<div class="panel-body">
-				<a href="attraction" target="_self"> Atracciones </a>
-				<a href="city" target="_self"> City </a>
+				<ul class="contentList">
+					<li>
+						<a href="attraction" target="_self"> Attractions </a>
+					</li>
+					<li>
+						<a href="city" target="_self"> Cities </a>
+					</li>
+				</ul>
 
 			</div>
 		</div>

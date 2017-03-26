@@ -1,13 +1,20 @@
 package tripswebapp.model
 
-
+import grails.converters.JSON
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
+import tripswebapp.FileUploadService
+import tripswebapp.media.Image
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+
+
 @Transactional(readOnly = true)
 class CityController {
 
+    FileUploadService fileUploadService
     //static responseFormats = ['json']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -29,6 +36,16 @@ class CityController {
         if (cityInstance == null) {
             notFound()
             return
+        }
+        if(params.imageFile){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("imageFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.imageFile.fileItem.fileName, "images/cities/" )
+                cityInstance.image = params.imageFile.fileItem.fileName.toString()
+                cityInstance.validate()
+            }
         }
 
         if (cityInstance.hasErrors()) {

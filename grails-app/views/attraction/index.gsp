@@ -9,52 +9,68 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-attraction" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create btn btn-create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		<ol class="breadcrumb">
+			<li><a href="${createLink(uri: '/')}">Home</a></li>
+			<li class="active">List</li>
+		</ol>
 		<div id="list-attraction" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+		<g:link class="btn btn-success btn-add" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-hover">
 			<thead>
 					<tr>
-					
-						<th><g:message code="attraction.audioGuide.label" default="Audio Guide" /></th>
-					
-						<g:sortableColumn property="averageTime" title="${message(code: 'attraction.averageTime.label', default: 'Average Time')}" />
-					
-						<th><g:message code="attraction.classification.label" default="Classification" /></th>
-					
-						<g:sortableColumn property="cost" title="${message(code: 'attraction.cost.label', default: 'Cost')}" />
-					
+
+						<g:sortableColumn property="name" title="${message(code: 'attraction.name.label', default: 'Name')}" />
+
 						<g:sortableColumn property="description" title="${message(code: 'attraction.description.label', default: 'Description')}" />
-					
+
+						<g:sortableColumn property="averageTime" title="${message(code: 'attraction.averageTime.label', default: 'Average Time')}" />
+
+						<g:sortableColumn property="cost" title="${message(code: 'attraction.cost.label', default: 'Price')}" />
+
+						<g:sortableColumn property="telephone" title="${message(code: 'attraction.telephone.label', default: 'Telephone')}" />
+
+						<g:sortableColumn property="address" title="${message(code: 'attraction.address.label', default: 'Address')}" />
+
 						<g:sortableColumn property="latitude" title="${message(code: 'attraction.latitude.label', default: 'Latitude')}" />
-					
+
+						<g:sortableColumn property="longitude" title="${message(code: 'attraction.longitude.label', default: 'Longitude')}" />
+
+						<th><g:message code="attraction.classification.label" default="Classification" /></th>
+
+						<th><g:message code="attraction.audioGuide.label" default="Audio Guide" /></th>
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${attractionInstanceList}" status="i" var="attractionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "audioGuide")}</g:link></td>
-					
-						<td>${fieldValue(bean: attractionInstance, field: "averageTime")}</td>
-					
-						<td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
-					
-						<td>${fieldValue(bean: attractionInstance, field: "cost")}</td>
-					
+
+						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
+
 						<td>${fieldValue(bean: attractionInstance, field: "description")}</td>
-					
+
+						<td>${fieldValue(bean: attractionInstance, field: "averageTime")}</td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "cost")}</td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "telephone")}</td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "address")}</td>
+
 						<td>${fieldValue(bean: attractionInstance, field: "latitude")}</td>
-					
+
+						<td>${fieldValue(bean: attractionInstance, field: "longitude")}</td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
+
+						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "audioGuide")}</g:link></td>
+
+
 					</tr>
 				</g:each>
 				</tbody>

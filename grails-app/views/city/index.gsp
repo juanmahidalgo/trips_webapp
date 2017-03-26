@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title> Cities list </title>
 	<meta name="layout" content="mainLayout">
 	<g:set var="entityName" value="${message(code: 'city.label', default: 'City')}" />
-	<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
 <ol class="breadcrumb">
@@ -15,7 +15,7 @@
 
 <div id="list-city" class="content scaffold-list" role="main">
 	<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-<g:link class="btn btn-success btn-add" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+	<g:link class="btn btn-success btn-add" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 
 	<g:if test="${flash.message}">
 		<div class="message" role="status">${flash.message}</div>

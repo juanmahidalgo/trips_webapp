@@ -7,6 +7,10 @@ class Country {
 
     static hasMany = [cities: City]
 
+    public String toString() {
+        name
+    }
+
     static constraints = {
     }
 }

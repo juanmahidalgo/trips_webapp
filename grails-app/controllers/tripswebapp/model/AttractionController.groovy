@@ -1,6 +1,9 @@
 package tripswebapp.model
 
-
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
+import tripswebapp.FileUploadService
+import tripswebapp.media.Image
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -8,7 +11,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class AttractionController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
+    FileUploadService fileUploadService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -28,6 +32,23 @@ class AttractionController {
         if (attractionInstance == null) {
             notFound()
             return
+        }
+
+        if(params.documentFile){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                params.documentFile.each {
+                    if(it.value.fileItem.fileName){
+                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
+                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
+                        def image = new Image()
+                        image.path = it.value.fileItem.fileName.toString()
+                        image.save flush:true
+                        attractionInstance.addToMaps(image)
+                    }
+                }
+            }
         }
 
         if (attractionInstance.hasErrors()) {
@@ -55,6 +76,23 @@ class AttractionController {
         if (attractionInstance == null) {
             notFound()
             return
+        }
+
+        if(params.documentFile){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                params.documentFile.each {
+                    if(it.value.fileItem.fileName){
+                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
+                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
+                        def image = new Image()
+                        image.path = it.value.fileItem.fileName.toString()
+                        image.save flush:true
+                        attractionInstance.addToMaps(image)
+                    }
+                }
+            }
         }
 
         if (attractionInstance.hasErrors()) {
