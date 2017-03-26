@@ -9,7 +9,7 @@
 }
 
 fieldset.form label {
-    min-width: 90px;
+    min-width: 120px;
 }
 
 .inputField input{
@@ -21,8 +21,6 @@ fieldset.form label {
 .contentList {
     font-size: 18px;
 }
-
-
 
 .contentList li {
     margin-top:5px;
