@@ -9,7 +9,7 @@
 }
 
 fieldset.form label {
-    min-width: 90px;
+    min-width: 120px;
 }
 
 .inputField input{
@@ -22,9 +22,47 @@ fieldset.form label {
     font-size: 18px;
 }
 
-
-
 .contentList li {
     margin-top:5px;
     margin-bottom:5px;
 }
+
+.maps label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.maps img, .images img {
+    display: block;
+    margin: 15px 0px 15px 0px;
+    padding-top: 15px;
+}
+
+#show-attraction {
+    margin-bottom: 45px;
+}
+
+.mainContainer{
+    margin-bottom: 45px;
+}
+
+.addNewImage input{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.addNewImage{
+    margin-top:45px;
+}
+
+.addNewTitle{
+    float: left;
+    margin-right: 30px;
+}
+
+.property-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+

@@ -11,8 +11,16 @@ class Stop {
     String name
     String description
     AudioGuide audioGuide
+    City city
+
+    static belongsTo = [city: City]
 
     static constraints = {
         audioGuide(nullable: true)
+        city nullable: false
+    }
+
+    public String toString() {
+        name
     }
 }

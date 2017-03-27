@@ -7,9 +7,12 @@
 	<head>
 	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 	<asset:javascript src="jquery-2.1.4.min.js"></asset:javascript>
-
 	<asset:stylesheet src="bootstrap/css/bootstrap.min.css"></asset:stylesheet>
 	<asset:javascript src="bootstrap/js/bootstrap.js"></asset:javascript>
+	<asset:javascript src="chosen.jquery.js"></asset:javascript>
+	<asset:stylesheet src="chosen.min.css"></asset:stylesheet>
+
+
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
 
 	<style>

@@ -11,15 +11,17 @@ class Attraction extends Stop{
     Float latitude
     Float longitude
     String schedule
+    String address
+    String telephone
     Float cost
     Integer averageTime
     Classification classification
     Set<Image> images
     Set<Video> videos
-    Set<AttractionMap> maps
+    Set<Image> maps
     Set<PointOfInterest> pointsOfInterest
 
-    static hasMany = [images : Image, videos: Video, maps: AttractionMap, pointsOfInterest : PointOfInterest]
+    static hasMany = [images : Image, videos: Video, maps: Image, pointsOfInterest : PointOfInterest]
 
     static constraints = {
         schedule nullable: true
@@ -29,5 +31,6 @@ class Attraction extends Stop{
         videos nullable: true
         maps nullable: true
         pointsOfInterest nullable:true
+        telephone nullable: true
     }
 }
