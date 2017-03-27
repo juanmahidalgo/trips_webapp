@@ -1,12 +1,13 @@
 package tripswebapp.model
 import grails.rest.*
+import tripswebapp.media.Image
 
 class City {
 
     String name
     Set<Attraction> attractions
     Country country
-    String image
+    Image image
 
     static hasMany = [attractions : Attraction]
     static hasOne = [country: Country]
@@ -19,7 +20,6 @@ class City {
 
     static constraints = {
         country nullable: false
+        image nullable: true
     }
-
-
 }

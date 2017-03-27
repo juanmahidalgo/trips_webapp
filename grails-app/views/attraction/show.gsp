@@ -61,7 +61,7 @@
 					<li class="fieldcontain">
 						<span id="longitude-label" class="property-label"><g:message code="attraction.longitude.label" default="Longitude" /></span> :
 
-						<span class="property-value" aria-labelledby="longitude-label"><g:fieldValue bean="${attractionInstance}" field="longitude"/></span>
+						<span class="property-value" aria-labelledby="longitude-label"> ${attractionInstance?.longitude}</span>
 
 					</li>
 				</g:if>
@@ -70,7 +70,7 @@
 					<li class="fieldcontain">
 						<span id="latitude-label" class="property-label"><g:message code="attraction.latitude.label" default="Latitude" /></span> :
 
-						<span class="property-value" aria-labelledby="latitude-label"><g:fieldValue bean="${attractionInstance}" field="latitude"/></span>
+						<span class="property-value" aria-labelledby="latitude-label"> ${attractionInstance?.latitude} </span>
 
 					</li>
 				</g:if>
@@ -93,18 +93,20 @@
 				</li>
 				</g:if>
 
-			
-				<g:if test="${attractionInstance?.images}">
-				<li class="fieldcontain">
+				<li class="fieldcontain maps">
 					<span id="images-label" class="property-label"><g:message code="attraction.images.label" default="Images" /></span> :
-					
-						<g:each in="${attractionInstance.images}" var="i">
-						<span class="property-value" aria-labelledby="images-label"><g:link controller="image" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+					<g:if test="${attractionInstance?.images}">
+						<g:each var="image" in="${attractionInstance?.images}">
+							<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="cityimage"/>
 						</g:each>
-					
+					</g:if>
+					<g:else>
+						<b>No images from the attraction loaded</b>
+					</g:else>
 				</li>
-				</g:if>
-			
+
+				<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Manage Images </g:link>
+
 				<li class="fieldcontain maps">
 					<span id="maps-label" class="property-label"><g:message code="attraction.maps.label" default="Maps" /></span> :
 						<g:if test="${attractionInstance?.maps}">
@@ -113,15 +115,11 @@
 							</g:each>
 						</g:if>
 						<g:else>
-							No maps loaded
+							<b>No maps loaded</b>
 						</g:else>
 				</li>
 
-				<g:if test="${attractionInstance?.maps}">
-
-				</g:if>
-
-				<g:link url="[resource:attractionInstance, action:'manageImages']" class="btn btn-info"> Manage Maps </g:link>
+				<g:link url="[resource:attractionInstance, action:'manageImages']" class="btn btn-primary"> Manage Maps </g:link>
 
 				<g:if test="${attractionInstance?.pointsOfInterest}">
 				<li class="fieldcontain">

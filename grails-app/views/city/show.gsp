@@ -11,10 +11,10 @@
 		<ol class="breadcrumb">
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 			<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			<li class="active"><g:message code="default.show.label" args="[entityName]" /></li>
+			<li class="active"><g:message code="default.show.label" args="[entityName]"/></li>
 		</ol>
 		<div id="show-city" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>%{--<g:message code="default.show.label" args="[entityName]" />--}% ${cityInstance?.name} </h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -44,6 +44,18 @@
 					
 				</li>
 				</g:if>
+
+				<li class="fieldcontain ">
+					<span id="image-label" class="property-label"><g:message code="city.image.label" default="Image" /></span> :
+					<g:if test="${cityInstance?.image}">
+						<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>
+					</g:if>
+					<g:else>
+						<b>No image loaded</b>
+					</g:else>
+				</li>
+				<g:link params="[id: cityInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Manage Images </g:link>
+
 			
 			</ol>
 			<g:form url="[resource:cityInstance, action:'delete']" method="DELETE">

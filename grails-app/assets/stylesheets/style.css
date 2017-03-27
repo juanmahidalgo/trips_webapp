@@ -36,4 +36,32 @@ fieldset.form label {
 .maps img {
     display: block;
     margin: 15px 0px 15px 0px;
+    padding-top: 15px;
+}
+
+#show-attraction {
+    margin-bottom: 45px;
+}
+
+.mainContainer{
+    margin-bottom: 45px;
+}
+
+.addNewImage input{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.addNewImage{
+    margin-top:45px;
+}
+
+.addNewTitle{
+    float: left;
+    margin-right: 30px;
+}
+
+.property-label {
+    font-weight: bold;
+    font-size: 16px;
 }

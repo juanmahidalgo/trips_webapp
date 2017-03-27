@@ -126,18 +126,14 @@
 <html>
 <head>
 	<style>
-
 		.contentList {
 			font-size: 18px;
 		}
-
-
 
 		.contentList li {
 			margin-top:5px;
 			margin-bottom:5px;
 		}
-
 	</style>
 	<meta name="layout" content="mainLayout">
 	<asset:stylesheet src="bootstrap/css/bootstrap.min.css"></asset:stylesheet>
@@ -179,7 +175,7 @@
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title"> ABM contenido</h3>
+				<h3 class="panel-title"> Content Managment </h3>
 			</div>
 			<div class="panel-body">
 				<ul class="contentList">
