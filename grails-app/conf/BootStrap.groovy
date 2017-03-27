@@ -9,7 +9,12 @@ class BootStrap {
             new City(name: 'Buenos Aires').save()
         }
         JSON.registerObjectMarshaller(City) {
-            return City
+            def returnArray = [:]
+            returnArray['id'] = it.id
+            returnArray['name'] = it.name
+            returnArray['country_name'] = it.country.name
+            returnArray['image'] = it.image
+            return returnArray
         }
         JSON.registerObjectMarshaller(Attraction) {
             def returnArray = it.properties
