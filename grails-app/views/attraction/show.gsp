@@ -96,7 +96,8 @@
 				<li class="fieldcontain maps">
 					<span id="images-label" class="property-label"><g:message code="attraction.images.label" default="Images" /></span> :
 					<g:if test="${attractionInstance?.images}">
-						<g:each var="image" in="${attractionInstance?.images}">
+						<g:each var="image" in="${attractionInstance?.images}" status="i">
+							<label> Image ${i+1}</label>
 							<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="cityimage"/>
 						</g:each>
 					</g:if>
@@ -110,7 +111,8 @@
 				<li class="fieldcontain maps">
 					<span id="maps-label" class="property-label"><g:message code="attraction.maps.label" default="Maps" /></span> :
 						<g:if test="${attractionInstance?.maps}">
-							<g:each var="map" in="${attractionInstance?.maps}">
+							<g:each var="map" in="${attractionInstance?.maps}" status="i">
+								<label> Map ${i+1}</label>
 								<img src="${resource(dir: 'images/maps', file: map.path)}" alt="mapa"/>
 							</g:each>
 						</g:if>

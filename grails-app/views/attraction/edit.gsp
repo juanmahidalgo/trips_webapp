@@ -33,11 +33,11 @@
 					<g:actionSubmit class="save btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>
-			<g:form action="updateMaps" enctype='multipart/form-data'>
+			%{--<g:form action="updateMaps" enctype='multipart/form-data'>
 				<g:render template="mapsForm"/>
 				<g:submitButton name="updateMaps" class="save btn btn-success" value="${message(code: 'default.button.updateMaps.label', default: 'Update Maps')}" />
 			</g:form>
-
+--}%
 		</div>
 	</body>
 </html>

@@ -115,16 +115,16 @@
 	<input type='file' name='documentFile.3' />
 </div>--}%
 
-<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'pointsOfInterest', 'error')} ">
+%{--<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'pointsOfInterest', 'error')} ">
 	<label for="pointsOfInterest">
 		<g:message code="attraction.pointsOfInterest.label" default="Points Of Interest" />
 		
 	</label>
 	<g:select name="pointsOfInterest" from="${tripswebapp.model.PointOfInterest.list()}" multiple="multiple" optionKey="id" size="5" value="${attractionInstance?.pointsOfInterest*.id}" class="many-to-many"/>
 
-</div>
+</div>--}%
 
-<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'images', 'error')} ">
+%{--<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'images', 'error')} ">
 	<label for="images">
 		<g:message code="attraction.images.label" default="Images" />
 
@@ -140,7 +140,7 @@
 	</label>
 	<g:select name="videos" from="${tripswebapp.media.Video.list()}" multiple="multiple" optionKey="id" size="5" value="${attractionInstance?.videos*.id}" class="many-to-many"/>
 
-</div>
+</div>--}%
 
 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'audioGuide', 'error')}">
 	<label for="audioGuide">
