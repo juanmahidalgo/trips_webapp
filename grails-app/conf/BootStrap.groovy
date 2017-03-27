@@ -17,8 +17,10 @@ class BootStrap {
             return returnArray
         }
         JSON.registerObjectMarshaller(Attraction) {
-            def returnArray = it.properties
-            return returnArray
+            def map = [:]
+            map.putAll(it.properties)
+            map['id'] = it.id
+            return map
         }
 
     }

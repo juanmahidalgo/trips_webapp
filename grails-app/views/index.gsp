@@ -134,6 +134,14 @@
 			margin-top:5px;
 			margin-bottom:5px;
 		}
+
+		.contentList img{
+			display: block;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			width: 450px;
+			height: 300px;
+		}
 	</style>
 	<meta name="layout" content="mainLayout">
 	<asset:stylesheet src="bootstrap/css/bootstrap.min.css"></asset:stylesheet>
@@ -148,7 +156,7 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<span class="navbar-brand"> Administrador </span>
+					<span class="navbar-brand"> Administrator </span>
 				</div>
 				%{--<div class="collapse navbar-collapse">--}%
 					%{--<p class="navbar-text navbar-right"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> ${request.session_context.context.user.fullName}</p>--}%
@@ -180,10 +188,14 @@
 			<div class="panel-body">
 				<ul class="contentList">
 					<li>
-						<a href="attraction" target="_self"> Attractions </a>
+						<a href="city" target="_self"> Cities
+							<img src="${resource(dir: 'images/', file: 'cities.png')}" alt="image"/>
+						</a>
 					</li>
 					<li>
-						<a href="city" target="_self"> Cities </a>
+						<a href="attraction" target="_self"> Attractions
+							<img src="${resource(dir: 'images/', file: 'attractions.png')}" alt="image"/>
+						</a>
 					</li>
 				</ul>
 

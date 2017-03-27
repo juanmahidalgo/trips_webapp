@@ -45,7 +45,7 @@
                         <g:each var="image" in="${attractionInstance?.images}" status="i">
                             <label> Image ${i+1} </label>
                             <g:if test="image">
-                                <img src="${resource(dir: 'images/images', file: image.path)}" alt="image"/>
+                                <img src="${resource(dir: 'images/attractions', file: image.path)}" alt="image"/>
                                 <g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" class="btn btn-danger"> Delete Image</g:link>
                             </g:if>
                         </g:each>

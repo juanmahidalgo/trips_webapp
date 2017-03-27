@@ -23,7 +23,7 @@
 				<g:if test="${cityInstance?.country}">
 				<li class="fieldcontain">
 					<span id="country-label" class="property-label"><g:message code="city.country.label" default="Country" /></span> :
-					<span class="property-value" aria-labelledby="country-label"><g:link controller="country" action="show" id="${cityInstance?.country?.id}">${cityInstance?.country?.name}</g:link></span>
+					<span class="property-value" aria-labelledby="country-label"> ${cityInstance?.country?.name} </span>
 				</li>
 				</g:if>
 			
@@ -45,7 +45,7 @@
 				</li>
 				</g:if>
 
-				<li class="fieldcontain ">
+				<li class="fieldcontain images">
 					<span id="image-label" class="property-label"><g:message code="city.image.label" default="Image" /></span> :
 					<g:if test="${cityInstance?.image}">
 						<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>

@@ -70,7 +70,6 @@
 
 						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "audioGuide")}</g:link></td>
 
-
 					</tr>
 				</g:each>
 				</tbody>

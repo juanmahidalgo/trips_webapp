@@ -43,7 +43,7 @@
 					<li class="fieldcontain">
 						<span id="averageTime-label" class="property-label"><g:message code="attraction.averageTime.label" default="Average Time" /> :
 
-						<span class="property-value" aria-labelledby="averageTime-label"><g:fieldValue bean="${attractionInstance}" field="averageTime"/></span>
+						<span class="property-value" aria-labelledby="averageTime-label"> ${attractionInstance?.averageTime}</span>
 
 					</li>
 				</g:if>
@@ -88,7 +88,7 @@
 				<li class="fieldcontain">
 					<span id="classification-label" class="property-label"><g:message code="attraction.classification.label" default="Classification" /></span> :
 					
-						<span class="property-value" aria-labelledby="classification-label"><g:link controller="classification" action="show" id="${attractionInstance?.classification?.id}">${attractionInstance?.classification?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="classification-label">${attractionInstance?.classification?.name}</span>
 					
 				</li>
 				</g:if>

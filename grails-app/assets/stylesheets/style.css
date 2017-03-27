@@ -33,7 +33,7 @@ fieldset.form label {
     margin-bottom: 15px;
 }
 
-.maps img {
+.maps img, .images img {
     display: block;
     margin: 15px 0px 15px 0px;
     padding-top: 15px;
@@ -65,3 +65,4 @@ fieldset.form label {
     font-weight: bold;
     font-size: 16px;
 }
+
