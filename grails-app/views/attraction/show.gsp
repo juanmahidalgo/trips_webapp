@@ -105,22 +105,23 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${attractionInstance?.maps}">
-				<li class="fieldcontain">
+				<li class="fieldcontain maps">
 					<span id="maps-label" class="property-label"><g:message code="attraction.maps.label" default="Maps" /></span> :
-					
-						<g:each in="${attractionInstance.maps}" var="m">
-						<span class="property-value" aria-labelledby="maps-label"><g:link controller="attractionMap" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
+						<g:if test="${attractionInstance?.maps}">
+							<g:each var="map" in="${attractionInstance?.maps}">
+								<img src="${resource(dir: 'images/maps', file: map.path)}" alt="mapa"/>
+							</g:each>
+						</g:if>
+						<g:else>
+							No maps loaded
+						</g:else>
 				</li>
-				</g:if>
 
 				<g:if test="${attractionInstance?.maps}">
-					<g:each var="map" in="${attractionInstance?.maps}">
-						<img src="${resource(dir: 'images/maps', file: map.path)}" alt="mapa"/>
-					</g:each>
+
 				</g:if>
+
+				<g:link url="[resource:attractionInstance, action:'manageImages']" class="btn btn-info"> Manage Maps </g:link>
 
 				<g:if test="${attractionInstance?.pointsOfInterest}">
 				<li class="fieldcontain">

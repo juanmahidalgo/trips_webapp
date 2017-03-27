@@ -92,20 +92,24 @@
 	</label>
 	<g:select name="maps" from="${tripswebapp.media.AttractionMap.list()}" multiple="multiple" optionKey="id" size="5" value="${attractionInstance?.maps*.id}" class="many-to-many"/>
 </div>--}%
-
-<label> Maps (max 3): </label>
-<g:if test="${attractionInstance?.maps}">
-	<g:each var="i" in="${ (0..<3) }">
-		<label> Map ${i} </label>
-		<g:if test="${attractionInstance?.maps[i]}">
-			<img src="${resource(dir: 'images/maps', file: attractionInstance?.maps[i].path)}" alt="mapa"/>
-			<input type='file' name='documentFile.{i+1}' value="${attractionInstance?.maps[i]}" />
-		</g:if>
+%{--<div class="fieldcontain maps">
+	<label> Maps (max 3): </label>
+	<g:if test="${attractionInstance?.maps}">
+		<g:each var="i" in="${ (0..<3) }">
+			<label> Map ${i+1} </label>
+			<g:if test="${attractionInstance?.maps[i]}">
+				<img src="${resource(dir: 'images/maps', file: attractionInstance?.maps[i].path)}" alt="mapa"/>
+			--}%%{--
+                        <input type='file' name='documentFile.{i+1}' value="${attractionInstance?.maps[i]}" />
+            --}%%{--
+			</g:if>
 		<g:else>
-			<input type='file' name='documentFile.{i+1}' />
+			No map loaded
 		</g:else>
-	</g:each>
-</g:if>
+		</g:each>
+	</g:if>
+</div>--}%
+
 %{--<div class="fieldcontain">
 	<input type='file' name='documentFile.2' />
 	<input type='file' name='documentFile.3' />

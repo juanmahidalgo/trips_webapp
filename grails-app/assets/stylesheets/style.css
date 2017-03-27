@@ -26,3 +26,14 @@ fieldset.form label {
     margin-top:5px;
     margin-bottom:5px;
 }
+
+.maps label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.maps img {
+    display: block;
+    margin: 15px 0px 15px 0px;
+}
