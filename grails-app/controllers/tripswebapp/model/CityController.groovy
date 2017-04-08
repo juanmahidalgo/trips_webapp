@@ -43,6 +43,18 @@ class CityController {
             notFound()
             return
         }
+        def country = Country.findByName(params.country)
+        if(!country){
+            country = new Country(name: params.country)
+        }
+        country.save flush: true
+        cityInstance.country = country
+        def exists = City.findByNameAndCountry(params.name, country)
+        if(exists){
+            flash.error = "Ya existe Una ciudad con ese nombre y el mismo país"
+            redirect(action: "create")
+            return
+        }
         if(params.imageFile){
             if(request instanceof MultipartHttpServletRequest)
             {
@@ -55,6 +67,8 @@ class CityController {
                 cityInstance.image = image
                 cityInstance.validate()
             }
+        } else{
+            cityInstance.image = null
         }
 
         if (cityInstance.hasErrors()) {
@@ -67,7 +81,7 @@ class CityController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
-                redirect cityInstance
+                redirect(action: "index")
             }
             '*' { respond cityInstance, [status: CREATED] }
         }
@@ -115,7 +129,7 @@ class CityController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'City.label', default: 'City'), cityInstance.id])
-                redirect cityInstance
+                redirect(action: "list", params: params)
             }
             '*'{ respond cityInstance, [status: OK] }
         }

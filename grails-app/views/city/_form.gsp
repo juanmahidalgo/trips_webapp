@@ -1,13 +1,27 @@
 <%@ page import="tripswebapp.model.City" %>
 
-
-
-<div class="${hasErrors(bean: cityInstance, field: 'country', 'error')} required">
-	<label for="country">
-		<g:message code="city.country.label" default="Country" />
+<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'name', 'error')} required">
+	<label for="name">
+		<g:message code="city.name.label" default="Nombre" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="country" name="country.id" from="${tripswebapp.model.Country.list()}" optionKey="id" style="width: 350px;" required="" value="${cityInstance?.country?.id}" class="many-to-one chosen-select  "/>
+	<g:textField name="name"  id="locality" required="" value="${cityInstance?.name}" readonly="readonly"/>
+</div>
+
+<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'country', 'error')} required">
+	<label for="country">
+		<g:message code="city.country.label" default="País" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField id="country" name="country" style="width: 350px;" required="" value="${cityInstance?.country?.id}" class="many-to-one" readonly="readonly"/>
+
+</div>
+
+<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'state', 'error')}">
+	<label for="state">
+		<g:message code="city.state.label" default="Estado" />
+	</label>
+	<g:textField id="administrative_area_level_1" name="state" value="${cityInstance?.state}" readonly="readonly"/>
 
 </div>
 
@@ -24,17 +38,9 @@
 </div>
 --}%
 
-<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'name', 'error')} required">
-	<label for="name">
-		<g:message code="city.name.label" default="Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="name" required="" value="${cityInstance?.name}"/>
-</div>
-
 <div class="fieldcontain">
 
-	<label for="imageFile"> Upload Image: </label>
+	<label for="imageFile"> Subir Imagen: (max 15 mb) </label>
 
 	<input  type="file" name="imageFile">
 

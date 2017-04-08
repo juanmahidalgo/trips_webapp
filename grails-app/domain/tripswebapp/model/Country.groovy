@@ -3,9 +3,12 @@ package tripswebapp.model
 class Country {
 
     String name
-    Set<City> cities
 
     static hasMany = [cities: City]
+
+    Country(String name) {
+        name = name
+    }
 
     public String toString() {
         name

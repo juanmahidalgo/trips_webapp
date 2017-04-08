@@ -5,6 +5,7 @@ import tripswebapp.media.Image
 class City {
 
     String name
+    String state
     Set<Attraction> attractions
     Country country
     Image image
@@ -21,5 +22,6 @@ class City {
     static constraints = {
         country nullable: false
         image nullable: true
+        state nullable: true
     }
 }

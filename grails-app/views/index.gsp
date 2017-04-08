@@ -183,17 +183,17 @@
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title"> Content Managment </h3>
+				<h3 class="panel-title"> Administrador de Contenido </h3>
 			</div>
 			<div class="panel-body">
 				<ul class="contentList">
 					<li>
-						<a href="city" target="_self"> Cities
+						<a href="city" target="_self"> Ciudades
 							<img src="${resource(dir: 'images/', file: 'cities.png')}" alt="image"/>
 						</a>
 					</li>
 					<li>
-						<a href="attraction" target="_self"> Attractions
+						<a href="attraction" target="_self"> Atracciones
 							<img src="${resource(dir: 'images/', file: 'attractions.png')}" alt="image"/>
 						</a>
 					</li>

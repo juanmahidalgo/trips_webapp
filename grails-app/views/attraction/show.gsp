@@ -1,4 +1,3 @@
-
 <%@ page import="tripswebapp.model.Attraction" %>
 <!DOCTYPE html>
 <html>
@@ -6,6 +5,37 @@
 		<meta name="layout" content="mainLayout">
 		<g:set var="entityName" value="${message(code: 'attraction.label', default: 'Attraction')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<script>
+            $( document ).ready(function() {
+                var map;
+                var myLatlng = {lat: ${attractionInstance?.latitude}, lng: ${attractionInstance?.longitude}};
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatlng,
+                    zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: 'Click to zoom'
+                });
+
+                map.addListener('center_changed', function() {
+                    // 3 seconds after the center of the map has changed, pan back to the
+                    // marker.
+                    window.setTimeout(function() {
+                        map.panTo(marker.getPosition());
+                    }, 3000);
+                });
+
+                marker.addListener('click', function() {
+                    map.setZoom(8);
+                    map.setCenter(marker.getPosition());
+                });
+            });
+
+
+		</script>
 	</head>
 	<body>
 		<ol class="breadcrumb">
@@ -19,6 +49,9 @@
 			<g:if test="${flash.message}">
 			<div class="message alert alert-info " role="status">${flash.message}</div>
 			</g:if>
+
+			<div id="map"></div>
+
 			<ol class="property-list attraction">
 
 				<g:if test="${attractionInstance?.name}">
@@ -26,6 +59,16 @@
 						<span id="name-label" class="property-label"><g:message code="attraction.name.label" default="Name" /></span> :
 
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${attractionInstance}" field="name"/></span>
+
+					</li>
+				</g:if>
+
+				<g:if test="${attractionInstance?.city}">
+					<li class="fieldcontain">
+						<span id="city-name-label" class="property-label"><g:message code="city.name.label" default="City name" /></span> :
+						<span class="property-value" aria-labelledby="city-name-label">
+							<g:link controller="city" action="show" id="${attractionInstance.city.id}">${attractionInstance.city.name}</g:link>
+					</span>
 
 					</li>
 				</g:if>
@@ -87,9 +130,9 @@
 				<g:if test="${attractionInstance?.classification}">
 				<li class="fieldcontain">
 					<span id="classification-label" class="property-label"><g:message code="attraction.classification.label" default="Classification" /></span> :
-					
+
 						<span class="property-value" aria-labelledby="classification-label">${attractionInstance?.classification?.name}</span>
-					
+
 				</li>
 				</g:if>
 
@@ -126,22 +169,22 @@
 				<g:if test="${attractionInstance?.pointsOfInterest}">
 				<li class="fieldcontain">
 					<span id="pointsOfInterest-label" class="property-label"><g:message code="attraction.pointsOfInterest.label" default="Points Of Interest" /></span> :
-					
+
 						<g:each in="${attractionInstance.pointsOfInterest}" var="p">
 						<span class="property-value" aria-labelledby="pointsOfInterest-label"><g:link controller="pointOfInterest" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${attractionInstance?.videos}">
 				<li class="fieldcontain">
 					<span id="videos-label" class="property-label"><g:message code="attraction.videos.label" default="Videos" /></span> :
-					
+
 						<g:each in="${attractionInstance.videos}" var="v">
 						<span class="property-value" aria-labelledby="videos-label"><g:link controller="video" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
+
 				</li>
 				</g:if>
 
@@ -153,7 +196,8 @@
 
 					</li>
 				</g:if>
-			
+
+
 			</ol>
 			<g:form url="[resource:attractionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
@@ -162,5 +206,7 @@
 				</fieldset>
 			</g:form>
 		</div>
+
 	</body>
+
 </html>
