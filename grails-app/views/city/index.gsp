@@ -20,7 +20,7 @@
 		<div class="alert alert-danger" style="display: block">${flash.error}</div>
 	</g:if>
 	<g:if test="${flash.message}">
-		<div class="aler alert-success" role="status">${flash.message}</div>
+		<div class="alert alert-info" role="status">${flash.message}</div>
 	</g:if>
 	<table class="table table-hover">
 		<thead>
@@ -32,8 +32,9 @@
 		<tbody>
 		<g:each in="${cityInstanceList}" status="i" var="cityInstance">
 			<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-				<td><g:link action="show" id="${cityInstance.id}">${fieldValue(bean: cityInstance, field: "name")}</g:link></td>
+				<td><g:link action="edit" id="${cityInstance.id}">${fieldValue(bean: cityInstance, field: "name")}</g:link></td>
 				<td> ${cityInstance.country?.name}</td>
+				<td class="borrarColumn"><a class="btn btn-danger" data-href="city/deleteCity?id=${cityInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
 			</tr>
 		</g:each>
 		</tbody>
@@ -42,6 +43,27 @@
 	<div class="pagination">
 		<g:paginate total="${cityInstanceCount ?: 0}" />
 	</div>
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					Borrar Atracción
+				</div>
+				<div class="modal-body">
+					¿ Está seguro que desea eliminar la Ciudad ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-danger btn-ok">Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<script>
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+</script>
 </body>
 </html>

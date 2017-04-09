@@ -150,6 +150,8 @@
                         document.getElementById(addressType).value = val;
                     }
                 }
+                $('#latitude').val(place.geometry.location.lat());
+                $('#longitude').val(place.geometry.location.lng());
             }
 
         }

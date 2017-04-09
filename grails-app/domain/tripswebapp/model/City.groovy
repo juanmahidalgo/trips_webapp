@@ -9,6 +9,8 @@ class City {
     Set<Attraction> attractions
     Country country
     Image image
+    BigDecimal latitude
+    BigDecimal longitude
 
     static hasMany = [attractions : Attraction]
     static hasOne = [country: Country]
@@ -23,5 +25,7 @@ class City {
         country nullable: false
         image nullable: true
         state nullable: true
+        latitude( scale : 16 )
+        longitude( scale : 16 )
     }
 }

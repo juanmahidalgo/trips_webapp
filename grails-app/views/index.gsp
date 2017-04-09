@@ -139,7 +139,7 @@
 			display: block;
 			margin-top: 20px;
 			margin-bottom: 20px;
-			width: 450px;
+			width: 700px;
 			height: 300px;
 		}
 	</style>
@@ -189,12 +189,12 @@
 				<ul class="contentList">
 					<li>
 						<a href="city" target="_self"> Ciudades
-							<img src="${resource(dir: 'images/', file: 'cities.png')}" alt="image"/>
+							<img src="${resource(dir: 'images/', file: 'cities2.png')}" alt="image"/>
 						</a>
 					</li>
 					<li>
 						<a href="attraction" target="_self"> Atracciones
-							<img src="${resource(dir: 'images/', file: 'attractions.png')}" alt="image"/>
+							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
 						</a>
 					</li>
 				</ul>

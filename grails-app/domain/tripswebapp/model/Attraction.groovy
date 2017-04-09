@@ -8,8 +8,8 @@ import tripswebapp.utils.Classification
 
 class Attraction extends Stop{
 
-    Float latitude
-    Float longitude
+    BigDecimal latitude
+    BigDecimal longitude
     String schedule
     String address
     String telephone
@@ -32,5 +32,7 @@ class Attraction extends Stop{
         maps nullable: true
         pointsOfInterest nullable:true
         telephone nullable: true
+        latitude( scale : 16 )
+        longitude( scale : 16 )
     }
 }

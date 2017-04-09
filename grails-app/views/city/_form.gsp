@@ -13,7 +13,7 @@
 		<g:message code="city.country.label" default="País" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField id="country" name="country" style="width: 350px;" required="" value="${cityInstance?.country?.id}" class="many-to-one" readonly="readonly"/>
+	<g:textField id="country" name="country" style="width: 350px;" required="" value="${cityInstance?.country?.name}" class="many-to-one" readonly="readonly"/>
 
 </div>
 
@@ -22,6 +22,21 @@
 		<g:message code="city.state.label" default="Estado" />
 	</label>
 	<g:textField id="administrative_area_level_1" name="state" value="${cityInstance?.state}" readonly="readonly"/>
+</div>
+
+<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'latitude', 'error')}">
+	<label for="latitude">
+		<g:message code="city.latitude.label" default="Latitud" />
+	</label>
+	<g:textField id="latitude" name="latitude" value="${cityInstance?.latitude}" readonly="readonly"/>
+
+</div>
+
+<div class="fieldcontain inputField ${hasErrors(bean: cityInstance, field: 'longitude', 'error')}">
+	<label for="state">
+		<g:message code="city.longitude.label" default="Longitude" />
+	</label>
+	<g:textField id="longitude" name="longitude" value="${cityInstance?.longitude}" readonly="readonly"/>
 
 </div>
 
@@ -38,9 +53,24 @@
 </div>
 --}%
 
+<div class="fieldcontain images">
+	<span id="image-label" class="property-label"> Imágen </span> :
+	<g:if test="${cityInstance?.image}">
+		<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>
+	</g:if>
+	<g:else>
+		<b>No image loaded</b>
+	</g:else>
+</div>
+
 <div class="fieldcontain">
 
-	<label for="imageFile"> Subir Imagen: (max 15 mb) </label>
+	<g:if test="${cityInstance?.image}">
+		<label for="imageFile"> Cambiar Imagen: (max 15 mb) </label>
+	</g:if>
+	<g:else>
+		<label for="imageFile"> Subir Imagen: (max 15 mb) </label>
+	</g:else>
 
 	<input  type="file" name="imageFile">
 

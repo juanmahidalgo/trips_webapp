@@ -32,7 +32,7 @@
 		<div id="create-attraction" class="content scaffold-create col-md-5" role="main">
 			<h1> Crear Atracción </h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			    <div class="message alert alert-danger" role="status">${flash.message}</div>
 			</g:if>
 
 			<g:hasErrors bean="${attractionInstance}">
@@ -52,12 +52,15 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-success" value="Crear" />
 				</fieldset>
 			</g:form>
 		</div>
         <div class="mapContainer col-md-6">
             <div id="map"></div>
+        </div>
+        <div class="imagesContainer">
+
         </div>
 
     <script>
@@ -76,14 +79,17 @@
             $('#telephone').val(places.formatted_phone_number);
             $('#latitude').val(places.geometry.location.lat());
             $('#longitude').val(places.geometry.location.lng());
-
+            /*places.photos.forEach(function(photo){
+                var html = '<img src="' + photo.getUrl({'maxWidth': 250, 'maxHeight': 250}) + '">';
+                $('.imagesContainer').append(html);
+            });*/
         }
 
         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var labelIndex = 0;
         function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -33.8688, lng: 151.2195},
+                center: {lat: -34.603722, lng: -58.381592},
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });

@@ -37,6 +37,7 @@ fieldset.form label, #searchBarContainer label {
     display: block;
     margin: 15px 0px 15px 0px;
     padding-top: 15px;
+    max-width: 550px;
 }
 
 #show-attraction {
@@ -66,7 +67,7 @@ fieldset.form label, #searchBarContainer label {
     font-size: 16px;
 }
 
-.scaffold-edit {
+.scaffold-edit, .scaffold-create {
     margin-bottom: 15px;
 }
 
@@ -95,4 +96,46 @@ fieldset.form label, #searchBarContainer label {
 
 h1 {
     margin-bottom: 20px;
+}
+
+.table>tbody>tr .borrarColumn {
+    background: white;
+    border-top: none;
+    width:10%;
+}
+
+.attractions {
+}
+
+.attractionsContainer img {
+    width: 80px;
+    float: left;
+    height: 54px;
+}
+
+.attractionsContainer{
+    border: 1px solid black;
+    height: 55px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.attractionsContainer a {
+    margin-left: 15px;
+    font-size:17px;
+    color: black;
+    width: 290px;
+    display: inline-block;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.attractionsContainer .btn {
+    float: right;
+    margin-right: 10px;
+    color: white;
+    height: auto;
+    width: auto;
 }

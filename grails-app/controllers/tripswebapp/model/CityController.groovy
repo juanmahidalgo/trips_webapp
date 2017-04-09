@@ -55,7 +55,9 @@ class CityController {
             redirect(action: "create")
             return
         }
-        if(params.imageFile){
+        cityInstance.latitude = params.latitude.toBigDecimal()
+        cityInstance.longitude = params.longitude.toBigDecimal()
+        if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
@@ -80,7 +82,7 @@ class CityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
+                flash.message = cityInstance.name + ' Creado '
                 redirect(action: "index")
             }
             '*' { respond cityInstance, [status: CREATED] }
@@ -133,6 +135,20 @@ class CityController {
             }
             '*'{ respond cityInstance, [status: OK] }
         }
+    }
+
+    @Transactional
+    def deleteCity(Long id){
+        def cityInstance = City.findById(id)
+        def attractions = Attraction.findByCity(cityInstance)
+        if(attractions){
+            flash.error =  'No se puede borrar la Ciudad ' + cityInstance.name + ' porque tiene Atracciones asociadas'
+            redirect action:"index"
+            return
+        }
+        flash.message =  cityInstance.name + ' Borrada'
+        cityInstance.delete flush:true
+        redirect action:"index"
     }
 
     @Transactional

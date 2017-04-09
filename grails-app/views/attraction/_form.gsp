@@ -5,7 +5,7 @@
 		<g:message code="attraction.name.label" default="Nombre" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="" value="${attractionInstance?.name}" oninvalid="this.setCustomValidity('Por favor ingrese un nombre para la atracción')"/>
+	<g:textField name="name" required="" oninput="setCustomValidity('')" value="${attractionInstance?.name}" oninvalid="this.setCustomValidity('Por favor ingrese un nombre para la atracción')"/>
 </div>
 
 <div class="${hasErrors(bean: cityInstance, field: 'city', 'error')} required">
@@ -22,7 +22,7 @@
 		<g:message code="attraction.description.label" default="Descripcion" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="description" required="" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${attractionInstance?.description}" />
+	<g:textField name="description" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${attractionInstance?.description}" />
 </div>
 
 
@@ -152,6 +152,27 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="classification" name="classification.id" from="${tripswebapp.utils.Classification.list()}" optionKey="id"  value="${attractionInstance?.classification?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain">
+
+	<g:if test="${attractionInstance?.images}">
+		<g:each var="image" in="${attractionInstance?.images}" status="i">
+			<label> Imagen ${i+1} </label>
+			<g:if test="image">
+				<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="image"/>
+%{--
+				<g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" class="btn btn-danger"> Delete Image</g:link>
+--}%
+			</g:if>
+		</g:each>
+	</g:if>
+	<g:else>
+		<b> No images loaded yet.. </b>
+	</g:else>
+	<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Manage Images </g:link>
+	<input  type="file" name="imageFile">
 
 </div>
 %{--
