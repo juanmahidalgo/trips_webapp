@@ -15,7 +15,14 @@ class AttractionController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Attraction.list(params), model:[attractionInstanceCount: Attraction.count()]
+        def attractions
+        if(params.cityId){
+            attractions = Attraction.findAllByCity(City.get(params.cityId))
+        }
+        else{
+            attractions = Attraction.list(params)
+        }
+        respond attractions, model:[attractionInstanceCount: Attraction.count()]
     }
 
     def show(Attraction attractionInstance) {
@@ -159,22 +166,8 @@ class AttractionController {
             return
         }
 
-        if(params.imageFile?.size>0){
-            if(request instanceof MultipartHttpServletRequest)
-            {
-                params.documentFile.each {
-                    if(it.value.fileItem.fileName){
-                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
-                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
-                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
-                        def image = new Image()
-                        image.path = it.value.fileItem.fileName.toString()
-                        image.save flush:true
-                        attractionInstance.addToMaps(image)
-                    }
-                }
-            }
-        }
+        attractionInstance.latitude = params.latitude.toBigDecimal()
+        attractionInstance.longitude = params.longitude.toBigDecimal()
 
         if (attractionInstance.hasErrors()) {
             respond attractionInstance.errors, view:'edit'
