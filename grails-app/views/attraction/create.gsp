@@ -31,7 +31,7 @@
 		</ol>
 		<div id="create-attraction" class="content scaffold-create col-md-5" role="main">
 			<h1> Crear Atracción </h1>
-			<g:if test="${flash.message}">
+            <g:if test="${flash.message}">
 			    <div class="message alert alert-danger" role="status">${flash.message}</div>
 			</g:if>
 
@@ -49,7 +49,7 @@
             </div>
 			<g:form action="save" enctype='multipart/form-data' >
 				<fieldset class="form">
-					<g:render template="form"/>
+                    <g:render template="form" model="[context: 'create']"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-success" value="Crear" />

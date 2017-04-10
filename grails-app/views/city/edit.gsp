@@ -5,12 +5,14 @@
 		<title> Editar Ciudad </title>
 		<meta name="layout" content="mainLayout">
 		<g:set var="entityName" value="${message(code: 'city.label', default: 'City')}" />
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2HKAXBafJpycygBDLiS_tDyP86h6MTUk&libraries=places" async defer></script>
+
 
 	</head>
 	<body>
 		<ol class="breadcrumb">
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			<li><g:link class="create" action="create">Crear Ciudad </g:link></li>
+			<li><g:link class="" action="index">Lista de Ciudades </g:link></li>
 			<li class="active">Editar Ciudad </li>
 		</ol>
 		<div id="edit-city" class="content scaffold-edit col-md-5" role="main">
@@ -70,24 +72,65 @@
 			</div>
 		</div>
 		<script>
+            var attractions = [];
+            $.ajax({
+                url: '/TripsWebApp/city/getAtrractions',
+                data: {
+                    id: ${cityInstance.id}
+                },
+                success: function(json) {
+                    json.forEach(function(item){
+                        //addMarkerWithBounce({lat:item.latitude, lng: item.longitude});
+						attractions.push({lat:item.latitude, lng: item.longitude});
+						initAutocomplete();
+                    });
+                },
+                type: 'GET'
+            });
+
 			var initialPosition = {lat: ${cityInstance.latitude}, lng: ${cityInstance.longitude}};
 			function initAutocomplete() {
 				var map = new google.maps.Map(document.getElementById('map'), {
 					center: initialPosition ,
-					zoom: 12,
+					zoom: 14,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 
-				var marker = new google.maps.Marker({
-					position: initialPosition,
-					map: map
+				attractions.forEach(function(item){
+                    marker = new google.maps.Marker({
+                        map: map,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        position: {lat: item.lat, lng: item.lng}
+                    });
+                    marker.addListener('click', toggleBounce);
 				});
-
 			}
+            function toggleBounce() {
+                if (marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
+
+
+            function addMarkerWithBounce(place){
+                marker = new google.maps.Marker({
+                    map: map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    position: {lat: place.lat, lng: place.lng}
+                });
+                marker.addListener('click', toggleBounce);
+            }
+
+
+
+
             $('#confirm-delete').on('show.bs.modal', function(e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });
 		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2HKAXBafJpycygBDLiS_tDyP86h6MTUk&libraries=places&callback=initAutocomplete" async defer></script>
 	</body>
 </html>

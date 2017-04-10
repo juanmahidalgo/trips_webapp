@@ -48,7 +48,7 @@
 
 						<td><g:link action="edit" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
 
-						<td>${fieldValue(bean: attractionInstance, field: "city")}</td>
+						<td><g:link controller="city" action="edit" id="${attractionInstance.city?.id}">${attractionInstance.city?.name}</g:link></td>
 
 						<td>${fieldValue(bean: attractionInstance, field: "city.country.name")}</td>
 
@@ -70,7 +70,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${attractionInstanceCount ?: 0}" />
+				<boots:paginate total="${attractionInstanceCount ?: 0}" />
 			</div>
 
 			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -41,7 +41,7 @@
 	</table>
 	<g:link class="btn btn-success btn-add" action="create"> Crear Ciudad </g:link>
 	<div class="pagination">
-		<g:paginate total="${cityInstanceCount ?: 0}" />
+		<boots:paginate total="${cityInstanceCount ?: 0}" />
 	</div>
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">

@@ -13,7 +13,7 @@
 		<g:message code="city.city.label" default="Ciudad" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="city" name="city.id" from="${tripswebapp.model.City.list()}" optionKey="id" style="width: 350px;" required="" value="${cityInstance?.city?.id}" class="many-to-one chosen-select  "/>
+	<g:select id="city" name="city.id" from="${tripswebapp.model.City.list()}" optionKey="id" style="width: 350px;" required="" value="${attractionInstance.city?.id}" class="many-to-one chosen-select  "/>
 
 </div>
 
@@ -69,7 +69,7 @@
 		<g:message code="attraction.latitude.label" default="Latitud" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="latitude" value="${fieldValue(bean: attractionInstance, field: 'latitude')}" required=""/>
+	<g:field name="latitude" value="${attractionInstance.latitude}" required=""/>
 
 </div>
 
@@ -78,7 +78,7 @@
 		<g:message code="attraction.longitude.label" default="Longitud" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="longitude" value="${fieldValue(bean: attractionInstance, field: 'longitude')}" required=""/>
+	<g:field name="longitude" value="${attractionInstance.longitude}" required=""/>
 
 </div>
 
@@ -162,17 +162,21 @@
 			<label> Imagen ${i+1} </label>
 			<g:if test="image">
 				<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="image"/>
-%{--
-				<g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" class="btn btn-danger"> Delete Image</g:link>
---}%
+				<g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
+
 			</g:if>
 		</g:each>
 	</g:if>
 	<g:else>
-		<b> No images loaded yet.. </b>
+		<b> No hay imágenes cargadas todavía </b><br>
 	</g:else>
-	<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Manage Images </g:link>
-	<input  type="file" name="imageFile">
+	<g:if test="${context == 'create'}">
+		<input  type="file" name="imageFile">
+	</g:if>
+	<g:else>
+		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Administrar Imágenes </g:link>
+
+	</g:else>
 
 </div>
 %{--

@@ -81,7 +81,7 @@ class AttractionController {
                 }
             }
         }
-        redirect(action: "show", id: attractionInstance.id)
+        redirect(action: "edit", id: attractionInstance.id)
     }
 
     @Transactional
@@ -96,7 +96,7 @@ class AttractionController {
                         def image = new Image()
                         image.path = it.value.fileItem.fileName.toString()
                         image.save flush: true
-                        attractionInstance.addToMaps(image)
+                        attractionInstance.addToImages(image)
                     }
                 }
             }
@@ -117,19 +117,17 @@ class AttractionController {
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
-                params.documentFile.each {
-                    if(it.value.fileItem.fileName){
-                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
-                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
-                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
-                        def image = new Image()
-                        image.path = it.value.fileItem.fileName.toString()
-                        image.save flush:true
-                        attractionInstance.addToMaps(image)
-                    }
-                }
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("imageFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.imageFile.fileItem.fileName, "images/cities/" )
+                def image = new Image()
+                image.path =  params.imageFile.fileItem.fileName.toString()
+                image.save flush: true
+                attractionInstance.addToImages(image)
             }
         }
+
+
 
         if (attractionInstance.hasErrors()) {
             respond attractionInstance.errors, view:'create'
@@ -178,8 +176,8 @@ class AttractionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Attraction.label', default: 'Attraction'), attractionInstance.id])
-                redirect attractionInstance
+                flash.message = attractionInstance.name + ' Actualizada'
+                redirect(action: "index")
             }
             '*'{ respond attractionInstance, [status: OK] }
         }

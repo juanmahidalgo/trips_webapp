@@ -43,7 +43,7 @@ class CityController {
             notFound()
             return
         }
-        if(!cityInstance.country){
+        if(!cityInstance.country.id){
             def country = Country.findByName(params.country)
             if(!country){
                 country = new Country(name: params.country)
@@ -57,10 +57,9 @@ class CityController {
             redirect(action: "create")
             return
         }
-        if(!cityInstance.latitude && !cityInstance.longitude ){
-            cityInstance.latitude = params.latitude.toBigDecimal()
-            cityInstance.longitude = params.longitude.toBigDecimal()
-        }
+        cityInstance.latitude = params.latitude.toBigDecimal()
+        cityInstance.longitude = params.longitude.toBigDecimal()
+
 
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
@@ -140,6 +139,12 @@ class CityController {
             }
             '*'{ respond cityInstance, [status: OK] }
         }
+    }
+
+
+    def getAtrractions(Long id){
+        def city = City.findById(id)
+        render(contentType:"text/json") { city.attractions }
     }
 
     @Transactional

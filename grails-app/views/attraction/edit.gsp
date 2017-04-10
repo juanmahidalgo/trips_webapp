@@ -49,16 +49,18 @@
 			<g:form url="[resource:attractionInstance, action:'update']" method="PUT">
 				<g:hiddenField name="version" value="${attractionInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="form" model="[context: 'edit']"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-success" action="update" value="Actualizar" />
 				</fieldset>
 			</g:form>
+
 		</div>
 		<div class="mapContainer col-md-6">
 			<div id="map"></div>
 		</div>
+
 
 	%{--<g:form action="updateMaps" enctype='multipart/form-data'>
         <g:render template="mapsForm"/>
