@@ -43,20 +43,25 @@ class CityController {
             notFound()
             return
         }
-        def country = Country.findByName(params.country)
-        if(!country){
-            country = new Country(name: params.country)
+        if(!cityInstance.country){
+            def country = Country.findByName(params.country)
+            if(!country){
+                country = new Country(name: params.country)
+            }
+            country.save flush: true
+            cityInstance.country = country
         }
-        country.save flush: true
-        cityInstance.country = country
-        def exists = City.findByNameAndCountry(params.name, country)
+        def exists = City.findByNameAndCountry(params.name, cityInstance.country)
         if(exists){
             flash.error = "Ya existe Una ciudad con ese nombre y el mismo país"
             redirect(action: "create")
             return
         }
-        cityInstance.latitude = params.latitude.toBigDecimal()
-        cityInstance.longitude = params.longitude.toBigDecimal()
+        if(!cityInstance.latitude && !cityInstance.longitude ){
+            cityInstance.latitude = params.latitude.toBigDecimal()
+            cityInstance.longitude = params.longitude.toBigDecimal()
+        }
+
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
