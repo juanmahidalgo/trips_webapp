@@ -41,9 +41,12 @@
 						<a class="btn btn-danger" data-href="/TripsWebApp/attraction/deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a>
 					</div>
 				</g:each>
+				<g:if test="${cityInstance.attractions.size() == 0}">
+					<label> Todavía no hay attracciones para esta ciudad</label>
+				</g:if>
 			</div>
+			<label> Foto </label>
 			<g:if test="${cityInstance.image}">
-				<label> Foto </label>
 				<div class="image">
 					<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="image"/>
 				</div>
@@ -94,8 +97,8 @@
                     json.forEach(function(item){
                         //addMarkerWithBounce({lat:item.latitude, lng: item.longitude});
 						attractions.push({lat:item.latitude, lng: item.longitude});
-						initAutocomplete();
                     });
+                    initAutocomplete();
                 },
                 type: 'GET'
             });
@@ -104,7 +107,7 @@
 			function initAutocomplete() {
 				var map = new google.maps.Map(document.getElementById('map'), {
 					center: initialPosition ,
-					zoom: 14,
+					zoom: 13,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 
