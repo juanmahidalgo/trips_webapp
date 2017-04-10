@@ -30,17 +30,17 @@
             </fieldset>
 
             <div class="fieldcontain maps">
-                    <h2> Loaded Images: </h2>
-                    <g:if test="${cityInstance?.image}">
-                        <label> Image </label>
-                        <g:if test="image">
-                            <img src="${resource(dir: 'images/cities', file: cityInstance?.image.path)}" alt="image"/>
-                            <g:link params="[id: cityInstance?.id, imgId: cityInstance?.image.id]" action="deleteImage" class="btn btn-danger"> Delete Image</g:link>
-                        </g:if>
+                <h2> Loaded Images: </h2>
+                <g:if test="${cityInstance?.image}">
+                    <label> Image </label>
+                    <g:if test="image">
+                        <img src="${resource(dir: 'images/cities', file: cityInstance?.image.path)}" alt="image"/>
+                        <g:link params="[id: cityInstance?.id, imgId: cityInstance?.image.id]" action="deleteImage" class="btn btn-danger"> Delete Image</g:link>
                     </g:if>
-                    <g:else>
-                        <b> No image loaded yet.. </b>
-                    </g:else>
+                </g:if>
+                <g:else>
+                    <b> No image loaded yet.. </b>
+                </g:else>
             </div>
         </g:form>
     </div>

@@ -43,7 +43,26 @@ class CityController {
             notFound()
             return
         }
-        if(params.imageFile){
+        if(!cityInstance.country){
+            def country = Country.findByName(params.country)
+            if(!country){
+                country = new Country(name: params.country)
+            }
+            country.save flush: true
+            cityInstance.country = country
+        }
+        def exists = City.findByNameAndCountry(params.name, cityInstance.country)
+        if(exists){
+            flash.error = "Ya existe Una ciudad con ese nombre y el mismo país"
+            redirect(action: "create")
+            return
+        }
+        if(!cityInstance.latitude && !cityInstance.longitude ){
+            cityInstance.latitude = params.latitude.toBigDecimal()
+            cityInstance.longitude = params.longitude.toBigDecimal()
+        }
+
+        if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
@@ -55,6 +74,8 @@ class CityController {
                 cityInstance.image = image
                 cityInstance.validate()
             }
+        } else{
+            cityInstance.image = null
         }
 
         if (cityInstance.hasErrors()) {
@@ -66,8 +87,8 @@ class CityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
-                redirect cityInstance
+                flash.message = cityInstance.name + ' Creado '
+                redirect(action: "index")
             }
             '*' { respond cityInstance, [status: CREATED] }
         }
@@ -115,10 +136,24 @@ class CityController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'City.label', default: 'City'), cityInstance.id])
-                redirect cityInstance
+                redirect(action: "list", params: params)
             }
             '*'{ respond cityInstance, [status: OK] }
         }
+    }
+
+    @Transactional
+    def deleteCity(Long id){
+        def cityInstance = City.findById(id)
+        def attractions = Attraction.findByCity(cityInstance)
+        if(attractions){
+            flash.error =  'No se puede borrar la Ciudad ' + cityInstance.name + ' porque tiene Atracciones asociadas'
+            redirect action:"index"
+            return
+        }
+        flash.message =  cityInstance.name + ' Borrada'
+        cityInstance.delete flush:true
+        redirect action:"index"
     }
 
     @Transactional

@@ -12,6 +12,9 @@
 	<asset:javascript src="chosen.jquery.js"></asset:javascript>
 	<asset:stylesheet src="chosen.min.css"></asset:stylesheet>
 
+	%{--<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2HKAXBafJpycygBDLiS_tDyP86h6MTUk&libraries=geometry">
+	</script>--}%
 
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
 

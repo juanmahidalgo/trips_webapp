@@ -5,9 +5,12 @@ import tripswebapp.media.Image
 class City {
 
     String name
+    String state
     Set<Attraction> attractions
     Country country
     Image image
+    BigDecimal latitude
+    BigDecimal longitude
 
     static hasMany = [attractions : Attraction]
     static hasOne = [country: Country]
@@ -21,5 +24,8 @@ class City {
     static constraints = {
         country nullable: false
         image nullable: true
+        state nullable: true
+        latitude( scale : 16 )
+        longitude( scale : 16 )
     }
 }

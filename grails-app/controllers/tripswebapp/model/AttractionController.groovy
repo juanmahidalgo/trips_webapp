@@ -11,7 +11,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class AttractionController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
     FileUploadService fileUploadService
 
     def index(Integer max) {
@@ -37,7 +36,12 @@ class AttractionController {
     def deleteImage(){
         def attractionInstance = Attraction.get(params.id)
         def img = Image.get(params.imgId)
-        attractionInstance.removeFromMaps(img)
+        if(img in attractionInstance.maps){
+            attractionInstance.removeFromMaps(img)
+        }
+        else if(img in attractionInstance.images) {
+            attractionInstance.removeFromImages(img)
+        }
         attractionInstance.save flush: true
         img.delete flush: true
 
@@ -100,8 +104,10 @@ class AttractionController {
             notFound()
             return
         }
+        attractionInstance.latitude = params.latitude.toBigDecimal()
+        attractionInstance.longitude = params.longitude.toBigDecimal()
 
-        if(params.documentFile){
+        if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 params.documentFile.each {
@@ -127,8 +133,8 @@ class AttractionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'attraction.label', default: 'Attraction'), attractionInstance.id])
-                redirect attractionInstance
+                flash.message = attractionInstance.name + ' Creado '
+                redirect(action: "index")
             }
             '*' { respond attractionInstance, [status: CREATED] }
         }
@@ -139,13 +145,21 @@ class AttractionController {
     }
 
     @Transactional
+    def deleteAtracction(Long id){
+        def attractionInstance = Attraction.findById(id)
+        flash.message =  attractionInstance.name + ' Borrada'
+        attractionInstance.delete flush:true
+        redirect action:"index"
+    }
+
+    @Transactional
     def update(Attraction attractionInstance) {
         if (attractionInstance == null) {
             notFound()
             return
         }
 
-        if(params.documentFile){
+        if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 params.documentFile.each {

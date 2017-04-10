@@ -11,38 +11,34 @@
 	<body>
 		<ol class="breadcrumb">
 			<li><a href="${createLink(uri: '/')}">Home</a></li>
-			<li class="active">List</li>
+			<li class="active">Lista de Atracciones </li>
 		</ol>
 		<div id="list-attraction" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-		<g:link class="btn btn-success btn-add" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			<h1> Lista de Atracciones </h1>
+		<g:link class="btn btn-success btn-add" action="create"> Crear Atracción </g:link></li>
 
 			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
+				<div class="alert alert-info message" role="status">${flash.message}</div>
 			</g:if>
 			<table class="table table-hover">
 			<thead>
 					<tr>
 
-						<g:sortableColumn property="name" title="${message(code: 'attraction.name.label', default: 'Name')}" />
+						<g:sortableColumn property="name" title="Nombre" />
 
-						<g:sortableColumn property="description" title="${message(code: 'attraction.description.label', default: 'Description')}" />
+						<g:sortableColumn property="city" title="Ciudad" />
 
-						<g:sortableColumn property="averageTime" title="${message(code: 'attraction.averageTime.label', default: 'Average Time')}" />
+						<g:sortableColumn property="city.country.name" title="País" />
 
-						<g:sortableColumn property="cost" title="${message(code: 'attraction.cost.label', default: 'Price')}" />
+						<g:sortableColumn property="description" title="Descripción" />
 
-						<g:sortableColumn property="telephone" title="${message(code: 'attraction.telephone.label', default: 'Telephone')}" />
+						<g:sortableColumn property="averageTime" title="Tiempo de visita " />
 
-						<g:sortableColumn property="address" title="${message(code: 'attraction.address.label', default: 'Address')}" />
+						<g:sortableColumn property="cost" title="Precio (usd)" />
 
-						<g:sortableColumn property="latitude" title="${message(code: 'attraction.latitude.label', default: 'Latitude')}" />
+						<g:sortableColumn property="telephone" title="Teléfono" />
 
-						<g:sortableColumn property="longitude" title="${message(code: 'attraction.longitude.label', default: 'Longitude')}" />
-
-						<th><g:message code="attraction.classification.label" default="Classification" /></th>
-
-						<th><g:message code="attraction.audioGuide.label" default="Audio Guide" /></th>
+						<th><g:message code="attraction.classification.label" default="Clasificación" /></th>
 
 					</tr>
 				</thead>
@@ -50,7 +46,11 @@
 				<g:each in="${attractionInstanceList}" status="i" var="attractionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
+						<td><g:link action="edit" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "city")}</td>
+
+						<td>${fieldValue(bean: attractionInstance, field: "city.country.name")}</td>
 
 						<td>${fieldValue(bean: attractionInstance, field: "description")}</td>
 
@@ -60,23 +60,40 @@
 
 						<td>${fieldValue(bean: attractionInstance, field: "telephone")}</td>
 
-						<td>${fieldValue(bean: attractionInstance, field: "address")}</td>
-
-						<td>${fieldValue(bean: attractionInstance, field: "latitude")}</td>
-
-						<td>${fieldValue(bean: attractionInstance, field: "longitude")}</td>
-
 						<td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
 
-						<td><g:link action="show" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "audioGuide")}</g:link></td>
+						<td class="borrarColumn"><a class="btn btn-danger" data-href="attraction/deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
 
 					</tr>
+
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
 				<g:paginate total="${attractionInstanceCount ?: 0}" />
 			</div>
+
+			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							Borrar Atracción
+						</div>
+						<div class="modal-body">
+							¿ Está seguro que desea eliminar la atracción?
+ 						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<a class="btn btn-danger btn-ok">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	<script>
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+	</script>
 	</body>
 </html>

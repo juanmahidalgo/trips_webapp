@@ -133,13 +133,25 @@
 		.contentList li {
 			margin-top:5px;
 			margin-bottom:5px;
+
+			list-style: none;
+			font-size: 21px;
+		}
+
+		.contentList a {
+			color: black;
+		}
+
+		.contentList a:hover {
+			text-decoration:none;
+			color: black
 		}
 
 		.contentList img{
 			display: block;
 			margin-top: 20px;
 			margin-bottom: 20px;
-			width: 450px;
+			width: 700px;
 			height: 300px;
 		}
 	</style>
@@ -183,43 +195,32 @@
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title"> Content Managment </h3>
+				<h3 class="panel-title"> Administrador de Contenido </h3>
 			</div>
 			<div class="panel-body">
 				<ul class="contentList">
 					<li>
-						<a href="city" target="_self"> Cities
-							<img src="${resource(dir: 'images/', file: 'cities.png')}" alt="image"/>
+						<a href="city" target="_self"> Ciudades
+							<img src="${resource(dir: 'images/', file: 'cities2.png')}" alt="image"/>
 						</a>
 					</li>
 					<li>
-						<a href="attraction" target="_self"> Attractions
-							<img src="${resource(dir: 'images/', file: 'attractions.png')}" alt="image"/>
+						<a href="attraction" target="_self"> Atracciones
+							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
 						</a>
 					</li>
 				</ul>
-
 			</div>
 		</div>
-		%{--<div class="panel panel-primary">--}%
-			%{--<div class="panel-heading">--}%
-				%{--<h3 class="panel-title"> Historial</h3>--}%
-			%{--</div>--}%
-			%{--<div class="panel-body">--}%
-				%{--<a href="/contentHistory" target="_blank">Cambios de contenido </a>--}%
-			%{--</div>--}%
-
-		%{--</div>--}%
-		%{--<div class="panel panel-primary">--}%
-			%{--<div class="panel-heading">--}%
-				%{--<h3 class="panel-title"> Problems Id</h3>--}%
-			%{--</div>--}%
-			%{--<div class="panel-body">--}%
-				%{--<a href="/problemIdAdmin" target="_blank"> Administración de Problems ID </a>--}%
-			%{--</div>--}%
-		%{--</div>--}%
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> Moderación de Reseñas </h3>
+			</div>
+			<div class="panel-body">
+				<h4><a>Buscador de Reseñas</a>  </h4>
+			</div>
+		</div>
 	</div>
-
 </div>
 </body>
 </html>

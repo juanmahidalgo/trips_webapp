@@ -12,8 +12,10 @@ class Stop {
     String description
     AudioGuide audioGuide
     City city
+    Set<Review> reviews
 
     static belongsTo = [city: City]
+    static hasMany = [reviews: Review]
 
     static constraints = {
         audioGuide(nullable: true)
