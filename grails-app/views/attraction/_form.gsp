@@ -151,7 +151,7 @@
 		<g:message code="attraction.classification.label" default="Clasificación" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="classification" name="classification.id" from="${tripswebapp.utils.Classification.list()}" optionKey="id"  value="${attractionInstance?.classification?.id}" class="many-to-one"/>
+	<g:select id="classification" name="classification.id" from="${tripswebapp.utils.Classification.list()}" optionKey="id"  value="${attractionInstance?.classification?.id}" class="many-to-one chosen-select"/>
 
 </div>
 

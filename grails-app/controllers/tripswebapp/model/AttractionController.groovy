@@ -180,7 +180,7 @@ class AttractionController {
             return
         }
 
-        attractionInstance.latitude = params.latitude.toBigDecimal()
+a        attractionInstance.latitude = params.latitude.toBigDecimal()
         attractionInstance.longitude = params.longitude.toBigDecimal()
 
         if (attractionInstance.hasErrors()) {

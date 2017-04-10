@@ -18,6 +18,10 @@ fieldset.form label, #searchBarContainer label {
     min-width:350px;
 }
 
+.inputField select{
+    min-width:350px;
+}
+
 .contentList {
     font-size: 18px;
 }

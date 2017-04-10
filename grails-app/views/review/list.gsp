@@ -4,8 +4,8 @@
   Date: 4/9/17
   Time: 9:38 PM
 --%>
-
 <%@ page import="tripswebapp.model.Review" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +123,7 @@
 
                 <td> ${reviewInstance.date} </td>
 
-                <td> ${reviewInstance.stop} </td>
+                <td><g:link controller="attraction" action="edit" id="${reviewInstance.stop.id}">${reviewInstance.stop}</g:link></td>
 
                 <td> ${reviewInstance.stop.city.name} </td>
 

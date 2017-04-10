@@ -29,7 +29,7 @@ class ReviewController extends RestfulController {
             def dt2 = new Date()
             def count
             def reviews
-            if(params.filterBy){
+            if(params.filterBy && params.filter){
                 if(filterBy == 'stop'){
                     reviews = Review.findAll(params){
                         stop.name == filter

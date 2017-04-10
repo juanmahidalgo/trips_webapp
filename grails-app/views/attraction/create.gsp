@@ -88,6 +88,9 @@
             });*/
         }
 
+        $("#city option:contains(" + 'Buenos Aires' + ")").attr('selected', 'selected');
+        $('#city').trigger("chosen:updated");
+
         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var labelIndex = 0;
         function initAutocomplete() {
