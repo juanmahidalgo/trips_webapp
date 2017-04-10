@@ -34,21 +34,33 @@
 						<g:if test="${attractionInstance.images}">
 							<img src="${resource(dir: 'images/attractions', file: attractionInstance.images[0].path)}" alt="image"/>
 						</g:if>
+						<g:else>
+							<img src="${resource(dir: 'images', file: 'noimage.png')}" alt="image"/>
+						</g:else>
 						<g:link controller="attraction" action="edit" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link>
 						<a class="btn btn-danger" data-href="/TripsWebApp/attraction/deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a>
 					</div>
 				</g:each>
 			</div>
+			<g:if test="${cityInstance.image}">
+				<label> Foto </label>
+				<div class="image">
+					<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="image"/>
+				</div>
+			</g:if>
+			<g:else>
+				<label> Todavía no tiene imágen, agregale desde el administrador de imágenes</label>
+			</g:else>
 
 			<g:form url="[resource:cityInstance, action:'update']" method="PUT" class="form-group" >
 				<g:hiddenField name="version" value="${cityInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
+				%{--<fieldset class="form">
+					<g:render template="form" model="[context: 'edit']"/>
+				</fieldset>--}%
 
-				<fieldset class="buttons">
+				%{--<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				</fieldset>--}%
 			</g:form>
 			<g:link params="[id: cityInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Administrar Imágenes </g:link>
 		</div>

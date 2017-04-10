@@ -50,7 +50,7 @@
             </div>
 			<g:form action="save" enctype='multipart/form-data' >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="form" model="[context: 'create']"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-success" value="Crear" />

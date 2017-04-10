@@ -40,6 +40,13 @@ fieldset.form label, #searchBarContainer label {
     max-width: 550px;
 }
 
+.image img{
+    display:block;
+    max-width: 550px;
+    margin-bottom:15px;
+
+}
+
 #show-attraction {
     margin-bottom: 45px;
 }
@@ -105,6 +112,7 @@ h1 {
 }
 
 .attractions {
+    margin-bottom:20px;
 }
 
 .attractionsContainer img {
@@ -115,7 +123,7 @@ h1 {
 
 .attractionsContainer{
     border: 1px solid black;
-    height: 55px;
+    height: 56px;
     margin-top: 5px;
     margin-bottom: 5px;
     align-items: center;
@@ -146,4 +154,8 @@ h1 {
 
 .invisible{
     display:none;
+}
+
+.manageImages{
+    margin-top:10px;
 }

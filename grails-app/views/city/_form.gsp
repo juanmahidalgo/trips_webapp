@@ -52,28 +52,26 @@
 %{--
 </div>
 --}%
-
-<div class="fieldcontain images">
-	<span id="image-label" class="property-label"> Imágen </span> :
-	<g:if test="${cityInstance?.image}">
-		<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>
-	</g:if>
-	<g:else>
-		<b>No image loaded</b>
-	</g:else>
-</div>
+<g:if test="${contexto == 'edit'}">
+	<div class="fieldcontain images">
+		<span id="image-label" class="property-label"> Imágen </span> :
+		<g:if test="${cityInstance?.image}">
+			<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>
+		</g:if>
+		<g:else>
+			<b>No image loaded</b>
+		</g:else>
+	</div>
+</g:if>
 
 <div class="fieldcontain">
-
 	<g:if test="${cityInstance?.image}">
 		<label for="imageFile"> Cambiar Imagen: (max 15 mb) </label>
 	</g:if>
 	<g:else>
 		<label for="imageFile"> Subir Imagen: (max 15 mb) </label>
 	</g:else>
-
 	<input  type="file" name="imageFile">
-
 </div>
 
 <script type="application/javascript">

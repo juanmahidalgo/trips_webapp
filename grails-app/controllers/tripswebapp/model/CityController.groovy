@@ -115,7 +115,7 @@ class CityController {
                 }
             }
         }
-        redirect(action: "show", id: cityInstance.id)
+        redirect(action: "edit", id: cityInstance.id)
     }
 
     @Transactional

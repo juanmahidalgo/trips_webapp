@@ -137,14 +137,14 @@
 	<g:select name="videos" from="${tripswebapp.media.Video.list()}" multiple="multiple" optionKey="id" size="5" value="${attractionInstance?.videos*.id}" class="many-to-many"/>
 
 </div>--}%
-
+%{--
 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'audioGuide', 'error')}">
 	<label for="audioGuide">
 		<g:message code="attraction.audioGuide.label" default="Audio Guia" />
 	</label>
 	<g:select id="audioGuide" name="audioGuide.id" from="${tripswebapp.media.AudioGuide.list()}" optionKey="id" value="${attractionInstance?.audioGuide?.id}" class="many-to-one"/>
 
-</div>
+</div>--}%
 
 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'classification', 'error')} required">
 	<label for="classification">
@@ -174,7 +174,7 @@
 		<input  type="file" name="imageFile">
 	</g:if>
 	<g:else>
-		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary"> Administrar Imágenes </g:link>
+		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary manageImages"> Administrar Imágenes </g:link>
 
 	</g:else>
 
