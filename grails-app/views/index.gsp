@@ -209,7 +209,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="attraction" target="_self"> Atracciones
+						<a href="attraction/list" target="_self"> Atracciones
 							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
 						</a>
 					</li>

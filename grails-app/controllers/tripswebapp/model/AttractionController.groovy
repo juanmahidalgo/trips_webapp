@@ -25,6 +25,22 @@ class AttractionController {
         respond attractions, model:[attractionInstanceCount: Attraction.count()]
     }
 
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def attractions
+        if(params.filterBy == 'city' && params.filter){
+            attractions = Attraction.findAllByCity(City.findByName(params.filter))
+        }
+        else if(params.filterBy == 'country' && params.filter){
+            def country = Country.findByName(params.filter)
+            attractions = Attraction.findAllByCity(City.findByCountry(country))
+        }
+        else{
+            attractions = Attraction.list(params)
+        }
+        respond attractions, model:[attractionInstanceCount: Attraction.count()]
+    }
+
     def show(Attraction attractionInstance) {
         respond attractionInstance
     }
