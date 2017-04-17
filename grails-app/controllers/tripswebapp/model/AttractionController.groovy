@@ -130,12 +130,18 @@ class AttractionController {
         attractionInstance.latitude = params.latitude.toBigDecimal()
         attractionInstance.longitude = params.longitude.toBigDecimal()
 
+        if(params.imageFile?.size> 10000000){
+            flash.error = "La imagen supera los 10mb permitidos"
+            redirect(action: "create")
+            return
+        }
+
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("imageFile")
-                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.imageFile.fileItem.fileName, "images/cities/" )
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.imageFile.fileItem.fileName, "images/attractions/" )
                 def image = new Image()
                 image.path =  params.imageFile.fileItem.fileName.toString()
                 image.save flush: true
@@ -155,7 +161,7 @@ class AttractionController {
         request.withFormat {
             form multipartForm {
                 flash.message = attractionInstance.name + ' Creado '
-                redirect(action: "index")
+                redirect(action: "list")
             }
             '*' { respond attractionInstance, [status: CREATED] }
         }
@@ -168,6 +174,12 @@ class AttractionController {
     @Transactional
     def deleteAtracction(Long id){
         def attractionInstance = Attraction.findById(id)
+        if(attractionInstance.reviews){
+            attractionInstance.reviews.each(){
+                attractionInstance.removeFromReviews(it)
+                it.delete flush: true
+            }
+        }
         flash.message =  attractionInstance.name + ' Borrada'
         attractionInstance.delete flush:true
         redirect action:"index"
@@ -205,6 +217,12 @@ a        attractionInstance.latitude = params.latitude.toBigDecimal()
         if (attractionInstance == null) {
             notFound()
             return
+        }
+
+        if(attractionInstance.reviews){
+            attractionInstance.reviews.each(){
+                it.delete flush: true
+            }
         }
 
         attractionInstance.delete flush:true

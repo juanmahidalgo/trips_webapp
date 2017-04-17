@@ -32,7 +32,7 @@
         <g:form url="[resource:attractionInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
-                <h2 class="addNewTitle"> Cargar Imagen: </h2>
+                <h2 class="addNewTitle"> Cargar Imagen (max 10mb): </h2>
                 <input type='file' name='documentFile' />
                 <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
             </fieldset>

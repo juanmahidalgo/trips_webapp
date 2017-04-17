@@ -20,6 +20,14 @@ class CityController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        def cities = City.findAll(){
+            attractions.size() > 0
+        }
+        respond cities, model:[cityInstanceCount: City.count()]
+    }
+
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
         respond City.list(params), model:[cityInstanceCount: City.count()]
     }
 
@@ -60,6 +68,11 @@ class CityController {
         cityInstance.latitude = params.latitude.toBigDecimal()
         cityInstance.longitude = params.longitude.toBigDecimal()
 
+        if(params.imageFile?.size> 10000000){
+            flash.error = "La imagen supera los 10mb permitidos"
+            redirect(action: "create")
+            return
+        }
 
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
@@ -87,7 +100,7 @@ class CityController {
         request.withFormat {
             form multipartForm {
                 flash.message = cityInstance.name + ' Creado '
-                redirect(action: "index")
+                redirect(action: "list")
             }
             '*' { respond cityInstance, [status: CREATED] }
         }

@@ -204,7 +204,7 @@
 			<div class="panel-body">
 				<ul class="contentList">
 					<li>
-						<a href="city" target="_self"> Ciudades
+						<a href="city/list" target="_self"> Ciudades
 							<img src="${resource(dir: 'images/', file: 'cities2.png')}" alt="image"/>
 						</a>
 					</li>

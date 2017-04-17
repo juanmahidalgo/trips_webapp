@@ -135,8 +135,6 @@
 
                 <td> ${reviewInstance.score} </td>
 
-                <td>${fieldValue(bean: reviewInstance, field: "date")}</td>
-
                 %{--<td><g:link action="edit" id="${reviewInstance.id}">${fieldValue(bean: reviewInstance, field: "name")}</g:link></td>
 --}%
                 <td class="borrarColumn"><a class="btn btn-danger" data-href="deleteReview?id=${reviewInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>

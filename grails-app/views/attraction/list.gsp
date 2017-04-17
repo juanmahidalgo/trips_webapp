@@ -67,7 +67,7 @@
         <g:each in="${attractionInstanceList}" status="i" var="attractionInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="edit" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
+                <td><g:link action="edit" id="${attractionInstance.id}"> ${attractionInstance.name}</g:link></td>
 
                 <td><g:link controller="city" action="edit" id="${attractionInstance.city?.id}">${attractionInstance.city?.name}</g:link></td>
 
@@ -83,7 +83,7 @@
 
                 <td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
 
-                <td class="borrarColumn"><a class="btn btn-danger" data-href="attraction/deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
+                <td class="borrarColumn"><a class="btn btn-danger" data-href="deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
 
             </tr>
 

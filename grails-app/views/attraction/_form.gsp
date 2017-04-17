@@ -168,9 +168,10 @@
 		</g:each>
 	</g:if>
 	<g:else>
-		<b> No hay imágenes cargadas todavía </b><br>
+		%{--<b> No hay imágenes cargadas todavía </b><br>--}%
 	</g:else>
 	<g:if test="${context == 'create'}">
+		<label> Cargar Imagen (max 10mb)</label>
 		<input  type="file" name="imageFile">
 	</g:if>
 	<g:else>
