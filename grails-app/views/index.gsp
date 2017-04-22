@@ -154,6 +154,10 @@
 			width: 700px;
 			height: 300px;
 		}
+		.boxReseñas a {
+			color: black;
+			padding-left: 25px;
+		}
 	</style>
 	<meta name="layout" content="mainLayout">
 	<asset:stylesheet src="bootstrap/css/bootstrap.min.css"></asset:stylesheet>
@@ -200,12 +204,12 @@
 			<div class="panel-body">
 				<ul class="contentList">
 					<li>
-						<a href="city" target="_self"> Ciudades
+						<a href="city/list" target="_self"> Ciudades
 							<img src="${resource(dir: 'images/', file: 'cities2.png')}" alt="image"/>
 						</a>
 					</li>
 					<li>
-						<a href="attraction" target="_self"> Atracciones
+						<a href="attraction/list" target="_self"> Atracciones
 							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
 						</a>
 					</li>
@@ -216,8 +220,8 @@
 			<div class="panel-heading">
 				<h3 class="panel-title"> Moderación de Reseñas </h3>
 			</div>
-			<div class="panel-body">
-				<h4><a>Buscador de Reseñas</a>  </h4>
+			<div class="panel-body boxReseñas">
+				<h4> <a href="review/list" target="_self">Buscador de Reseñas</a>  </h4>
 			</div>
 		</div>
 	</div>

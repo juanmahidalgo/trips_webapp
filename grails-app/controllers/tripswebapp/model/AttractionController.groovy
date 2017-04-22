@@ -15,7 +15,30 @@ class AttractionController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Attraction.list(params), model:[attractionInstanceCount: Attraction.count()]
+        def attractions
+        if(params.cityId){
+            attractions = Attraction.findAllByCity(City.get(params.cityId))
+        }
+        else{
+            attractions = Attraction.list(params)
+        }
+        respond attractions, model:[attractionInstanceCount: Attraction.count()]
+    }
+
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def attractions
+        if(params.filterBy == 'city' && params.filter){
+            attractions = Attraction.findAllByCity(City.findByName(params.filter))
+        }
+        else if(params.filterBy == 'country' && params.filter){
+            def country = Country.findByName(params.filter)
+            attractions = Attraction.findAllByCity(City.findByCountry(country))
+        }
+        else{
+            attractions = Attraction.list(params)
+        }
+        respond attractions, model:[attractionInstanceCount: Attraction.count()]
     }
 
     def show(Attraction attractionInstance) {
@@ -74,7 +97,7 @@ class AttractionController {
                 }
             }
         }
-        redirect(action: "show", id: attractionInstance.id)
+        redirect(action: "edit", id: attractionInstance.id)
     }
 
     @Transactional
@@ -89,7 +112,7 @@ class AttractionController {
                         def image = new Image()
                         image.path = it.value.fileItem.fileName.toString()
                         image.save flush: true
-                        attractionInstance.addToMaps(image)
+                        attractionInstance.addToImages(image)
                     }
                 }
             }
@@ -107,22 +130,26 @@ class AttractionController {
         attractionInstance.latitude = params.latitude.toBigDecimal()
         attractionInstance.longitude = params.longitude.toBigDecimal()
 
+        if(params.imageFile?.size> 10000000){
+            flash.error = "La imagen supera los 10mb permitidos"
+            redirect(action: "create")
+            return
+        }
+
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
-                params.documentFile.each {
-                    if(it.value.fileItem.fileName){
-                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
-                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
-                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
-                        def image = new Image()
-                        image.path = it.value.fileItem.fileName.toString()
-                        image.save flush:true
-                        attractionInstance.addToMaps(image)
-                    }
-                }
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("imageFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.imageFile.fileItem.fileName, "images/attractions/" )
+                def image = new Image()
+                image.path =  params.imageFile.fileItem.fileName.toString()
+                image.save flush: true
+                attractionInstance.addToImages(image)
             }
         }
+
+
 
         if (attractionInstance.hasErrors()) {
             respond attractionInstance.errors, view:'create'
@@ -134,7 +161,7 @@ class AttractionController {
         request.withFormat {
             form multipartForm {
                 flash.message = attractionInstance.name + ' Creado '
-                redirect(action: "index")
+                redirect(action: "list")
             }
             '*' { respond attractionInstance, [status: CREATED] }
         }
@@ -147,9 +174,15 @@ class AttractionController {
     @Transactional
     def deleteAtracction(Long id){
         def attractionInstance = Attraction.findById(id)
+        if(attractionInstance.reviews){
+            attractionInstance.reviews.each(){
+                attractionInstance.removeFromReviews(it)
+                it.delete flush: true
+            }
+        }
         flash.message =  attractionInstance.name + ' Borrada'
         attractionInstance.delete flush:true
-        redirect action:"index"
+        redirect action:"list"
     }
 
     @Transactional
@@ -159,22 +192,8 @@ class AttractionController {
             return
         }
 
-        if(params.imageFile?.size>0){
-            if(request instanceof MultipartHttpServletRequest)
-            {
-                params.documentFile.each {
-                    if(it.value.fileItem.fileName){
-                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
-                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.value.fileItem.fieldName)
-                        String fileUploaded = fileUploadService.uploadFile( downloadedFile, it.value.fileItem.fileName, "images/maps/" )
-                        def image = new Image()
-                        image.path = it.value.fileItem.fileName.toString()
-                        image.save flush:true
-                        attractionInstance.addToMaps(image)
-                    }
-                }
-            }
-        }
+        attractionInstance.latitude = params.latitude.toBigDecimal()
+        attractionInstance.longitude = params.longitude.toBigDecimal()
 
         if (attractionInstance.hasErrors()) {
             respond attractionInstance.errors, view:'edit'
@@ -185,8 +204,8 @@ class AttractionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Attraction.label', default: 'Attraction'), attractionInstance.id])
-                redirect attractionInstance
+                flash.message = attractionInstance.name + ' Actualizada'
+                redirect(action: "index")
             }
             '*'{ respond attractionInstance, [status: OK] }
         }
@@ -198,6 +217,12 @@ class AttractionController {
         if (attractionInstance == null) {
             notFound()
             return
+        }
+
+        if(attractionInstance.reviews){
+            attractionInstance.reviews.each(){
+                it.delete flush: true
+            }
         }
 
         attractionInstance.delete flush:true

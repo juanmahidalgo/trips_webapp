@@ -18,6 +18,10 @@ fieldset.form label, #searchBarContainer label {
     min-width:350px;
 }
 
+.inputField select{
+    min-width:350px;
+}
+
 .contentList {
     font-size: 18px;
 }
@@ -38,6 +42,13 @@ fieldset.form label, #searchBarContainer label {
     margin: 15px 0px 15px 0px;
     padding-top: 15px;
     max-width: 550px;
+}
+
+.image img{
+    display:block;
+    max-width: 550px;
+    margin-bottom:15px;
+
 }
 
 #show-attraction {
@@ -105,6 +116,7 @@ h1 {
 }
 
 .attractions {
+    margin-bottom:20px;
 }
 
 .attractionsContainer img {
@@ -115,7 +127,7 @@ h1 {
 
 .attractionsContainer{
     border: 1px solid black;
-    height: 55px;
+    height: 56px;
     margin-top: 5px;
     margin-bottom: 5px;
     align-items: center;
@@ -138,4 +150,16 @@ h1 {
     color: white;
     height: auto;
     width: auto;
+}
+
+.filterLabel label{
+    margin-top: 5px;
+}
+
+.invisible{
+    display:none;
+}
+
+.manageImages{
+    margin-top:10px;
 }

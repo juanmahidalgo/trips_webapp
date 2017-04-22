@@ -15,6 +15,26 @@
 		</ol>
 		<div id="list-attraction" class="content scaffold-list" role="main">
 			<h1> Lista de Atracciones </h1>
+			<form action="list">
+				<div class="filterComponent col-md-12">
+					<div class="col-md-1 filterLabel">
+						<label> Filtrar por: </label>
+					</div>
+					<div class="col-md-2 form-group">
+						<select class="form-control" name="filterBy">
+							<option value="city"> Ciudad </option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" name="filter">
+					</div>
+					<div class="col-md-2">
+						<input class="btn-filtro btn btn-info" type="submit" value="Filtrar">
+					</div>
+
+				</div>
+			</form>
+
 		<g:link class="btn btn-success btn-add" action="create"> Crear Atracción </g:link></li>
 
 			<g:if test="${flash.message}">
@@ -48,7 +68,7 @@
 
 						<td><g:link action="edit" id="${attractionInstance.id}">${fieldValue(bean: attractionInstance, field: "name")}</g:link></td>
 
-						<td>${fieldValue(bean: attractionInstance, field: "city")}</td>
+						<td><g:link controller="city" action="edit" id="${attractionInstance.city?.id}">${attractionInstance.city?.name}</g:link></td>
 
 						<td>${fieldValue(bean: attractionInstance, field: "city.country.name")}</td>
 
@@ -70,7 +90,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${attractionInstanceCount ?: 0}" />
+				<boots:paginate total="${attractionInstanceCount ?: 0}" />
 			</div>
 
 			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

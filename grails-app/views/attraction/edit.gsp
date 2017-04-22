@@ -48,17 +48,19 @@
 			</div>
 			<g:form url="[resource:attractionInstance, action:'update']" method="PUT">
 				<g:hiddenField name="version" value="${attractionInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
+				<fieldset class="form" >
+					<g:render template="form" model="[context: 'edit']"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-success" action="update" value="Actualizar" />
 				</fieldset>
 			</g:form>
+
 		</div>
 		<div class="mapContainer col-md-6">
 			<div id="map"></div>
 		</div>
+
 
 	%{--<g:form action="updateMaps" enctype='multipart/form-data'>
         <g:render template="mapsForm"/>
@@ -73,7 +75,7 @@
 					if(item['types'].indexOf("country") > 0){
 						$('#country').val(item['long_name']);
 					}
-					if(item['types'].indexOf("locality") > 0){
+					if(item['types'].indexOf("locality") >= 0){
 						$('#city').val(item['long_name']);
 					}
 				});
@@ -186,18 +188,30 @@
 					});
 				}
 
+                function setMapOnAll(map) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(map);
+                    }
+                }
+
+                // Removes the markers from the map, but keeps them in the array.
+                function clearMarkers() {
+                    setMapOnAll(null);
+                }
+
 				function addMarker(location, map) {
 					// Add the marker at the clicked location, and add the next-available label
 					// from the array of alphabetical characters.
-					var marker = new google.maps.Marker({
+                    clearMarkers();
+                    var marker = new google.maps.Marker({
 						position: location,
-						label: labels[labelIndex++ % labels.length],
 						map: map
 					});
 					cleanFields();
 					$('#latitude').val(location.lat());
 					$('#longitude').val(location.lng());
 					getInfoAndFill(location);
+					markers.push(marker);
 				}
 			}
 		</script>

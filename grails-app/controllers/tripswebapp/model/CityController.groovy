@@ -20,6 +20,14 @@ class CityController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        def cities = City.findAll(){
+            attractions.size() > 0
+        }
+        respond cities, model:[cityInstanceCount: City.count()]
+    }
+
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
         respond City.list(params), model:[cityInstanceCount: City.count()]
     }
 
@@ -43,7 +51,7 @@ class CityController {
             notFound()
             return
         }
-        if(!cityInstance.country){
+        if(!cityInstance.country.id){
             def country = Country.findByName(params.country)
             if(!country){
                 country = new Country(name: params.country)
@@ -57,9 +65,13 @@ class CityController {
             redirect(action: "create")
             return
         }
-        if(!cityInstance.latitude && !cityInstance.longitude ){
-            cityInstance.latitude = params.latitude.toBigDecimal()
-            cityInstance.longitude = params.longitude.toBigDecimal()
+        cityInstance.latitude = params.latitude.toBigDecimal()
+        cityInstance.longitude = params.longitude.toBigDecimal()
+
+        if(params.imageFile?.size> 10000000){
+            flash.error = "La imagen supera los 10mb permitidos"
+            redirect(action: "create")
+            return
         }
 
         if(params.imageFile?.size>0){
@@ -88,7 +100,7 @@ class CityController {
         request.withFormat {
             form multipartForm {
                 flash.message = cityInstance.name + ' Creado '
-                redirect(action: "index")
+                redirect(action: "list")
             }
             '*' { respond cityInstance, [status: CREATED] }
         }
@@ -116,7 +128,7 @@ class CityController {
                 }
             }
         }
-        redirect(action: "show", id: cityInstance.id)
+        redirect(action: "edit", id: cityInstance.id)
     }
 
     @Transactional
@@ -142,6 +154,12 @@ class CityController {
         }
     }
 
+
+    def getAtrractions(Long id){
+        def city = City.findById(id)
+        render(contentType:"text/json") { city.attractions }
+    }
+
     @Transactional
     def deleteCity(Long id){
         def cityInstance = City.findById(id)
@@ -153,7 +171,7 @@ class CityController {
         }
         flash.message =  cityInstance.name + ' Borrada'
         cityInstance.delete flush:true
-        redirect action:"index"
+        redirect action:"list"
     }
 
     @Transactional

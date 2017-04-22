@@ -31,7 +31,7 @@
 		</ol>
 		<div id="create-attraction" class="content scaffold-create col-md-5" role="main">
 			<h1> Crear Atracción </h1>
-			<g:if test="${flash.message}">
+            <g:if test="${flash.message}">
 			    <div class="message alert alert-danger" role="status">${flash.message}</div>
 			</g:if>
 
@@ -49,7 +49,7 @@
             </div>
 			<g:form action="save" enctype='multipart/form-data' >
 				<fieldset class="form">
-					<g:render template="form"/>
+                    <g:render template="form" model="[context: 'create']"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-success" value="Crear" />
@@ -68,11 +68,14 @@
             $('#name').val(places.name);
             var locationInfo = places.address_components;
             locationInfo.forEach(function(item) {
-                if(item['types'].indexOf("country") > 0){
+                if(item['types'].indexOf("country") >= 0){
                     $('#country').val(item['long_name']);
                 }
-                if(item['types'].indexOf("locality") > 0){
-                    $('#city').val(item['long_name']);
+                if(item['types'].indexOf("locality") >= 0){
+                    //$('#city').val(item['long_name']);
+                    $("#city option:contains(" + item['long_name'] + ")").attr('selected', 'selected');
+                    $('#city').trigger("chosen:updated");
+
                 }
             });
             $('#address').val(places.formatted_address);
@@ -84,6 +87,9 @@
                 $('.imagesContainer').append(html);
             });*/
         }
+
+        $("#city option:contains(" + 'Buenos Aires' + ")").attr('selected', 'selected');
+        $('#city').trigger("chosen:updated");
 
         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var labelIndex = 0;
@@ -179,18 +185,31 @@
                 });
             }
 
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            // Removes the markers from the map, but keeps them in the array.
+            function clearMarkers() {
+                setMapOnAll(null);
+            }
+
             function addMarker(location, map) {
                 // Add the marker at the clicked location, and add the next-available label
                 // from the array of alphabetical characters.
+                clearMarkers();
                 var marker = new google.maps.Marker({
                     position: location,
-                    label: labels[labelIndex++ % labels.length],
                     map: map
                 });
                 cleanFields();
                 $('#latitude').val(location.lat());
                 $('#longitude').val(location.lng());
                 getInfoAndFill(location);
+                markers.push(marker);
             }
         }
     </script>
