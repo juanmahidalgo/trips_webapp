@@ -171,7 +171,7 @@ class CityController {
         }
         flash.message =  cityInstance.name + ' Borrada'
         cityInstance.delete flush:true
-        redirect action:"index"
+        redirect action:"list"
     }
 
     @Transactional

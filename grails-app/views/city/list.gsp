@@ -36,7 +36,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td><g:link action="edit" id="${cityInstance.id}">${fieldValue(bean: cityInstance, field: "name")}</g:link></td>
                 <td> ${cityInstance.country?.name}</td>
-                <td class="borrarColumn"><a class="btn btn-danger" data-href="city/deleteCity?id=${cityInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
+                <td class="borrarColumn"><a class="btn btn-danger" data-href="deleteCity?id=${cityInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
             </tr>
         </g:each>
         </tbody>

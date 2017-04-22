@@ -182,7 +182,7 @@ class AttractionController {
         }
         flash.message =  attractionInstance.name + ' Borrada'
         attractionInstance.delete flush:true
-        redirect action:"index"
+        redirect action:"list"
     }
 
     @Transactional
@@ -192,7 +192,7 @@ class AttractionController {
             return
         }
 
-a        attractionInstance.latitude = params.latitude.toBigDecimal()
+        attractionInstance.latitude = params.latitude.toBigDecimal()
         attractionInstance.longitude = params.longitude.toBigDecimal()
 
         if (attractionInstance.hasErrors()) {

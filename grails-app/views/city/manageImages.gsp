@@ -24,7 +24,7 @@
         <g:form url="[resource:cityInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
-                <h2 class="addNewTitle"> Cargar imágen: </h2>
+                <h2 class="addNewTitle"> Cargar imágen (max 10mb): </h2>
                 <input type='file' name='documentFile' />
                 <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
             </fieldset>

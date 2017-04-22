@@ -66,10 +66,10 @@
 
 <div class="fieldcontain">
 	<g:if test="${cityInstance?.image}">
-		<label for="imageFile"> Cambiar Imagen: (max 15 mb) </label>
+		<label for="imageFile"> Cambiar Imagen: (max 10 mb) </label>
 	</g:if>
 	<g:else>
-		<label for="imageFile"> Subir Imagen: (max 15 mb) </label>
+		<label for="imageFile"> Subir Imagen: (max 10 mb) </label>
 	</g:else>
 	<input  type="file" name="imageFile">
 </div>

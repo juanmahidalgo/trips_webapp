@@ -10,7 +10,7 @@
 <body>
 <ol class="breadcrumb">
 	<li><a href="${createLink(uri: '/')}">Home</a></li>
-	<li class="active">Lista</li>
+	<li class="active">Lista de Ciudades </li>
 </ol>
 
 <div id="list-city" class="content scaffold-list" role="main">
@@ -22,11 +22,13 @@
 	<g:if test="${flash.message}">
 		<div class="alert alert-info" role="status">${flash.message}</div>
 	</g:if>
+	<g:link class="btn btn-success btn-add" action="create"> Crear Ciudad </g:link>
+
 	<table class="table table-hover">
 		<thead>
 		<tr>
 			<g:sortableColumn property="name" title="${message(code: 'city.name.label', default: 'Nombre')}" />
-			<th><g:message code="city.country.label" default="Country" /></th>
+			<g:sortableColumn property="country.name" title="País"/>
 		</tr>
 		</thead>
 		<tbody>
@@ -39,7 +41,6 @@
 		</g:each>
 		</tbody>
 	</table>
-	<g:link class="btn btn-success btn-add" action="create"> Crear Ciudad </g:link>
 	<div class="pagination">
 		<boots:paginate total="${cityInstanceCount ?: 0}" />
 	</div>
