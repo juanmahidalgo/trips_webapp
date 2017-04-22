@@ -1,18 +1,49 @@
 package tripswebapp.model
-
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userInstanceCount: User.count()]
+    }
+
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def users
+        if(params.filterBy == 'name' && params.filter){
+            users = User.findAllByName(params.filter)
+        }
+        else if(params.filterBy == 'id' && params.filter){
+            users = Attraction.find(params.filter)
+        }
+        else{
+            users= User.list(params)
+        }
+        render(view: "list", model: [users: users, userInstanceCount: User.count()])
+    }
+
+    def login(params){
+       def user = User.get(params.id)
+        if(user)
+            response.status = 200
+        else{
+            user = new User(params)
+            response.status= 200
+            if(!user)
+                response.status = 500
+        }
+        respond user
+    }
+
+    @Transactional
+    def blockUser(Long id){
+        def userInstance = User.find(id)
+        userInstance.blocked = true
+        userInstance.save flush: true
+        redirect action:"list"
     }
 
     def show(User userInstance) {

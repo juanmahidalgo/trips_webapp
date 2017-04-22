@@ -224,6 +224,14 @@
 				<h4> <a href="review/list" target="_self">Buscador de Reseñas</a>  </h4>
 			</div>
 		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> Moderación de Usuarios </h3>
+			</div>
+			<div class="panel-body boxReseñas">
+				<h4> <a href="user/list" target="_self">Buscador de Usuarios</a>  </h4>
+			</div>
+		</div>
 	</div>
 </div>
 </body>

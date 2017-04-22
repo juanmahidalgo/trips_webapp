@@ -48,7 +48,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Borrar Atracción
+                    Borrar Ciudad
                 </div>
                 <div class="modal-body">
                     ¿ Está seguro que desea eliminar la Ciudad ?
