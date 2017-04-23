@@ -61,6 +61,8 @@
 
             <th><g:message code="attraction.classification.label" default="Clasificación" /></th>
 
+            <th> Traducciones </th>
+
         </tr>
         </thead>
         <tbody>
@@ -82,6 +84,8 @@
                 <td>${fieldValue(bean: attractionInstance, field: "telephone")}</td>
 
                 <td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
+
+                <td>${fieldValue(bean: attractionInstance, field: "traductions")}</td>
 
                 <td class="borrarColumn"><a class="btn btn-danger" data-href="deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
 

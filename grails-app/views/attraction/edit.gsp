@@ -57,9 +57,9 @@
 			</g:form>
 
 		</div>
-		<div class="mapContainer col-md-6">
-			<div id="map"></div>
-		</div>
+	<div class="mapContainer col-md-6">
+		<div id="map"></div>
+	</div>
 
 
 	%{--<g:form action="updateMaps" enctype='multipart/form-data'>

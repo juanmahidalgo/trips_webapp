@@ -11,12 +11,14 @@ class Stop {
     City city
     Set<AudioGuide> audioGuides
     Set<Review> reviews
+    Set<StopTraduction> traductions
 
     static belongsTo = [city: City]
-    static hasMany = [reviews: Review, audioGuides: AudioGuide]
+    static hasMany = [reviews: Review, audioGuides: AudioGuide, traductions: StopTraduction]
 
     static constraints = {
         city nullable: false
+        traductions nullable: true
     }
 
     public String toString() {

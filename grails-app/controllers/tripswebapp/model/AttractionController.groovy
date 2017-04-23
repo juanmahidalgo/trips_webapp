@@ -43,6 +43,12 @@ class AttractionController {
     }
 
     def show(Attraction attractionInstance) {
+        if(params.lang && params.lang == 'en'){
+            def trad = StopTraduction.findByStop(attractionInstance)
+            attractionInstance.description = trad.description
+            attractionInstance.audioGuides = []
+            attractionInstance.audioGuides.add(trad.audioGuide)
+        }
         respond attractionInstance
     }
 
@@ -155,7 +161,7 @@ class AttractionController {
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
-                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "images/attractions/" )
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audiguides/" )
                 def audioGuide = new AudioGuide()
                 audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
                 audioGuide.save flush: true
@@ -180,6 +186,33 @@ class AttractionController {
     }
 
     def edit(Attraction attractionInstance) {
+        respond attractionInstance
+    }
+
+    @Transactional
+    def saveTraduction(Attraction attractionInstance){
+        def traduction = new StopTraduction()
+        traduction.lang = Language.findById(params.id)
+        traduction.description = params.description
+        if(params.audioGuideFile?.size>0){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "images/attractions/" )
+                def audioGuide = new AudioGuide()
+                audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
+                audioGuide.save flush: true
+                traduction.addToAudioGuides(audioGuide)
+            }
+        }
+        attractionInstance.addToTraductions(traduction)
+        attractionInstance.save flush:true
+        redirect(action: "edit", id: attractionInstance.id)
+    }
+
+    def loadTraduction() {
+        def attractionInstance = Attraction.get(params.id)
         respond attractionInstance
     }
 
