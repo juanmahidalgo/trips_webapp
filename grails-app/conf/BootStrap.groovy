@@ -25,9 +25,10 @@ class BootStrap {
         JSON.registerObjectMarshaller(Review) {
             def returnArray = [:]
             returnArray['id'] = it.id
-            returnArray['author'] = it.author.name
+            returnArray['author'] = it.author?.name
             returnArray['date'] = it.date
-            returnArray['image'] = it.image
+            returnArray['score'] = it.score
+            returnArray['text'] = it.text
             return returnArray
         }
 
