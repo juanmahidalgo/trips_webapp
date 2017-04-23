@@ -11,6 +11,7 @@ class User {
     String name
     String password
     Boolean blocked
+    String fbId
 
     Set<Stop> favourites
     Set<Stop> visited
@@ -25,6 +26,7 @@ class User {
         favourites nullable: true
         visited nullable: true
         password nullable: false
+        fbId nullable: true
     }
 
     public String toString() {

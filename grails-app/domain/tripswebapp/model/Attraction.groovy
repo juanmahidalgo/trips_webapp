@@ -2,6 +2,7 @@ package tripswebapp.model
 
 import grails.rest.Resource
 import tripswebapp.media.AttractionMap
+import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
 import tripswebapp.media.Video
 import tripswebapp.utils.Classification

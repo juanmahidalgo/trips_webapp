@@ -1,8 +1,11 @@
 package tripswebapp.media
 
 class AudioGuide {
-    File file
-
+    String path
     static constraints = {
+        path nullable: false
+    }
+    public String toString() {
+        path
     }
 }

@@ -174,6 +174,10 @@
 		<label> Cargar Imagen (max 10mb)</label>
 		<input  type="file" name="imageFile">
 	</g:if>
+	<g:if test="${context == 'create'}">
+		<label> Cargar Audioguia (max 10mb)</label>
+		<input  type="file" name="audioGuideFile">
+	</g:if>
 	<g:else>
 		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary manageImages"> Administrar Imágenes </g:link>
 

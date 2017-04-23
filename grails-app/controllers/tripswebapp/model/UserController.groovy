@@ -1,4 +1,7 @@
 package tripswebapp.model
+
+import groovy.json.JsonSlurper
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -25,17 +28,25 @@ class UserController {
         render(view: "list", model: [users: users, userInstanceCount: User.count()])
     }
 
+    @Transactional
     def login(params){
-       def user = User.get(params.id)
-        if(user)
-            response.status = 200
-        else{
-            user = new User(params)
-            response.status= 200
+        def jsonSlurper = new JsonSlurper()
+        def status
+        def body = jsonSlurper.parseText(request.reader.text)
+        def user = User.findByFbId(body.id)
+        if(user){
+            status = 200
+        }else{
+            user = new User(body)
+            user.fbId = body.id
+            user.password = ''
+            user.blocked = false
+            user.save flush: true
+            status= 201
             if(!user)
-                response.status = 500
+                status = 404
         }
-        respond user
+        render(status: status, text: user)
     }
 
     @Transactional

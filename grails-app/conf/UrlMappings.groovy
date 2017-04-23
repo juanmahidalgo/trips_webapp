@@ -6,6 +6,10 @@ class UrlMappings {
                 // apply constraints here
             }
         }
+        "/user/login"(parseRequest:false){
+            controller = "user"
+            action = "login"
+        }
         "/cities"(resources:'city'){
             "/attractions"(resources:"attraction")
         }
@@ -13,6 +17,7 @@ class UrlMappings {
             "/reviews"(resources:"review")
         }
         "/reviews"(resources:'review')
+        "/reviews"
         "/users"(resources:'user')
         "/"(view:"/index")
         "500"(view:'/error')

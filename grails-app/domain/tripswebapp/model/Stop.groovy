@@ -1,24 +1,21 @@
 package tripswebapp.model
-
-import grails.rest.Resource
 import tripswebapp.media.AudioGuide
 
-
+import grails.rest.Resource
 @Resource(uri='/stops',  formats=['json', 'xml'])
 
 class Stop {
 
     String name
     String description
-    AudioGuide audioGuide
     City city
+    Set<AudioGuide> audioGuides
     Set<Review> reviews
 
     static belongsTo = [city: City]
-    static hasMany = [reviews: Review]
+    static hasMany = [reviews: Review, audioGuides: AudioGuide]
 
     static constraints = {
-        audioGuide(nullable: true)
         city nullable: false
     }
 

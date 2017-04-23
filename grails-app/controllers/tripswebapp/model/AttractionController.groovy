@@ -3,6 +3,7 @@ package tripswebapp.model
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 import tripswebapp.FileUploadService
+import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
 
 import static org.springframework.http.HttpStatus.*
@@ -149,7 +150,18 @@ class AttractionController {
             }
         }
 
-
+        if(params.audioGuideFile?.size>0){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "images/attractions/" )
+                def audioGuide = new AudioGuide()
+                audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
+                audioGuide.save flush: true
+                attractionInstance.addToAudioGuides(audioGuide)
+            }
+        }
 
         if (attractionInstance.hasErrors()) {
             respond attractionInstance.errors, view:'create'
