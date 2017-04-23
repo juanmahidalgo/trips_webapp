@@ -5,6 +5,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile
 import tripswebapp.FileUploadService
 import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
+import tripswebapp.utils.Classification
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -36,6 +37,15 @@ class AttractionController {
             def country = Country.findByName(params.filter)
             attractions = Attraction.findAllByCity(City.findByCountry(country))
         }
+        else if(params.filterBy == 'name' && params.filter) {
+            attractions = Attraction.findAllByName(params.filter)
+        }
+        else if(params.filterBy == 'description' && params.filter){
+            attractions = Attraction.findAllByDescription(params.filter)
+        }
+        else if(params.filterBy == 'classification' && params.filter){
+            attractions = Attraction.findAllByClassification(Classification.findByName(params.filter))
+        }
         else{
             attractions = Attraction.list(params)
         }
@@ -43,8 +53,8 @@ class AttractionController {
     }
 
     def show(Attraction attractionInstance) {
-        if(params.lang && params.lang == 'en'){
-            def trad = StopTraduction.findByStop(attractionInstance)
+        if(params.lang){
+            def trad = StopTraduction.findByStopAndLang(attractionInstance, Language.findByCode(params.lang))
             attractionInstance.description = trad.description
             attractionInstance.audioGuides = []
             attractionInstance.audioGuides.add(trad.audioGuide)
@@ -192,28 +202,33 @@ class AttractionController {
     @Transactional
     def saveTraduction(Attraction attractionInstance){
         def traduction = new StopTraduction()
-        traduction.lang = Language.findById(params.id)
+        traduction.lang = Language.findById(params.language.id)
         traduction.description = params.description
         if(params.audioGuideFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
-                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "images/attractions/" )
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audioguides/" )
                 def audioGuide = new AudioGuide()
                 audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
                 audioGuide.save flush: true
-                traduction.addToAudioGuides(audioGuide)
+                traduction.audioGuide = audioGuide
             }
         }
         attractionInstance.addToTraductions(traduction)
         attractionInstance.save flush:true
+        traduction.save flush:true
         redirect(action: "edit", id: attractionInstance.id)
     }
 
     def loadTraduction() {
         def attractionInstance = Attraction.get(params.id)
-        respond attractionInstance
+        def traductionInstance
+        if(params.traductionId){
+            traductionInstance = StopTraduction.get(params.traductionId)
+        }
+        respond attractionInstance, model:[traductionInstance: traductionInstance]
     }
 
     @Transactional

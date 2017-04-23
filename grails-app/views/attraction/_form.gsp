@@ -91,16 +91,22 @@
 
 </div>
 
-<div class="">
-	<label for="traductions">
-		<g:message code="attraction.traductions.label" default="Idiomas" />
-	</label>
-	<span id="traductions"> ${attractionInstance?.traductions ?: 'Ninguna traducción cargada todavía'}</span>
-	<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
-</div>
+<g:if test="${context != 'create'}">
+	<div class="">
+		<label for="traductions">
+			<g:message code="attraction.traductions.label" default="Idiomas" />
+		</label>
+		<g:each var="traduction" in="${attractionInstance?.traductions}" status="i">
+			<g:link params="[id: attractionInstance?.id, traductionId: traduction.id]" action="loadTraduction" class=""> ${traduction} </g:link>
+		</g:each>
+		%{--
+            <span id="traductions"> ${attractionInstance?.traductions ?: 'Ninguna traducción cargada todavía'}</span>
+        --}%
+		<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
+	</div>
+</g:if>
 
 <div class="fieldcontain">
-
 	<g:if test="${attractionInstance?.images}">
 		<g:each var="image" in="${attractionInstance?.images}" status="i">
 			<label> Imagen ${i+1} </label>

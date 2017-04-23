@@ -46,7 +46,7 @@ class UserController {
             if(!user)
                 status = 404
         }
-        render(status: status, text: user)
+        render(status: status, text: user.id, contentType: 'text/json')
     }
 
     @Transactional

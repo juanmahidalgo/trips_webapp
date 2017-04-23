@@ -24,6 +24,9 @@
                 <select class="form-control" name="filterBy">
                     <option value="city"> Ciudad </option>
                     <option value="country"> País </option>
+                    <option value="name"> Nombre </option>
+                    <option value="description"> Descripción </option>
+                    <option value="classification"> Clasificación </option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -61,7 +64,7 @@
 
             <th><g:message code="attraction.classification.label" default="Clasificación" /></th>
 
-            <th> Traducciones </th>
+            <th> Idiomas </th>
 
         </tr>
         </thead>
@@ -85,7 +88,11 @@
 
                 <td>${fieldValue(bean: attractionInstance, field: "classification")}</td>
 
-                <td>${fieldValue(bean: attractionInstance, field: "traductions")}</td>
+                <td> Español
+                    <g:each var="traduction" in="${attractionInstance.traductions}">
+                        <span>${traduction.lang}</span>
+                    </g:each>
+                </td>
 
                 <td class="borrarColumn"><a class="btn btn-danger" data-href="deleteAtracction?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a></td>
 
@@ -118,6 +125,14 @@
 <script>
     $('#confirm-delete').on('show.bs.modal', function(e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+    $(document).ready(function() {
+        var queryString = window.location.href.slice(window.location.href.indexOf('?'));
+        $("#filterBy > option").each(function() {
+            if (this.value == queryString) {
+                this.selected = 'selected';
+            }
+        });
     });
 </script>
 </body>

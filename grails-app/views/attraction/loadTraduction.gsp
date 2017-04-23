@@ -16,10 +16,16 @@
     <ol class="breadcrumb">
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="list" action="list"> Lista de Atracciones </g:link></li>
+        <li><g:link class="list" action="edit" id="${attractionInstance?.id}"> ${attractionInstance} </g:link></li>
         <li class="active"> Agregar Traducción</li>
     </ol>
     <div class="col-md-5">
-        <h1> Cargando Traducción para ${attractionInstance?.name} </h1>
+        <g:if test="${traductionInstance}">
+            <h1> Editando Traducción en ${traductionInstance.lang} para ${attractionInstance?.name}  </h1>
+        </g:if>
+        <g:else>
+            <h1> Creando Traducción para ${attractionInstance?.name} </h1>
+        </g:else>
         <g:form url="[resource:attractionInstance, action:'saveTraduction']" enctype='multipart/form-data' >
             <fieldset class="form">
                 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'name', 'error')}">
@@ -28,7 +34,7 @@
                     </label>
                     <g:textField name="name" required="" oninput="setCustomValidity('')" value="${attractionInstance?.name}" readonly="readonly"/>
                 </div>
-                <div class="${hasErrors(bean: cityInstance, field: 'city', 'error')}">
+                <div class="fieldcontain inputField">
                     <label for="city">
                         <g:message code="city.city.label" default="Ciudad" />
                     </label>
@@ -39,18 +45,39 @@
                         <g:message code="attraction.language.label" default="Idioma" />
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:select id="language" name="language.id" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
+                    <g:if test="${!traductionInstance}">
+                        <g:select id="language" name="language.id" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
+                    </g:if>
+                    <g:else>
+                        <g:textField name="language" value="${traductionInstance.lang}" readonly="readonly"/>
+
+                    </g:else>
                 </div>
                 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'description', 'error')} required">
                     <label for="description">
-                        <g:message code="attraction.description.label" default="Descripcion" />
+                        <g:message code="attraction.description.label" default="Descripción" />
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:textField name="description" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${attractionInstance?.description}" />
+                    <g:textField name="description" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${traductionInstance ? traductionInstance.description : attractionInstance?.description}" />
                 </div>
-                <label for="audioGuideFile"> Subir AudioGuia
-                </label>
-                <input  type="file" name="audioGuideFile" id="audioGuideFile">
+                <g:if test="${traductionInstance}">
+                    <g:if test="${traductionInstance.audioGuide}">
+                        <label for="audioGuideFile"> Audioguia cargada:
+                        </label>
+                        ${traductionInstance.audioGuide.path}
+                        <div>
+                            <label> Cargar otra audioguia: </label>
+                            <input  type="file" name="audioGuideFile" id="audioGuideFile">
+                        </div>
+
+                    </g:if>
+                </g:if>
+                <g:else>
+                    <label for="audioGuideFile"> Subir AudioGuia
+                    </label>
+                    <input  type="file" name="audioGuideFile" id="audioGuideFile">
+                </g:else>
+
             </fieldset>
             <fieldset class="buttons">
                 <g:submitButton name="create" class="save btn btn-success createButton" value="Cargar Traducción" />
