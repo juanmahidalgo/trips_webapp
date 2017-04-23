@@ -22,6 +22,14 @@ class BootStrap {
             map['id'] = it.id
             return map
         }
+        JSON.registerObjectMarshaller(Review) {
+            def returnArray = [:]
+            returnArray['id'] = it.id
+            returnArray['author'] = it.author.name
+            returnArray['date'] = it.date
+            returnArray['image'] = it.image
+            return returnArray
+        }
 
     }
     def destroy = {

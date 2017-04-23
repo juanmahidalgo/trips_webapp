@@ -26,7 +26,7 @@
 	<body>
 		<ol class="breadcrumb">
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			<li><g:link class="list" action="index"> Lista de Atracciones </g:link></li>
+			<li><g:link class="list" action="list"> Lista de Atracciones </g:link></li>
 			<li class="active"> Editar Atracción </li>
 		</ol>
 		<div id="edit-attraction" class="content scaffold-edit col-md-5" role="main">

@@ -46,6 +46,11 @@ class AttractionController {
         else if(params.filterBy == 'classification' && params.filter){
             attractions = Attraction.findAllByClassification(Classification.findByName(params.filter))
         }
+        else if(params.filterBy == 'NonTranslated'){
+            attractions = Attraction.findAll(){
+                traductions.size() == StopTraduction.findAll().size()
+            }
+        }
         else{
             attractions = Attraction.list(params)
         }
@@ -55,6 +60,9 @@ class AttractionController {
     def show(Attraction attractionInstance) {
         if(params.lang){
             def trad = StopTraduction.findByStopAndLang(attractionInstance, Language.findByCode(params.lang))
+            if(!trad){
+                respond attractionInstance
+            }
             attractionInstance.description = trad.description
             attractionInstance.audioGuides = []
             attractionInstance.audioGuides.add(trad.audioGuide)

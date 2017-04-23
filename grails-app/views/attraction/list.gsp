@@ -27,6 +27,7 @@
                     <option value="name"> Nombre </option>
                     <option value="description"> Descripción </option>
                     <option value="classification"> Clasificación </option>
+                    <option value="NonTranslated"> Faltantes de Traducciones </option>
                 </select>
             </div>
             <div class="col-md-2">

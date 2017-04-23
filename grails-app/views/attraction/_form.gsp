@@ -142,7 +142,6 @@
     });
 </script>--}%
 
-
 <script type="application/javascript">
     $(".chosen-select ").chosen({no_results_text: "No se encontraron resultados!"});
 </script>
