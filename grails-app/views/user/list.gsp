@@ -83,7 +83,7 @@
                     Borrar Usuario
                 </div>
                 <div class="modal-body">
-                    ¿ Está seguro que desea blockear al Usuario?
+                    ¿ Está seguro que desea bloquear al Usuario?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
