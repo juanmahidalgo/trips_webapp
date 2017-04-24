@@ -184,7 +184,7 @@ class AttractionController {
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
-                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audiguides/" )
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audios/" )
                 def audioGuide = new AudioGuide()
                 audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
                 audioGuide.save flush: true
@@ -223,7 +223,7 @@ class AttractionController {
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
-                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audioguides/" )
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audios/" )
                 def audioGuide = new AudioGuide()
                 audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
                 audioGuide.save flush: true

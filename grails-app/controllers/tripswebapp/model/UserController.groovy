@@ -51,7 +51,7 @@ class UserController {
 
     @Transactional
     def blockUser(Long id){
-        def userInstance = User.find(id)
+        def userInstance = User.get(id)
         userInstance.blocked = true
         userInstance.save flush: true
         redirect action:"list"

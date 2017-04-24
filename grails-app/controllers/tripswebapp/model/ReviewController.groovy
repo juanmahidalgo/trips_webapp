@@ -1,6 +1,7 @@
 package tripswebapp.model
 
 import grails.rest.RestfulController
+import groovy.json.JsonSlurper
 
 import java.sql.Timestamp
 
@@ -11,6 +12,20 @@ class ReviewController extends RestfulController {
     def index(Integer max){
         params.max = Math.min(max ?: 10, 100)
         respond Review.list(params), model:[reviewInstanceCount: Review.count()]
+    }
+
+    def save(){
+        def jsonSlurper = new JsonSlurper()
+        def body = jsonSlurper.parseText(request.reader.text)
+        def review = new Review(body)
+        def user = User.get(body.author as Long)
+        if(user && user.blocked){
+            respond status:403, review
+            return
+            //response.sendError 403
+        }
+        review.save flush:true
+        respond review
     }
 
     def deleteReview(Long id) {
