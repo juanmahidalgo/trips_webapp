@@ -12,7 +12,7 @@ class StopTraduction {
     static belongsTo = [stop: Stop]
 
     static constraints = {
-
+        audioGuide nullable: true
     }
 
     public String toString() {

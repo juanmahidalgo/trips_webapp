@@ -47,9 +47,14 @@ class AttractionController {
             attractions = Attraction.findAllByClassification(Classification.findByName(params.filter))
         }
         else if(params.filterBy == 'NonTranslated'){
-            attractions = Attraction.findAll(){
-                traductions.size() == StopTraduction.findAll().size()
+            def filtered = []
+            def total = Attraction.findAll()
+            total.each(){ def a ->
+                if(a.traductions.size() < Language.findAll().size()){
+                    filtered.add(a)
+                }
             }
+            attractions = filtered
         }
         else{
             attractions = Attraction.list(params)
@@ -212,6 +217,7 @@ class AttractionController {
         def traduction = new StopTraduction()
         traduction.lang = Language.findById(params.language.id)
         traduction.description = params.description
+        traduction.stop = attractionInstance
         if(params.audioGuideFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
             {
@@ -224,9 +230,10 @@ class AttractionController {
                 traduction.audioGuide = audioGuide
             }
         }
+        traduction.save flush:true
         attractionInstance.addToTraductions(traduction)
         attractionInstance.save flush:true
-        traduction.save flush:true
+        flash.message = "Traducción en " + traduction.lang.name + " creada"
         redirect(action: "edit", id: attractionInstance.id)
     }
 

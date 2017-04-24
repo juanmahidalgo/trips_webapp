@@ -38,7 +38,7 @@
                     <label for="city">
                         <g:message code="city.city.label" default="Ciudad" />
                     </label>
-                    <g:textField name="city" value="${attractionInstance.city?.name}" readonly="readonly"/>
+                    <g:textField name="ciudad" value="${attractionInstance.city?.name}" readonly="readonly"/>
                 </div>
                 <div class="fieldcontain inputField required">
                     <label for="language">

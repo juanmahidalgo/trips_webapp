@@ -32,7 +32,7 @@
 		<div id="edit-attraction" class="content scaffold-edit col-md-5" role="main">
 			<h1> Editar Atracción </h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${attractionInstance}">
 			<ul class="errors" role="alert">
