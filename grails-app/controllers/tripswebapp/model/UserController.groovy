@@ -51,6 +51,7 @@ class UserController {
 
     @Transactional
     def blockUser(Long id){
+        params.blocked = params.blocked.toBoolean()
         def userInstance = User.get(id)
         if(params.blocked){
             userInstance.blocked=false
