@@ -20,7 +20,7 @@ class UserController {
             users = User.findAllByName(params.filter)
         }
         else if(params.filterBy == 'id' && params.filter){
-            users = Attraction.find(params.filter)
+            users = User.get(params.filter)
         }
         else{
             users= User.list(params)
@@ -52,7 +52,12 @@ class UserController {
     @Transactional
     def blockUser(Long id){
         def userInstance = User.get(id)
-        userInstance.blocked = true
+        if(params.blocked){
+            userInstance.blocked=false
+        }
+        else{
+            userInstance.blocked = true
+        }
         userInstance.save flush: true
         redirect action:"list"
     }

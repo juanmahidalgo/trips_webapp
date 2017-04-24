@@ -57,7 +57,16 @@
                     <td> ${userInstance.id} </td>
                     <td> ${userInstance.name} </td>
                     <td> ${userInstance.blocked ? 'Bloqueado' : 'No bloqueado'} </td>
-                    <td class="borrarColumn"><a class="btn btn-danger" data-href="blockUser?id=${userInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Bloquear </a></td>
+                    <td class="borrarColumn">
+                        <a class="btn btn-danger" data-href="blockUser?id=${userInstance.id}&blocked=${userInstance.blocked}" data-toggle="modal" data-target="#confirm-delete">
+                            <g:if test="${userInstance?.blocked}">
+                                Desbloquear
+                            </g:if>
+                            <g:else>
+                                Bloquear
+                            </g:else>
+                        </a>
+                    </td>
                 </tr>
             </g:each>
         </tbody>
@@ -78,7 +87,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-danger btn-ok">Borrar</a>
+                    <a class="btn btn-danger btn-ok">
+                        <g:if test="${userInstance?.blocked}">
+                            Desbloquear
+                        </g:if>
+                        <g:else>
+                            Bloquear
+                        </g:else>
+                    </a>
                 </div>
             </div>
         </div>
