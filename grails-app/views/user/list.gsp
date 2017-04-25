@@ -58,7 +58,7 @@
                     <td> ${userInstance.name} </td>
                     <td> ${userInstance.blocked ? 'Bloqueado' : 'No bloqueado'} </td>
                     <td class="borrarColumn">
-                        <a class="btn btn-danger" data-href="blockUser?id=${userInstance.id}&blocked=${userInstance.blocked}" data-toggle="modal" data-target="#confirm-delete">
+                        <a class="btn btn-danger ${userInstance.blocked ? 'blocked' : 'notBlocked'}" data-href="blockUser?id=${userInstance.id}&blocked=${userInstance.blocked}" data-toggle="modal" data-target="#confirm-delete">
                             <g:if test="${userInstance?.blocked}">
                                 Desbloquear
                             </g:if>
@@ -83,17 +83,12 @@
                     Borrar Usuario
                 </div>
                 <div class="modal-body">
-                    ¿ Está seguro que desea bloquear al Usuario?
+                    ¿ Está seguro que desea desbloquear al Usuario?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-danger btn-ok">
-                        <g:if test="${userInstance?.blocked}">
-                            Desbloquear
-                        </g:if>
-                        <g:else>
-                            Bloquear
-                        </g:else>
+                    <a id="confirmButton" class="btn btn-danger btn-ok">
+                        Bloquear
                     </a>
                 </div>
             </div>
@@ -103,6 +98,18 @@
 <script>
     $('#confirm-delete').on('show.bs.modal', function(e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+    $('.blocked').click(function(){
+        $('.modal-body').html('¿ Está seguro que desea desbloquear al Usuario?');
+        $('.modal-header').html('Desbloquear Usuario');
+        $('#confirmButton').html('Desbloquear');
+    });
+    $('.notBlocked').click(function(){
+        $('.modal-body').html('¿ Está seguro que desea bloquear al Usuario?');
+        $('.modal-header').html('Bloquear Usuario');
+        $('#confirmButton').html('Bloquear');
+
+
     });
 </script>
 </body>

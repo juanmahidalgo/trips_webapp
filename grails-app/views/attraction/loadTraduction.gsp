@@ -45,38 +45,37 @@
                         <g:message code="attraction.language.label" default="Idioma" />
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:if test="${!traductionInstance}">
-                        <g:select id="language" name="language.id" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
+                    <g:if test="${traductionInstance}">
+                        <g:select id="language" name="language.id" value="${traductionInstance?.lang.id}" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
                     </g:if>
                     <g:else>
                         <g:textField name="language" value="${traductionInstance.lang}" readonly="readonly"/>
 
                     </g:else>
+                    <input type="hidden" name="traduction_id" value="${traductionInstance?.id}" />
+                    <input type="hidden" name="lang_id" value="${traductionInstance?.lang.id}" />
+
                 </div>
                 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'description', 'error')} required">
                     <label for="description">
                         <g:message code="attraction.description.label" default="Descripción" />
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:textField name="description" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${traductionInstance ? traductionInstance.description : attractionInstance?.description}" />
+                    <g:textField name="descripcion" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${traductionInstance ? traductionInstance.description : attractionInstance?.description}" />
                 </div>
-                <g:if test="${traductionInstance}">
-                    <g:if test="${traductionInstance.audioGuide}">
+                <g:if test="${traductionInstance?.audioGuide}">
                         <label for="audioGuideFile"> Audioguia cargada:
                         </label>
                         ${traductionInstance.audioGuide.path}
                         <div>
                             <label> Cargar otra audioguia: </label>
-                            <input  type="file" name="audioGuideFile" id="audioGuideFile">
                         </div>
-
-                    </g:if>
                 </g:if>
                 <g:else>
                     <label for="audioGuideFile"> Subir AudioGuia
                     </label>
-                    <input  type="file" name="audioGuideFile" id="audioGuideFile">
                 </g:else>
+                <input  type="file" name="audioGuideFile" id="audioGuideFile">
 
             </fieldset>
             <fieldset class="buttons">
@@ -89,6 +88,15 @@
     </div>
 </div>
 <script>
+    var disableLang = ${traductionInstance ? true : false};
+    if(disableLang){
+        $('#language').prop('disabled', true);
+    }
+    $(function(){
+        var select_val = $('#sel_test option:selected').val();
+        $('#hdn_test').val(select_val);
+        $('#output').text('Selected value is: ' + select_val);
+    });
     var initialPosition = {lat: ${attractionInstance.latitude}, lng: ${attractionInstance.longitude}};
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var labelIndex = 0;

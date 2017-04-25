@@ -101,7 +101,7 @@
         <thead>
         <tr>
 
-            <g:sortableColumn property="date" title="Fecha" params="[filterBy: params.filterBy, filter: params.filter]" />
+            <g:sortableColumn property="date" class="col-md-1" title="Fecha" params="[filterBy: params.filterBy, filter: params.filter]" />
 
             <g:sortableColumn property="stop" title="Atracción" params="[filterBy: params.filterBy, filter: params.filter]"  />
 
@@ -111,7 +111,9 @@
 
             <g:sortableColumn property="author" title="Autor" params="[filterBy: params.filterBy, filter: params.filter]"  />
 
-            <g:sortableColumn property="text" title="Comentario" params="[filterBy: params.filterBy, filter: params.filter]" />
+            <g:sortableColumn property="author?.id" title="Autor Id" params="[filterBy: params.filterBy, filter: params.filter]"  />
+
+            <g:sortableColumn class="col-md-3" property="text" title="Comentario" params="[filterBy: params.filterBy, filter: params.filter]" />
 
             <g:sortableColumn property="score" title="Puntaje" params="[filterBy: params.filterBy, filter: params.filter]" />
 
@@ -121,7 +123,7 @@
         <g:each in="${reviews}" status="i" var="reviewInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td> ${reviewInstance.date} </td>
+                <td class="date"> ${reviewInstance.date} </td>
 
                 <td><g:link controller="attraction" action="edit" id="${reviewInstance.stop.id}">${reviewInstance.stop}</g:link></td>
 
@@ -130,6 +132,8 @@
                 <td> ${reviewInstance.stop.city.country.name} </td>
 
                 <td> ${reviewInstance.author} </td>
+
+                <td> ${reviewInstance.author?.id} </td>
 
                 <td> ${reviewInstance.text} </td>
 
@@ -183,11 +187,16 @@
         });
         $('#datetimepicker6').data("DateTimePicker").date('${date1}');
         $('#datetimepicker7').data("DateTimePicker").date('${date2}');
+        $('.date').each(function(){
+            var text = $(this).html()
+            $(this).html(text.substring(0,17));
+        });
     });
 
     $('#confirm-delete').on('show.bs.modal', function(e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
+
 </script>
 </body>
 </html>

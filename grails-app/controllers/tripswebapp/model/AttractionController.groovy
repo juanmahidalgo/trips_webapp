@@ -50,7 +50,7 @@ class AttractionController {
             def filtered = []
             def total = Attraction.findAll()
             total.each(){ def a ->
-                if(a.traductions.size() < Language.findAll().size()){
+                if(a.traductions.size() < Language.findAll().size()-1){
                     filtered.add(a)
                 }
             }
@@ -214,9 +214,18 @@ class AttractionController {
 
     @Transactional
     def saveTraduction(Attraction attractionInstance){
-        def traduction = new StopTraduction()
-        traduction.lang = Language.findById(params.language.id)
-        traduction.description = params.description
+        def traduction
+        if(params.traduction_id){
+            traduction = StopTraduction.get(params.traduction_id)
+            flash.message = "Traducción en " + traduction.lang.name + " modificada"
+
+        }
+        else{
+            traduction = new StopTraduction()
+            traduction.lang = Language.findById(params.language.id)
+            flash.message = "Traducción en " + traduction.lang.name + " creada"
+        }
+        traduction.description = params.descripcion
         traduction.stop = attractionInstance
         if(params.audioGuideFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)
@@ -233,7 +242,6 @@ class AttractionController {
         traduction.save flush:true
         attractionInstance.addToTraductions(traduction)
         attractionInstance.save flush:true
-        flash.message = "Traducción en " + traduction.lang.name + " creada"
         redirect(action: "edit", id: attractionInstance.id)
     }
 
