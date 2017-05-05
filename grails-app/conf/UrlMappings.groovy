@@ -14,6 +14,10 @@ class UrlMappings {
             action = [GET: "getFavourites", POST: "addFavourite"]
         }
 
+        "/user/$id/fav"(controller: "user", parseRequest: false){
+            action = "getFavourites"
+        }
+
         /*"/user/fav"(parseRequest:false){
             controller = "user"
             action = "addFavourite"
