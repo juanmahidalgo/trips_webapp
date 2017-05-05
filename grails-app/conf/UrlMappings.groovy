@@ -10,6 +10,18 @@ class UrlMappings {
             controller = "user"
             action = "login"
         }
+        "/user/fav"(controller: "user", parseRequest: false) {
+            action = [GET: "getFavourites", POST: "addFavourite"]
+        }
+
+        /*"/user/fav"(parseRequest:false){
+            controller = "user"
+            action = "addFavourite"
+        }*/
+        "/user/favs"(parseRequest:false){
+            controller = "user"
+            action = "addFavourite"
+        }
         "/cities"(resources:'city'){
             "/attractions"(resources:"attraction")
         }

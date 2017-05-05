@@ -50,6 +50,22 @@ class UserController {
     }
 
     @Transactional
+    def addFavourite(){
+        def jsonSlurper = new JsonSlurper()
+        def body = jsonSlurper.parseText(request.reader.text)
+        def user = User.get(body.id)
+        def stop = Stop.get(body.stop_id)
+        user.addToFavourites(stop)
+        user.save flush:true
+        respond user, [formats:['json']]
+        //render(status:200, text: user)
+    }
+
+    def getFavourites(){
+
+    }
+
+    @Transactional
     def blockUser(Long id){
         params.blocked = params.blocked.toBoolean()
         def userInstance = User.get(id)
