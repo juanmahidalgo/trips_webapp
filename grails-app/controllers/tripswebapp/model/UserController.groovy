@@ -58,7 +58,7 @@ class UserController {
         if(stop in user.getFavourites()){
             user.removeFromFavourites(stop)
         }
-        else{
+        else if(stop){
             user.addToFavourites(stop)
         }
         user.save flush:true
