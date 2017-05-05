@@ -50,8 +50,8 @@
       <file leaf-file-name="UserController.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+            <state relative-caret-position="143">
+              <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding>
                 <element signature="e#27#57#0" expanded="true" />
               </folding>
@@ -1287,12 +1287,12 @@
       <workItem from="1492888389630" duration="30306000" />
       <workItem from="1493044826503" duration="10780000" />
       <workItem from="1493154533814" duration="51000" />
-      <workItem from="1494011909943" duration="1100000" />
+      <workItem from="1494011909943" duration="1298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239571000" />
+    <option name="totallyTimeSpent" value="239769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1479,7 +1479,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy</url>
-          <line>78</line>
+          <line>83</line>
           <properties />
           <option name="timeStamp" value="155" />
         </line-breakpoint>
@@ -1527,19 +1527,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy</url>
-          <line>57</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy</url>
-          <line>64</line>
+          <line>69</line>
           <properties />
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy</url>
-          <line>69</line>
+          <line>74</line>
           <properties />
           <option name="timeStamp" value="171" />
         </line-breakpoint>
@@ -1980,8 +1980,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        <state relative-caret-position="143">
+          <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
           <folding>
             <element signature="e#27#57#0" expanded="true" />
           </folding>

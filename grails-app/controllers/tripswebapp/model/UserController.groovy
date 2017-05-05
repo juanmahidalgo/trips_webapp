@@ -54,6 +54,11 @@ class UserController {
         def jsonSlurper = new JsonSlurper()
         def body = jsonSlurper.parseText(request.reader.text)
         def user = User.get(body.id)
+        if(!user){
+            respond 404
+            return
+        }
+
         def stop = Stop.get(body.stop_id)
         if(stop in user.getFavourites()){
             user.removeFromFavourites(stop)
