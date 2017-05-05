@@ -55,14 +55,22 @@ class UserController {
         def body = jsonSlurper.parseText(request.reader.text)
         def user = User.get(body.id)
         def stop = Stop.get(body.stop_id)
-        user.addToFavourites(stop)
+        if(stop in user.getFavourites()){
+            user.removeFromFavourites(stop)
+        }
+        else{
+            user.addToFavourites(stop)
+        }
         user.save flush:true
         respond user, [formats:['json']]
         //render(status:200, text: user)
     }
 
     def getFavourites(){
-
+        def userId = params.id
+        def user = User.get(userId)
+        def favs = user.getFavourites()
+        respond favs, [formats:['json']]
     }
 
     @Transactional
