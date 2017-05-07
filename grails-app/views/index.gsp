@@ -213,6 +213,11 @@
 							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
 						</a>
 					</li>
+					<li>
+						<a href="route/list" target="_self"> Recorridos
+							<img src="${resource(dir: 'images/', file: 'atracciones2.png')}" alt="image"/>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>

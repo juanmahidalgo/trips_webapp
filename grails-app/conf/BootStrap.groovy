@@ -14,12 +14,20 @@ class BootStrap {
             returnArray['name'] = it.name
             returnArray['country_name'] = it.country.name
             returnArray['image'] = it.image
+            returnArray['latitude'] = it.latitude
+            returnArray['longitude'] = it.longitude
             return returnArray
         }
         JSON.registerObjectMarshaller(Attraction) {
             def map = [:]
             map.putAll(it.properties)
             map['id'] = it.id
+            return map
+        }
+        JSON.registerObjectMarshaller(Route) {
+            def map = [:]
+            map.putAll(it.properties)
+            map['stops'] = it.stops
             return map
         }
         JSON.registerObjectMarshaller(Review) {

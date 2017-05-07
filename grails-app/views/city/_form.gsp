@@ -59,7 +59,7 @@
 			<img src="${resource(dir: 'images/cities', file: cityInstance.image.path)}" alt="img"/>
 		</g:if>
 		<g:else>
-			<b>No image loaded</b>
+			<b> No image loaded </b>
 		</g:else>
 	</div>
 </g:if>

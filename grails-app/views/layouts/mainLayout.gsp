@@ -11,6 +11,7 @@
 	<asset:javascript src="bootstrap/js/bootstrap.js"></asset:javascript>
 	<asset:javascript src="chosen.jquery.js"></asset:javascript>
 	<asset:stylesheet src="chosen.min.css"></asset:stylesheet>
+	<asset:javascript src="chosen.order.jquery.min.js"></asset:javascript>
 
 	%{--<script type="text/javascript"
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2HKAXBafJpycygBDLiS_tDyP86h6MTUk&libraries=geometry">

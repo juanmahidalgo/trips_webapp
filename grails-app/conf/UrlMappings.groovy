@@ -33,6 +33,7 @@ class UrlMappings {
             "/reviews"(resources:"review")
         }
         "/reviews"(resources:'review')
+        "/routes"(resources:'route')
         "/reviews"
         "/users"(resources:'user')
         "/"(view:"/index")

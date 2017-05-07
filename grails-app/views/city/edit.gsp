@@ -45,6 +45,30 @@
 					<label> Todavía no hay attracciones para esta ciudad</label>
 				</g:if>
 			</div>
+
+			<label> Recorridos </label>
+			<div class="routes">
+				<g:each in="${cityInstance.routes}" status="i" var="routeInstance">
+					<div class="attractionsContainer">
+						%{--<g:if test="${routeInstance.image}">
+							<img src="${resource(dir: 'images/routes', file: routeInstance.image.path)}" alt="image"/>
+						</g:if>
+						<g:else>
+							<img src="${resource(dir: 'images', file: 'noimage.png')}" alt="image"/>
+						</g:else>--}%
+						<g:link controller="route" action="edit" id="${routeInstance.id}">${fieldValue(bean: routeInstance, field: "name")}</g:link>
+%{--
+						<a class="btn btn-danger" data-href="/TripsWebApp/route/deleteRoute?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Borrar </a>
+--}%
+					</div>
+				</g:each>
+				<g:if test="${cityInstance.routes.size() == 0}">
+					<label> Todavía no hay recorridos para esta ciudad</label>
+				</g:if>
+				<g:link params="[id: cityInstance?.id, type: 'image']" controller="route" action="create" class="btn btn-success"> Crear Recorrido </g:link>
+
+			</div>
+
 			<label> Foto </label>
 			<g:if test="${cityInstance.image}">
 				<div class="image">
