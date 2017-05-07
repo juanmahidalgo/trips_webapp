@@ -107,7 +107,6 @@
 			});
 			marker.addListener('click', toggleBounce);
             markerArray.push(marker);
-
         }
 
 		function toggleBounce() {
@@ -138,7 +137,6 @@
         $('#city').on('change', function(evt) {
 			loadAttractions();
         });
-
 
         $('#stops').on('change', function(evt, params) {
             cleanMap();

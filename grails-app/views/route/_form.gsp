@@ -1,11 +1,11 @@
 <%@ page import="tripswebapp.model.Route" %>
 
-<div class="fieldcontain inputField ${hasErrors(bean: routeInstance, field: 'city', 'error')} required">
+<div class="${hasErrors(bean: routeInstance, field: 'city', 'error')} required">
 	<label for="city">
 		<g:message code="route.city.label" default="Ciudad" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="city" name="city.id" from="${tripswebapp.model.City.list()}" optionKey="id" required="" value="${routeInstance?.city?.id}" class="many-to-one"/>
+	<g:select id="city" name="city.id" from="${tripswebapp.model.City.list()}" optionKey="id" required="" style="width: 350px;" value="${routeInstance?.city?.id}" class="many-to-one chosen-select"/>
 
 </div>
 
@@ -54,7 +54,7 @@
 
 <script type="application/javascript">
     $().ready(function(){
-        $("#stops").chosen({no_results_text: "No se encontraron resultados!"});
+        $(".chosen-select").chosen({no_results_text: "No se encontraron resultados!"});
         $("#city").chosen({no_results_text: "No se encontraron resultados!"});
     });
 </script>

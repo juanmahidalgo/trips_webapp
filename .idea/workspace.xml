@@ -3,13 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="1ef0f9ce-2baf-403d-9614-a61a26858f35" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/City.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/City.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/city/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/city/_form.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/city/edit.gsp" afterPath="$PROJECT_DIR$/grails-app/views/city/edit.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/index.gsp" afterPath="$PROJECT_DIR$/grails-app/views/index.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/route/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/route/_form.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/route/create.gsp" afterPath="$PROJECT_DIR$/grails-app/views/route/create.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/route/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/route/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/user/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/user/_form.gsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -32,82 +34,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="list.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/list.gsp">
+      <file leaf-file-name="ReviewController.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/ReviewController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="75" column="45" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="945">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding>
+                <element signature="e#27#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdvertismentController.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AdvertismentController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="61">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="e#27#95#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="list.gsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/route/list.gsp">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/list.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="67" column="48" lean-forward="false" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
+            <state relative-caret-position="185">
+              <caret line="62" column="70" lean-forward="false" selection-start-line="62" selection-start-column="70" selection-end-line="62" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/route/edit.gsp">
+      <file leaf-file-name="CityController.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/CityController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+            <state relative-caret-position="58">
+              <caret line="101" column="16" lean-forward="false" selection-start-line="101" selection-start-column="16" selection-end-line="102" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RouteController.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#27#95#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/route/_form.gsp">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/city/_form.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
+            <state relative-caret-position="173">
+              <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="City.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/City.groovy">
+      <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="143">
+              <caret line="86" column="26" lean-forward="false" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+              <folding>
+                <marker date="1494197191000" expanded="false" signature="2775:2852" ph="..." />
+              </folding>
             </state>
-          </provider>
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Route.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Route.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="create.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/route/create.gsp">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/audioGuide/create.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="112" column="8" lean-forward="false" selection-start-line="112" selection-start-column="8" selection-end-line="118" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="165">
+              <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/create.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="47" column="102" lean-forward="false" selection-start-line="47" selection-start-column="102" selection-end-line="47" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/city/create.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="50" column="63" lean-forward="false" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,11 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ciudad</find>
-      <find>traduction</find>
-      <find>respond</find>
-      <find>traducci</find>
-      <find>params=</find>
       <find>tradu</find>
       <find>json</find>
       <find>descripcion</find>
@@ -150,9 +175,14 @@
       <find>addStop</find>
       <find>showSteps</find>
       <find>getCity</find>
-      <find>form</find>
       <find>initAutocomplete</find>
       <find>loadAttractions</find>
+      <find>chosen-select</find>
+      <find>image</find>
+      <find>Buenos</find>
+      <find>imageFile</find>
+      <find>contexto</find>
+      <find>form</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,20 +203,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/utils/Classification.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/media/Image.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/attraction/_mapsForm.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/templates/_navBar.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/city/show.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/attraction/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Country.groovy" />
         <option value="$PROJECT_DIR$/grails-app/i18n/messages.properties" />
         <option value="$PROJECT_DIR$/target/work/plugins/twitter-bootstrap-3.3.5/grails-app/taglib/org/groovydev/TwitterBootstrapTagLib.groovy" />
         <option value="$PROJECT_DIR$/grails-app/taglib/BootspaginateTagLib.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/review/index.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/attraction/index.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/attraction/create.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/city/manageImages.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/city/create.gsp" />
@@ -210,20 +232,28 @@
         <option value="$PROJECT_DIR$/grails-app/views/attraction/loadTraduction.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/UserController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/index.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/user/create.gsp" />
         <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/City.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/city/edit.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/city/_form.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp" />
         <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Route.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/route/create.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/route/_form.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/route/edit.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/route/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Advertisment.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/index.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/route/_form.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/user/_form.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/route/create.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/attraction/create.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/advertisment/edit.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/city/_form.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/advertisment/create.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AdvertismentController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/advertisment/list.gsp" />
       </list>
     </option>
   </component>
@@ -527,6 +557,28 @@
               <option name="myItemId" value="grails-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="advertisment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TripsWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TripsWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -660,28 +712,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TripsWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TripsWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grails-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -721,7 +751,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="grails.last.selected.app.url" value="file://$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="url&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;route&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/Route.groovy&#10;urlma&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;config&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/Config.groovy&#10;user&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/User.groovy&#10;review&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/ReviewController.groovy&#10;attrac&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/AttractionController.groovy&#10;usercontrol&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/UserController.groovy&#10;style&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/stylesheets/style.css&#10;traduc&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/StopTraduction.groovy&#10;urlmap&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;userControl&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/UserController.groovy&#10;index.gsp&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/views/city/index.gsp&#10;cities.png&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/images/cities.png&#10;citycon&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/CityController.groovy&#10;country&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/Country.groovy&#10;city&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/CityController.groovy&#10;main&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/stylesheets/main.css&#10;bueno&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/web-app/assets/cityImages/buenosaires.png&#10;chosen.min.css&#9;null&#9;null&#10;ap&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/target/work/plugins/asset-pipeline-2.5.7/application.properties" />
+    <property name="SearchEverywhereHistoryKey" value="urlmap&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;url&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;route&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/Route.groovy&#10;urlma&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/UrlMappings.groovy&#10;config&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/conf/Config.groovy&#10;user&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/User.groovy&#10;review&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/ReviewController.groovy&#10;attrac&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/AttractionController.groovy&#10;usercontrol&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/UserController.groovy&#10;style&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/stylesheets/style.css&#10;traduc&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/StopTraduction.groovy&#10;userControl&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/UserController.groovy&#10;index.gsp&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/views/city/index.gsp&#10;cities.png&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/images/cities.png&#10;citycon&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/CityController.groovy&#10;country&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/domain/tripswebapp/model/Country.groovy&#10;city&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/controllers/tripswebapp/model/CityController.groovy&#10;main&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/grails-app/assets/stylesheets/main.css&#10;bueno&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/web-app/assets/cityImages/buenosaires.png&#10;chosen.min.css&#9;null&#9;null&#10;ap&#9;FILE&#9;file:///Users/jhidalgo/IdeaProjects/TripsWebApp/target/work/plugins/asset-pipeline-2.5.7/application.properties" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -1217,12 +1247,12 @@
       <workItem from="1492888389630" duration="30306000" />
       <workItem from="1493044826503" duration="10780000" />
       <workItem from="1493154533814" duration="51000" />
-      <workItem from="1494011909943" duration="30121000" />
+      <workItem from="1494011909943" duration="34648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268592000" />
+    <option name="totallyTimeSpent" value="273119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1240,7 +1270,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40273973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4520548" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1481,21 +1511,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy</url>
-          <line>48</line>
+          <line>51</line>
           <properties />
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy</url>
-          <line>35</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AdvertismentController.groovy</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/CityController.groovy</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AdvertismentController.groovy</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="182" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="180" />
+      <option name="time" value="183" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1504,76 +1552,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/media/Video.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="24" column="80" lean-forward="false" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/media/Image.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Country.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/index.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="17" column="29" lean-forward="false" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/media/AudioGuideController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/assets/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Language.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1594,13 +1572,6 @@
       </provider>
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_form.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="117" column="17" lean-forward="true" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/PointOfInterest.groovy">
@@ -1677,16 +1648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/ReviewController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="e#27#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/review/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2820">
@@ -1722,28 +1683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <element signature="e#27#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.1.8.RELEASE/spring-tx-4.1.8.RELEASE.jar!/org/springframework/transaction/support/TransactionTemplate.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="225" column="28" lean-forward="true" selection-start-line="225" selection-start-column="28" selection-end-line="225" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1809,22 +1752,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/create.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2690">
-          <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/city/_form.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/assets/javascripts/chosen.order.jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1833,60 +1760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/CityController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="87" column="13" lean-forward="true" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#27#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/city/create.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="107" column="29" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/city/edit.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1902,35 +1779,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Route.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/route/_form.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/route/create.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="112" column="8" lean-forward="false" selection-start-line="112" selection-start-column="8" selection-end-line="118" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/route/edit.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
@@ -1944,15 +1792,215 @@
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="75" column="45" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <caret line="75" column="45" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/route/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="67" column="48" lean-forward="false" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
+        <state relative-caret-position="329">
+          <caret line="43" column="14" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="103" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Advertisment.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="244" column="42" lean-forward="false" selection-start-line="244" selection-start-column="42" selection-end-line="244" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/tripswebapp/model/Route.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/route/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="127" lean-forward="true" selection-start-line="7" selection-start-column="106" selection-end-line="7" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/user/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/route/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="63" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="88" column="9" lean-forward="true" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/mainLayout.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1344">
+          <caret line="15" column="115" lean-forward="false" selection-start-line="15" selection-start-column="94" selection-end-line="15" selection-end-column="115" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/city/edit.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="77" column="20" lean-forward="false" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/edit.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="32" column="42" lean-forward="false" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#27#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/city/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="86" column="26" lean-forward="false" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+          <folding>
+            <marker date="1494197191000" expanded="false" signature="2775:2852" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/audioGuide/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/city/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="50" column="63" lean-forward="false" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="47" column="102" lean-forward="false" selection-start-line="47" selection-start-column="102" selection-end-line="47" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/ReviewController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding>
+            <element signature="e#27#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/CityController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="101" column="16" lean-forward="false" selection-start-line="101" selection-start-column="16" selection-end-line="102" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/RouteController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+          <folding>
+            <element signature="e#27#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AdvertismentController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#27#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/advertisment/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="62" column="70" lean-forward="false" selection-start-line="62" selection-start-column="70" selection-end-line="62" selection-end-column="70" />
           <folding />
         </state>
       </provider>

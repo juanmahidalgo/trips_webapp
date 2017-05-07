@@ -26,6 +26,9 @@ class RouteController {
         else if(params.filterBy == 'id' && params.filter){
             routes = Route.get(params.filter)
         }
+        else if(params.filterBy == 'city' && params.filter){
+            routes = Route.findAllByCity(City.findByName(params.filter));
+        }
         else{
             routes= Route.list(params)
         }

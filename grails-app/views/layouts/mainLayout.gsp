@@ -79,6 +79,9 @@
 			tr.even {
 				background-color:  rgb(235,238,247);
 			}
+			#searchBarContainer {
+				margin-bottom: 15px;
+			}
 		</style>
 
 		<g:layoutHead />

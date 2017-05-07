@@ -9,16 +9,16 @@
 <html>
 <head>
     <meta name="layout" content="mainLayout">
-    <title> Lista de Recorridos </title>
+    <title> Lista de Publicidades </title>
 
 </head>
 <body>
 <ol class="breadcrumb">
     <li><a href="${createLink(uri: '/')}">Home</a></li>
-    <li class="active">Lista de Recorridos </li>
+    <li class="active">Lista de Publicidades </li>
 </ol>
 <div id="list-reviews" class="content scaffold-list" role="main">
-    <h1> Lista de Recorridos </h1>
+    <h1> Lista de Publicidades </h1>
     <g:if test="${flash.message}">
         <div class="alert alert-info message" role="status">${flash.message}</div>
     </g:if>
@@ -44,46 +44,42 @@
         </div>
     </form>
 
-    <g:link class="btn btn-success btn-add" action="create"> Crear Recorrido </g:link></li>
+    <g:link class="btn btn-success btn-add" action="create"> Crear Publicidad </g:link></li>
 
     <table class="table table-hover">
         <thead>
         <tr>
-            <g:sortableColumn property="id" title="ID" params="[filterBy: params.filterBy, filter: params.filter]" />
-            <g:sortableColumn property="name" title="Nombre" params="[filterBy: params.filterBy, filter: params.filter]"  />
+            <g:sortableColumn property="id" title="id" params="[filterBy: params.filterBy, filter: params.filter]" />
+            <g:sortableColumn property="title" title="Nombre" params="[filterBy: params.filterBy, filter: params.filter]"  />
+            <g:sortableColumn property="subtitle" title="Subtitle" params="[filterBy: params.filterBy, filter: params.filter]"  />
             <g:sortableColumn property="description" title="Descripción" params="[filterBy: params.filterBy, filter: params.filter]"  />
             <g:sortableColumn property="city" title="Ciudad" params="[filterBy: params.filterBy, filter: params.filter]"  />
-            <th> Paradas </th>
-%{--
-            <th> Idiomas </th>
---}%
         </tr>
         </thead>
         <tbody>
-        <g:each in="${routes}" status="i" var="routeInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                <td> ${routeInstance.id} </td>
-                <td><g:link action="edit" id="${routeInstance.id}"> ${routeInstance.name}</g:link></td>
-                <td> ${routeInstance.description} </td>
-                <td><g:link controller="city" action="edit" id="${routeInstance.city?.id}">${routeInstance.city?.name}</g:link></td>
-                <td> ${routeInstance.stops?.size()} </td>
-
-            </tr>
-        </g:each>
+            <g:each in="${ads}" status="i" var="adInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <td> ${adInstance.id} </td>
+                    <td><g:link action="edit" id="${adInstance.id}"> ${adInstance.title}</g:link></td>
+                    <td> ${adInstance.subtitle} </td>
+                    <td> ${adInstance.description} </td>
+                    <td><g:link controller="city" action="edit" id="${adInstance.city?.id}">${adInstance.city?.name}</g:link></td>
+                </tr>
+            </g:each>
         </tbody>
     </table>
     <div class="pagination">
-        <boots:paginate action="list" max="${numberOfRecords}" offset="${offset}" total="${routeInstanceCount ?: 0}" />
+        <boots:paginate action="list" max="${numberOfRecords}" offset="${offset}" total="${adInstance ?: 0}" />
     </div>
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Borrar el recorrido
+                    Borrar la publicidad
                 </div>
                 <div class="modal-body">
-                    ¿ Está seguro que desea borrar el recorrido?
+                    ¿ Está seguro que desea borrar la publicidad?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

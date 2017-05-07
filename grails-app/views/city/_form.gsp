@@ -71,7 +71,7 @@
 	<g:else>
 		<label for="imageFile"> Subir Imagen: (max 10 mb) </label>
 	</g:else>
-	<input  type="file" name="imageFile">
+	<input type="file" name="imageFile">
 </div>
 
 <script type="application/javascript">

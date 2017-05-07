@@ -1,7 +1,5 @@
 <%@ page import="tripswebapp.model.User" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'favourites', 'error')} ">
 	<label for="favourites">
 		<g:message code="user.favourites.label" default="Favourites" />

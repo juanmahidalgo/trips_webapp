@@ -28,6 +28,7 @@ class UrlMappings {
         }
         "/cities"(resources:'city'){
             "/attractions"(resources:"attraction")
+            "/routes"(resources:"route")
         }
         "/attractions"(resources:'attraction'){
             "/reviews"(resources:"review")
