@@ -42,7 +42,7 @@
 
 <div class="fieldcontain inputField ${hasErrors(bean: advertismentInstance, field: 'latitude', 'error')} required">
 	<label for="latitude">
-		<g:message code="advertisment.latitude.label" default="Latitude" />
+		<g:message code="advertisment.latitude.label" default="Latitud" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="latitude" value="${fieldValue(bean: advertismentInstance, field: 'latitude')}" required=""/>
@@ -50,7 +50,7 @@
 
 <div class="fieldcontain inputField ${hasErrors(bean: advertismentInstance, field: 'longitude', 'error')} required">
 	<label for="longitude">
-		<g:message code="advertisment.longitude.label" default="Longitude" />
+		<g:message code="advertisment.longitude.label" default="Longitud" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="longitude" value="${fieldValue(bean: advertismentInstance, field: 'longitude')}" required=""/>

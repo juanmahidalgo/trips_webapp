@@ -46,6 +46,10 @@ class AdvertismentController {
         respond new Advertisment(params)
     }
 
+    def sendAdd(Long id ){
+        def add = Advertisment.get(id)
+    }
+
     @Transactional
     def save(Advertisment advertismentInstance) {
         if (advertismentInstance == null) {

@@ -25,8 +25,8 @@
 	<body>
 		<ol class="breadcrumb">
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			<li><g:link class="list" action="index"> Lista de Recorridos</g:link></li>
-			<li class="active">Crear Recorrido</li>
+			<li><g:link class="list" action="list"> Lista de Publicidades</g:link></li>
+			<li class="active">Crear Publicidad</li>
 		</ol>
 		<div id="create-advertisment" class="content scaffold-create col-md-5" role="main">
 			<h1> Crear Publicidad </h1>
@@ -50,7 +50,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-success" value="Crear" />
 				</fieldset>
 			</g:form>
 		</div>

@@ -50,8 +50,8 @@
         <thead>
         <tr>
             <g:sortableColumn property="id" title="id" params="[filterBy: params.filterBy, filter: params.filter]" />
-            <g:sortableColumn property="title" title="Nombre" params="[filterBy: params.filterBy, filter: params.filter]"  />
-            <g:sortableColumn property="subtitle" title="Subtitle" params="[filterBy: params.filterBy, filter: params.filter]"  />
+            <g:sortableColumn property="title" title="Titulo" params="[filterBy: params.filterBy, filter: params.filter]"  />
+            <g:sortableColumn property="subtitle" title="Subtitulo" params="[filterBy: params.filterBy, filter: params.filter]"  />
             <g:sortableColumn property="description" title="Descripción" params="[filterBy: params.filterBy, filter: params.filter]"  />
             <g:sortableColumn property="city" title="Ciudad" params="[filterBy: params.filterBy, filter: params.filter]"  />
         </tr>
@@ -64,6 +64,7 @@
                     <td> ${adInstance.subtitle} </td>
                     <td> ${adInstance.description} </td>
                     <td><g:link controller="city" action="edit" id="${adInstance.city?.id}">${adInstance.city?.name}</g:link></td>
+                    <td class="borrarColumn"><a class="btn btn-success" href="sendAdd?id=${adInstance.id}"> Enviar </a></td>
                 </tr>
             </g:each>
         </tbody>
