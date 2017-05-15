@@ -7,8 +7,8 @@ class Advertisment {
     String title
     String subtitle
     String description
-    Float latitude
-    Float longitude
+    BigDecimal latitude
+    BigDecimal longitude
     String link
     Image image
 

@@ -1,12 +1,27 @@
 package tripswebapp.model
 
+import grails.converters.JSON
+import grails.plugins.rest.client.RestBuilder
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import groovyx.net.http.RESTClient
+import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 import tripswebapp.FileUploadService
 import tripswebapp.media.Image
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.ContentType.*
+
+import static groovyx.net.http.Method.GET
+import static groovyx.net.http.Method.POST
+import static groovyx.net.http.ContentType.TEXT
+
+
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+
 
 @Transactional(readOnly = true)
 class AdvertismentController {
@@ -48,6 +63,74 @@ class AdvertismentController {
 
     def sendAdd(Long id ){
         def add = Advertisment.get(id)
+
+        def adv = [
+                notification : [
+                        body: 'hola',
+                        title: 'hola',
+                        icon: 'logo',
+                        click_action: 'OPEN_ADVERTISING'
+                ],
+                data: [
+                        add_id: '1'
+                ],
+                registration_id: 'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j'
+        ] as JSON //encode as JSON
+
+        def jsonn = new JsonBuilder()
+
+        def json2 = JsonOutput.toJson(notification: [body: 'hola', title: 'hola', icon: 'logo'], to: 'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j')
+
+
+        def string = "{'to':'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7' ,'notification':{'body':'chau','tittle':'hola','icon':'logo'}}"
+        //JsonBuilder json = new groovy.json.JsonBuilder(adv)
+        jsonn {
+            to 'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j'
+        }
+
+        def strfinal = '{\"notification\":{\"body\":\"hola\",\"tittle\":\"hola\",\"icon\":\"logo\"},\"to\":\"ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j\"}'
+
+        def string2 = '{"notification":{"body":"hola","tittle":"hola","icon":"logo"},"to":"ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j"}'
+
+
+        /*RESTClient restClient = new RESTClient("https://gcm-http.googleapis.com/gcm/send")
+        def response = restClient.post(
+                body: string,
+                contentType: 'application/json'
+        )*/
+
+        /*def http = new HTTPBuilder( "https://gcm-http.googleapis.com/gcm/send" )
+        http.setHeaders([Authorization: "key=AIzaSyCZgtai2IQgEKQopHC2afKkShY_sbT3J1E"])
+
+        http.request( POST ) { req ->
+            body = [
+                    notification : [
+                            body: 'hola',
+                            title: 'hola',
+                            icon: 'logo',
+                            click_action: 'OPEN_ADVERTISING'
+                    ],
+                    data: [
+                            add_id: '1'
+                    ],
+                    registration_id: 'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j'
+            ]
+            requestContentType = URLENC
+            response.success = { resp ->
+                println "POST response status: ${resp.statusLine}"
+                assert resp.statusLine.statusCode == 201
+            }
+        }
+*/
+
+        RestBuilder rest = new RestBuilder()
+        def resp = rest.post("https://gcm-http.googleapis.com/gcm/send") {
+            header 'Authorization', 'key=AIzaSyCZgtai2IQgEKQopHC2afKkShY_sbT3J1E'
+            contentType 'application/json'
+            body string2
+        }
+        return resp
+
     }
 
     @Transactional
@@ -56,6 +139,8 @@ class AdvertismentController {
             notFound()
             return
         }
+
+
 
         if (advertismentInstance.hasErrors()) {
             respond advertismentInstance.errors, view:'create'
@@ -67,6 +152,9 @@ class AdvertismentController {
             redirect(action: "create")
             return
         }
+
+        advertismentInstance.latitude = params.latitude.toBigDecimal()
+        advertismentInstance.longitude = params.longitude.toBigDecimal()
 
         if(params.imageFile?.size>0){
             if(request instanceof MultipartHttpServletRequest)

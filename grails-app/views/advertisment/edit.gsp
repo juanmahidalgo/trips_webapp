@@ -59,6 +59,7 @@
 		<div class="mapContainer col-md-6">
 			<div id="map"></div>
 		</div>
+        <a href="#" id="sendAdv" class="btn btn-success"> Send Adv </a>
 	<script>
         function completeForm(places){
             var locationInfo = places.address_components;
@@ -69,7 +70,6 @@
             });
             $('#latitude').val(places.geometry.location.lat());
             $('#longitude').val(places.geometry.location.lng());
-
         }
         var initialPosition = {lat: ${advertismentInstance.latitude}, lng: ${advertismentInstance.longitude}};
         function initAutocomplete() {
@@ -188,6 +188,24 @@
                 markers.push(marker);
             }
         }
+        var string2 = '{"notification":{"body":"${advertismentInstance.description}","tittle":"${advertismentInstance.title}","icon":"logo","click_action": "OPEN_ADVERTISING"},"data":{"add_id":"${advertismentInstance.id}"},"to":"ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j"}'
+        $('#sendAdv').on('click',function(e){
+            $.ajax({
+                url: "https://gcm-http.googleapis.com/gcm/send",
+                data: string2,
+                contentType: "application/json",
+                headers: {
+                    "Authorization": "key=AIzaSyCZgtai2IQgEKQopHC2afKkShY_sbT3J1E"
+                },
+                success: function(json) {
+                    console.log(json);
+                },
+                error: function(json) {
+                    console.log(json);
+                },
+                type: 'POST'
+            });
+        });
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2HKAXBafJpycygBDLiS_tDyP86h6MTUk&libraries=places&callback=initAutocomplete" async defer></script>
 	</body>

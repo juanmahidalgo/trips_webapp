@@ -52,6 +52,8 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         runtime 'mysql:mysql-connector-java:5.1.29'
+        compile "org.codehaus.groovy.modules.http-builder:http-builder:0.7"
+
     }
 
     plugins {
@@ -69,6 +71,8 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
         runtime ":twitter-bootstrap:3.3.5"
+        compile "org.grails.plugins:rest-client-builder:2.1.1"
+
 
 
         // Uncomment these to enable additional asset-pipeline capabilities

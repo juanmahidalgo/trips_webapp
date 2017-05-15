@@ -72,6 +72,7 @@
     <div class="pagination">
         <boots:paginate action="list" max="${numberOfRecords}" offset="${offset}" total="${adInstance ?: 0}" />
     </div>
+    <a href="#" class="btn btn-update" id="sendAdv"> ENVIAR ADV</a>
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -93,6 +94,41 @@
     </div>
 </div>
 <script>
+    var string = "{'to':'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7' ,'notification':{'body':'chau','tittle':'hola','icon':'logo'}}";
+
+    var obj = {
+        notification : {
+            body: 'hola',
+            tittle: 'hola',
+            icon: 'logo',
+            click_action: 'OPEN_ADVERTISING'
+        },
+        data: {
+            add_id: '1',
+        },
+        to: 'ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j',
+    };
+    localStorage.setItem('gameStorage', JSON.stringify(obj));
+    var obj = JSON.parse(localStorage.getItem('gameStorage'));
+
+    var string2 = '{"notification":{"body":"hola","tittle":"hola","icon":"logo"},"to":"ey_-qzhpyKM:APA91bG2GS5LKK8n4SoSLlVgMZEuBGpe8lPBIOeGdE2f1SWS7iQK3E8ht07GuKtYR9l8GMEzE0n6UY5S6Vc2ao9KzvkQhgpqCv0N71q5jUu13Z1XvXpRdbbzkTENh3w9_CNuNUflbH7j"}'
+    $('#sendAdv').on('click',function(e){
+        $.ajax({
+            url: "https://gcm-http.googleapis.com/gcm/send",
+            data: string2,
+            contentType: "application/json",
+            headers: {
+                "Authorization": "key=AIzaSyCZgtai2IQgEKQopHC2afKkShY_sbT3J1E"
+            },
+            success: function(json) {
+                console.log(json);
+            },
+            error: function(json) {
+                console.log(json);
+            },
+            type: 'POST'
+        });
+    });
     $('#confirm-delete').on('show.bs.modal', function(e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
