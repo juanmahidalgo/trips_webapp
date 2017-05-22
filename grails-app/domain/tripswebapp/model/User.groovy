@@ -12,6 +12,7 @@ class User {
     String password
     Boolean blocked
     String fbId
+    String token
 
     Set<Stop> favourites
     Set<Stop> visited
