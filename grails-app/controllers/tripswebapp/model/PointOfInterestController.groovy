@@ -89,6 +89,13 @@ class PointOfInterestController {
     }
 
     @Transactional
+    def deletePoint(){
+        def point = PointOfInterest.get(params.id)
+        point.delete flush:true
+        return
+    }
+
+    @Transactional
     def save(PointOfInterest pointOfInterestInstance) {
         if (pointOfInterestInstance == null) {
             notFound()

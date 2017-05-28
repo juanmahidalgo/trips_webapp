@@ -27,6 +27,7 @@ class Attraction extends Stop{
 
     static constraints = {
         schedule nullable: true
+        hasPoints nullable: true
         cost nullable: true
         averageTime nullable: true
         images nullable: true

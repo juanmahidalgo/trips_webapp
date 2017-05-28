@@ -61,7 +61,7 @@
 		<label> Puntos de interés </label>
 		<div class="routes col-md-10">
 			<g:each in="${attractionInstance.pointsOfInterest}" status="i" var="point">
-				<div class="attractionsContainer">
+				<div class="attractionsContainer" id="point-${point.id}">
 					<g:if test="${point.image}">
                         <img src="${resource(dir: 'images/pointsofinterest', file: point.image.path)}" alt="image"/>
                     </g:if>
@@ -149,24 +149,18 @@
 			$(this).find('.btn-ok-point').attr('href', $(e.relatedTarget).data('href'));
 		});
 		$('.btn-delete-point').click(function(){
-		    var point = $(this).id;
+		    var point = this.id;
             $.ajax({
                 type: 'POST',
                 url: '/TripsWebApp/pointOfInterest/deletePoint',
-                data: point,
-                processData: false,
-                contentType: false,
-                success: function(json) {
-                    var html = '<div class="attractionsContainer"> '
-                        + '<img src="/TripsWebApp/images/pointsofinterest/' + json.image.path + '" alt="image"/>'
-                        + '<a href="/TripsWebApp/pointsofinterest/"'+ json.id + '>' + json.name + '</a>'
-                        + '<a class="btn btn-danger" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=' + json.id +'" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a> '+
-                        ' </div>';
-                    $('.routes').append(html);
-                    $('#confirm-delete').modal('hide');
+                data: {id: point},
+                success: function() {
+                    $('#point-'+point).remove();
+                    $('#confirm-delete-point').modal('hide');
                 },
             });
-		});
+            return false;
+        });
 		$(function() {
 			$('#pointForm').submit(function() {
 				var formData = new FormData($(this)[0]);
