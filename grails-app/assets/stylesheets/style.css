@@ -87,6 +87,11 @@ fieldset.form label, #searchBarContainer label {
     width: 100%;
     height: 350px;
     margin-top: 75px;
+    margin-bottom: 15px;
+}
+
+.routes {
+    padding-left: 0px;
 }
 
 .mapContainer{

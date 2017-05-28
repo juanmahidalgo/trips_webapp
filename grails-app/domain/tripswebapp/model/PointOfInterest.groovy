@@ -2,36 +2,20 @@ package tripswebapp.model
 
 import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
-import tripswebapp.media.Video
-import tripswebapp.utils.Classification
 
-class PointOfInterest extends Stop{
+class PointOfInterest{
 
-    BigDecimal latitude
-    BigDecimal longitude
-    String schedule
-    String address
-    String telephone
-    Float cost
-    Integer averageTime
-    Classification classification
-    Set<Image> images
-    Set<Video> videos
-    Set<Image> maps
-    Set<PointOfInterest> pointsOfInterest
+    AudioGuide audioGuide
+    Image image
+    String description
+    String name
 
-    static hasMany = [images : Image, videos: Video, maps: Image, pointsOfInterest : PointOfInterest]
-
+    static belongsTo = [attraction: Attraction]
     static constraints = {
-        schedule nullable: true
-        cost nullable: true
-        averageTime nullable: true
-        images nullable: true
-        videos nullable: true
-        maps nullable: true
-        pointsOfInterest nullable:true
-        telephone nullable: true
-        latitude( scale : 16 )
-        longitude( scale : 16 )
+        name nullable: true
+        description nullable: true
+    }
+    static mapping = {
+        image lazy: false
     }
 }

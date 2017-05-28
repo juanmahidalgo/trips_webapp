@@ -21,11 +21,13 @@ class Attraction extends Stop{
     Set<Video> videos
     Set<Image> maps
     Set<PointOfInterest> pointsOfInterest
+    Boolean hasPoints
 
     static hasMany = [images : Image, videos: Video, maps: Image, pointsOfInterest : PointOfInterest]
 
     static constraints = {
         schedule nullable: true
+        hasPoints nullable: true
         cost nullable: true
         averageTime nullable: true
         images nullable: true

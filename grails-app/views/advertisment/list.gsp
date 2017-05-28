@@ -72,7 +72,6 @@
     <div class="pagination">
         <boots:paginate action="list" max="${numberOfRecords}" offset="${offset}" total="${adInstance ?: 0}" />
     </div>
-    <a href="#" class="btn btn-update" id="sendAdv"> ENVIAR ADV</a>
 
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

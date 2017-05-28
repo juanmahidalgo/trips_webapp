@@ -34,6 +34,7 @@ class UrlMappings {
             "/reviews"(resources:"review")
         }
         "/reviews"(resources:'review')
+        "/pointsofinteres"(resources:'pointofinterest')
         "/ads"(resources:'advertisment')
         "/routes"(resources:'route')
         "/reviews"
