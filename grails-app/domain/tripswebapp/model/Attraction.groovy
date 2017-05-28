@@ -21,6 +21,7 @@ class Attraction extends Stop{
     Set<Video> videos
     Set<Image> maps
     Set<PointOfInterest> pointsOfInterest
+    Boolean hasPoints
 
     static hasMany = [images : Image, videos: Video, maps: Image, pointsOfInterest : PointOfInterest]
 

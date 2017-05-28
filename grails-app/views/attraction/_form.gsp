@@ -91,6 +91,15 @@
 
 </div>
 
+<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'hasPoints', 'error')} required">
+	<label for="hasPoints">
+		<g:message code="attraction.hasPoints.label" default="Recorrible" />
+	<span class="required-indicator">*</span>
+	</label>
+	<g:checkBox name="hasPoints" value="${attractionInstance.hasPoints}"/>
+
+</div>
+
 <g:if test="${context != 'create'}">
 	<div class="">
 		<label for="traductions">
