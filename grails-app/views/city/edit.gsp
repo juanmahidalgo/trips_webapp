@@ -79,7 +79,7 @@
 				<label> Todavía no tiene imágen, agregale desde el administrador de imágenes</label>
 			</g:else>
 
-			<g:form url="[resource:cityInstance, action:'update']" method="PUT" class="form-group" >
+			<g:form url="[resource:cityInstance, action:'update']" method="POST" class="form-group" >
 				<g:hiddenField name="version" value="${cityInstance?.version}" />
 				%{--<fieldset class="form">
 					<g:render template="form" model="[context: 'edit']"/>

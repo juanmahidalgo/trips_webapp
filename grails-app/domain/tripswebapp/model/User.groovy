@@ -14,10 +14,10 @@ class User {
     String fbId
     String token
 
-    Set<Stop> favourites
+    Set<Fav> favourites
     Set<Stop> visited
 
-    static hasMany = [favourites : Stop, visited: Stop]
+    static hasMany = [favourites : Fav, visited: Stop]
 
     static mapping = {
         blocked defaultValue: false

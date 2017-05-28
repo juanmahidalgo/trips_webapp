@@ -59,11 +59,16 @@ class UserController {
             render (status: 404, text: 'User o Atraction not found')
             return
         }
-        if(stop in user.getFavourites()){
-            user.removeFromFavourites(stop)
+        def fav = Fav.findByUserAndStop(user, stop)
+        if(fav){
+            user.removeFromFavourites(Fav.findByStop(stop))
         }
-        else if(stop){
-            user.addToFavourites(stop)
+        else {
+            def newFav = new Fav()
+            newFav.stop = stop
+            newFav.user = user
+            newFav.date = new Date()
+            user.addToFavourites(newFav)
         }
         user.save flush:true
         respond user, [formats:['json']]

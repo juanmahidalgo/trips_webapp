@@ -26,6 +26,10 @@ class UrlMappings {
             controller = "user"
             action = "addFavourite"
         }
+        "/stats/favs"(parseRequest:false){
+            controller = "attraction"
+            action = "getMostFavs"
+        }
         "/cities"(resources:'city'){
             "/attractions"(resources:"attraction")
             "/routes"(resources:"route")

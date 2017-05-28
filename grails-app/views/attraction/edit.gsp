@@ -77,7 +77,7 @@
 			</g:if>
 		</div>
 		<div class="botones footer">
-			<a class="btn btn-success" data-href="/TripsWebApp/pointOfInterest/save?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Agregar Recorrido </a>
+			<a class="btn btn-success" data-href="/TripsWebApp/pointOfInterest/save?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Agregar Punto de Interés </a>
 		</div>
 	</div>
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

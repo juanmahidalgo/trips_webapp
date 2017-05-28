@@ -1,10 +1,13 @@
 package tripswebapp.model
 
+import grails.converters.JSON
+import groovy.json.JsonBuilder
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 import tripswebapp.FileUploadService
 import tripswebapp.media.AudioGuide
 import tripswebapp.media.Image
+import tripswebapp.media.Video
 import tripswebapp.utils.Classification
 
 import static org.springframework.http.HttpStatus.*
@@ -25,6 +28,21 @@ class AttractionController {
             attractions = Attraction.list(params)
         }
         respond attractions, model:[attractionInstanceCount: Attraction.count()]
+    }
+
+    def getMostFavs(){
+        def counterDic = [:]
+        Fav.findAll().each() { def fav ->
+            if(!counterDic[fav.stop.name as String]){
+                counterDic[fav.stop.name as String] = 1
+            } else {
+                counterDic[fav.stop.name as String] = counterDic[fav.stop.name as String].toLong() + 1
+            }
+        }
+        def builder = new JsonBuilder()
+        builder(counterDic)
+
+        respond builder, [formats:['json']]
     }
 
     def list(Integer max) {
@@ -107,7 +125,7 @@ class AttractionController {
         if(params.typeOfFile == 'image'){
             path = 'images/attractions'
         }
-        if (params.documentFile.fileItem.fileName) {
+        if (params.documentFile.fileItem?.fileName) {
             if (request instanceof MultipartHttpServletRequest) {
                 params.documentFile.each {
                     if (it.fileItem.fileName) {
@@ -160,13 +178,12 @@ class AttractionController {
         attractionInstance.latitude = params.latitude.toBigDecimal()
         attractionInstance.longitude = params.longitude.toBigDecimal()
 
-        if(params.imageFile?.size> 10000000){
-            flash.error = "La imagen supera los 10mb permitidos"
-            redirect(action: "create")
-            return
-        }
-
         if(params.imageFile?.size>0){
+            if(params.imageFile?.size> 10000000){
+                flash.error = "La imagen supera los 10mb permitidos"
+                redirect(action: "create")
+                return
+            }
             if(request instanceof MultipartHttpServletRequest)
             {
                 MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
@@ -176,6 +193,42 @@ class AttractionController {
                 image.path =  params.imageFile.fileItem.fileName.toString()
                 image.save flush: true
                 attractionInstance.addToImages(image)
+            }
+        }
+
+        if(params.mapFile?.size>0){
+            if(params.mapFile?.size> 10000000){
+                flash.error = "La imagen del mapa supera los 10mb permitidos"
+                redirect(action: "create")
+                return
+            }
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("mapFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.mapFile.fileItem.fileName, "images/maps/" )
+                def image = new Image()
+                image.path =  params.imageFile.fileItem.fileName.toString()
+                image.save flush: true
+                attractionInstance.addToMaps(image)
+            }
+        }
+
+        if(params.videoFile?.size>0){
+            if(params.videFile?.size> 20000000){
+                flash.error = "El video supera los 20mb permitidos"
+                redirect(action: "create")
+                return
+            }
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("videoFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.videoFile.fileItem.fileName, "videos/" )
+                def video = new Video()
+                video.path =  params.videoFile.fileItem.fileName.toString()
+                video.save flush: true
+                attractionInstance.addToVideos(video)
             }
         }
 
