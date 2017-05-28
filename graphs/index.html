@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+  <title>Bar Graph</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="graphDiv1"></div>
+  <br />
+  
+  <!--[if IE]><script src="excanvas.js"></script><![endif]-->
+  <script src="barGraph.js"></script>
+  <script>(function () {
+  
+    function createCanvas(divName) {
+      
+      var div = document.getElementById(divName);
+      var canvas = document.createElement('canvas');
+      div.appendChild(canvas);
+      if (typeof G_vmlCanvasManager != 'undefined') {
+        canvas = G_vmlCanvasManager.initElement(canvas);
+      } 
+      var ctx = canvas.getContext("2d");
+      return ctx;
+    }
+    
+    var ctx = createCanvas("graphDiv1");
+    
+    var graph = new BarGraph(ctx);
+    graph.margin = 2;
+    graph.colors = ["#ADD8E6"];
+
+    $.ajax({url: "file:///Users/joako/javascript-graphs/data.json", success: function(result){
+      var data = JSON.parse(result);
+      console.log( data);
+      
+      var attractionNames = [];
+      var attractionPopularities = [];
+
+      $.each(data, function(i,n) {
+        attractionNames.push(n.name);
+        attractionPopularities.push(n.popularity);
+      });
+
+      graph.maxValue = Math.max(attractionPopularities);
+      graph.xAxisLabelArr = attractionNames;
+      graph.update(attractionPopularities);
+
+
+      // graph.xAxisLabelArr = ["North", "East", "West", "South"];
+      // graph.update([ 30, 30, 30, 25]);
+
+
+    }});
+
+    
+
+  }());</script>
+</body>
+</html>
