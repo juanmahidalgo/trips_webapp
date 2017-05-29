@@ -26,9 +26,12 @@
         <g:if test="${params.type == 'image'}" >
             <h1> Editando imagenes de ${attractionInstance?.name}</h1>
         </g:if>
-        <g:else>
+        <g:elseif test="${params.type == 'map'}">
             <h1> Editando Mapas from ${attractionInstance?.name} </h1>
-        </g:else>
+        </g:elseif>
+        <g:elseif test="${params.type == 'video'}">
+            <h1> Editando Video from ${attractionInstance?.name} </h1>
+        </g:elseif>
         <g:form url="[resource:attractionInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
@@ -54,7 +57,7 @@
                         <b> No hay imágenes todavía.. </b>
                     </g:else>
                 </g:if>
-                <g:else>
+                <g:elseif test="${params.type == 'image'}">
                     <h2> Loaded Maps: </h2>
                     <g:if test="${attractionInstance?.maps}">
                         <g:each var="map" in="${attractionInstance?.maps}" status="i">
@@ -79,7 +82,22 @@
                     <g:else>
                         <b> No maps loaded yet.. </b>
                     </g:else>
-                </g:else>
+                </g:elseif>
+                <g:elseif test="${params.type == 'video'}">
+                    <h2> Video cargado: </h2>
+                    <g:if test="${attractionInstance?.videos}">
+                        <g:each var="video" in="${attractionInstance?.videos}" status="i">
+                            <label> Video ${i+1} </label>
+                            <g:if test="video">
+                                <span> ${video.path}</span>
+                                <g:link params="[id: attractionInstance?.id, imgId: video.id]" action="deleteImage" class="btn btn-danger"> Borrar Video </g:link>
+                            </g:if>
+                        </g:each>
+                    </g:if>
+                    <g:else>
+                        <b> No hay video cargado todavía.. </b>
+                    </g:else>
+                </g:elseif>
             </div>
         </g:form>
     </div>

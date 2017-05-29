@@ -114,15 +114,27 @@
 		<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
 	</div>
 </g:if>
-<div class="fieldcontain">
+<g:if test="${context == 'create'}">
+	<div class="fieldcontain">
+		<label> Cargar Mapa (max 10mb)</label>
+		<input  type="file" name="mapFile">
+	</div>
+</g:if>
+<g:else>
 	<label> Cargar Mapa (max 10mb)</label>
-	<input  type="file" name="mapFile">
-</div>
 
-<div class="fieldcontain">
-	<label> Cargar Video (max 20mb)</label>
+	<g:link params="[id: attractionInstance?.id, type: 'map']" action="manageImages" class="btn btn-primary manageImages"> Administrar Mapas </g:link>
+</g:else>
+<g:if test="${context == 'create'}">
+	<div class="fieldcontain">
+		<label> Cargar Video (max 20mb)</label>
 	<input  type="file" name="videoFile">
 </div>
+</g:if>
+<g:else>
+	<label> Cargar Video (max 20mb)</label>
+	<g:link params="[id: attractionInstance?.id, type: 'video']" action="manageImages" class="btn btn-primary manageImages"> Administrar Videos </g:link>
+</g:else>
 
 
 
@@ -150,7 +162,6 @@
 	</g:if>
 	<g:else>
 		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary manageImages"> Administrar Imágenes </g:link>
-
 	</g:else>
 	<g:if test="${attractionInstance?.maps}">
 		<g:each var="map" in="${attractionInstance?.maps}" status="i">

@@ -46,13 +46,13 @@
 				<input id="autocomplete" placeholder=" Ingrese una atracción o ciudad.. "
 					   onFocus="geolocate()" type="text"></input>
 			</div>
-			<g:form url="[resource:attractionInstance, action:'update']" method="PUT">
+			<g:form action="save" enctype='multipart/form-data' >
 				<g:hiddenField name="version" value="${attractionInstance?.version}" />
 				<fieldset class="form" >
 					<g:render template="form" model="[context: 'edit']"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-success" action="update" value="Actualizar" />
+					<g:actionSubmit class="save btn btn-success" action="save" value="Actualizar" />
 				</fieldset>
 			</g:form>
 		</div>
@@ -175,7 +175,7 @@
 					success: function(json) {
 						var html = '<div class="attractionsContainer" id="point-'+ json.id+'"> '
 								+ '<img src="/TripsWebApp/images/pointsofinterest/' + json.image.path + '" alt="image"/>'
-							+ '<a href="/TripsWebApp/pointsOfInterest/'+ json.id + '">' + json.name + '</a>'
+							+ '<a href="/TripsWebApp/pointOfInterest/edit/'+ json.id + '">' + json.name + '</a>'
 							+ '<a id="' + json.id + '" class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=' + json.id +'" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a> '+
 								' </div>';
 						$('.routes').append(html);

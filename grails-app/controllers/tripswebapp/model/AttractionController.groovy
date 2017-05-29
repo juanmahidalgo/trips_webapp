@@ -202,6 +202,37 @@ class AttractionController {
     }
 
     @Transactional
+    def uploadVideo(Attraction attractionInstance){
+        def path = 'videos/'
+        if(params.typeOfFile == 'image'){
+            path = 'images/attractions'
+        }
+        if (params.documentFile.fileItem?.fileName) {
+            if (request instanceof MultipartHttpServletRequest) {
+                params.documentFile.each {
+                    if (it.fileItem.fileName) {
+                        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request
+                        CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.fileItem.fieldName)
+                        String fileUploaded = fileUploadService.uploadFile(downloadedFile, it.fileItem.fileName, path)
+                        def image = new Image()
+                        image.path = it.fileItem.fileName.toString()
+                        image.save flush: true
+                        if(params.typeOfFile == 'map'){
+                            attractionInstance.addToMaps(image)
+                        }
+                        else{
+                            attractionInstance.addToImages(image)
+                        }
+                        attractionInstance.save flush: true                    }
+                }
+            }
+        }
+        redirect(action: "edit", id: attractionInstance.id)
+    }
+
+
+
+    @Transactional
     def save(Attraction attractionInstance) {
         if (attractionInstance == null) {
             notFound()
@@ -286,7 +317,7 @@ class AttractionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = attractionInstance.name + ' Creado '
+                flash.message = attractionInstance.name + ' Creado / Actualizado'
                 redirect(action: "list")
             }
             '*' { respond attractionInstance, [status: CREATED] }
