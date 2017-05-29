@@ -46,13 +46,13 @@
 				<input id="autocomplete" placeholder=" Ingrese una atracción o ciudad.. "
 					   onFocus="geolocate()" type="text"></input>
 			</div>
-			<g:form action="save" enctype='multipart/form-data' >
+			<g:form action="update" enctype='multipart/form-data' >
 				<g:hiddenField name="version" value="${attractionInstance?.version}" />
 				<fieldset class="form" >
 					<g:render template="form" model="[context: 'edit']"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-success" action="save" value="Actualizar" />
+					<g:actionSubmit class="save btn btn-success" action="update" value="Actualizar" />
 				</fieldset>
 			</g:form>
 		</div>

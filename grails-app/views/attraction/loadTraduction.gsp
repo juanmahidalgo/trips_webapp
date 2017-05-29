@@ -45,8 +45,8 @@
                         <g:message code="attraction.language.label" default="Idioma" />
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:if test="${traductionInstance}">
-                        <g:select id="language" name="language.id" value="${traductionInstance?.lang.id}" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
+                    <g:if test="${!traductionInstance}">
+                        <g:select id="language" name="language.id" value="${traductionInstance?.lang?.id}" from="${tripswebapp.model.Language.list()}" optionKey="id"  class="many-to-one chosen-select"/>
                     </g:if>
                     <g:else>
                         <g:textField name="language" value="${traductionInstance?.lang}" readonly="readonly"/>

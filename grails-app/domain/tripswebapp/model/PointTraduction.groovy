@@ -9,7 +9,7 @@ class PointTraduction {
     PointOfInterest point
     AudioGuide audioGuide
 
-    static belongsTo = [stop: Stop]
+    static belongsTo = [point: PointOfInterest]
 
     static constraints = {
         audioGuide nullable: true

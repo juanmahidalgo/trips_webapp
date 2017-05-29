@@ -15,7 +15,7 @@
 		<div id="edit-pointOfInterest" class="content scaffold-edit col-md-6" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${pointOfInterestInstance}">
 			<ul class="errors" role="alert">
@@ -30,7 +30,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="btn btn-success save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="btn btn-success save" action="update" value="Actualizar" />
 				</fieldset>
 			</g:form>
 		</div>

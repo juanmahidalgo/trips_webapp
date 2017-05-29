@@ -110,6 +110,7 @@ class AttractionController {
             def trad = StopTraduction.findByStopAndLang(attractionInstance, lang)
             if(!trad){
                 respond attractionInstance
+                return
             }
             attractionInstance.description = trad.description
             attractionInstance.audioGuides = []

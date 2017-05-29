@@ -114,17 +114,20 @@
 		<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
 	</div>
 </g:if>
+
 <g:if test="${context == 'create'}">
 	<div class="fieldcontain">
-		<label> Cargar Mapa (max 10mb)</label>
-		<input  type="file" name="mapFile">
+		<label> Cargar Mapa (max 10mb) </label>
 	</div>
+	<input type="file" name="mapFile">
 </g:if>
 <g:else>
-	<label> Cargar Mapa (max 10mb)</label>
-
+	<div class="fieldcontain">
+		<label> Mapas </label>
+	</div>
 	<g:link params="[id: attractionInstance?.id, type: 'map']" action="manageImages" class="btn btn-primary manageImages"> Administrar Mapas </g:link>
 </g:else>
+
 <g:if test="${context == 'create'}">
 	<div class="fieldcontain">
 		<label> Cargar Video (max 20mb)</label>
@@ -132,7 +135,7 @@
 </div>
 </g:if>
 <g:else>
-	<label> Cargar Video (max 20mb)</label>
+	<label> Videos </label>
 	<g:link params="[id: attractionInstance?.id, type: 'video']" action="manageImages" class="btn btn-primary manageImages"> Administrar Videos </g:link>
 </g:else>
 

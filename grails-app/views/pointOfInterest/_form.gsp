@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'name', 'error')} ">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'name', 'error')} ">
 	<label for="name">
 		<g:message code="pointOfInterest.name.label" default="Name" />
 		
@@ -11,36 +11,35 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'description', 'error')} ">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'description', 'error')} ">
 	<label for="description">
-		<g:message code="pointOfInterest.description.label" default="Description" />
-		
+		Descripción
 	</label>
 	<g:textField name="description" value="${pointOfInterestInstance?.description}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'attraction', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'attraction', 'error')} required">
 	<label for="attraction">
-		<g:message code="pointOfInterest.attraction.label" default="Attraction" />
+		Atracción
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="attraction" name="attraction.id" from="${tripswebapp.model.Attraction.list()}" optionKey="id" required="" value="${pointOfInterestInstance?.attraction?.id}" class="many-to-one"/>
+	<g:select id="attraction" name="attraction.id" from="${tripswebapp.model.Attraction.list()}" optionKey="id" required="" value="${pointOfInterestInstance?.attraction?.id}" class="many-to-one" readonly="readonly"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'audioGuide', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'audioGuide', 'error')} required">
 	<label for="audioGuide">
-		<g:message code="pointOfInterest.audioGuide.label" default="Audio Guide" />
+		AudioGuia
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="audioGuide" name="audioGuide.id" from="${tripswebapp.media.AudioGuide.list()}" optionKey="id" required="" value="${pointOfInterestInstance?.audioGuide?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'image', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'image', 'error')} required">
 	<label for="image">
-		<g:message code="pointOfInterest.image.label" default="Image" />
+		Imagen
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="image" name="image.id" from="${tripswebapp.media.Image.list()}" optionKey="id" required="" value="${pointOfInterestInstance?.image?.id}" class="many-to-one"/>
