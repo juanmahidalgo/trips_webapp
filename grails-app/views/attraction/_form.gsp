@@ -151,7 +151,7 @@
             <g:each var="video" in="${attractionInstance?.videos}" status="i">
                 <label> Video ${i+1} </label>
                 <g:if test="video">
-                    <video width="480" height="320" controls>
+                    <video width="550" height="320" controls>
                         <source src="${resource(dir: 'videos/', file: video.path)}" type="video/mp4">
                     </video>
                 </g:if>
@@ -169,7 +169,7 @@
 	<input  type="file" name="imageFile">
 </g:if>
 <g:else>
-	<div class="fieldcontain">
+	<div class="fieldcontain maps">
 		<div><label> Imágenes: </label></div>
 		<g:if test="${attractionInstance?.images}">
 			<g:each var="image" in="${attractionInstance?.images}" status="i">

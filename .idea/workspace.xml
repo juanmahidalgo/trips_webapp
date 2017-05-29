@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ef0f9ce-2baf-403d-9614-a61a26858f35" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" afterPath="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" afterPath="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" />
     </list>
@@ -29,8 +31,8 @@
       <file leaf-file-name="edit.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/edit.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-953">
-              <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="48" />
+            <state relative-caret-position="84">
+              <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -49,8 +51,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/assets/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="181" column="12" lean-forward="false" selection-start-line="181" selection-start-column="12" selection-end-line="181" selection-end-column="12" />
+            <state relative-caret-position="214">
+              <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -66,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_form.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="172" column="45" lean-forward="false" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
+            <state relative-caret-position="212">
+              <caret line="155" column="28" lean-forward="false" selection-start-line="153" selection-start-column="20" selection-end-line="155" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -79,18 +81,18 @@
       <file leaf-file-name="manageImages.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="69" column="53" lean-forward="false" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+            <state relative-caret-position="226">
+              <caret line="100" column="28" lean-forward="false" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AttractionController.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AttractionController.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+            <state relative-caret-position="36">
+              <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
                 <element signature="e#27#56#0" expanded="true" />
               </folding>
@@ -141,10 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>routes</find>
-      <find>form</find>
-      <find>ENVIAR ADV</find>
-      <find>a</find>
       <find>latitude</find>
       <find>#map</find>
       <find>ajax</find>
@@ -169,8 +167,12 @@
       <find>attraction</find>
       <find>saveTra</find>
       <find>Creado</find>
-      <find>typeOfFile</find>
+      <find>confirm-delete-point</find>
+      <find>addNewTitle</find>
       <find>edit</find>
+      <find>addNewI</find>
+      <find>data-toggle=&quot;modal&quot; data-target=&quot;#confirm-delete-point&quot;</find>
+      <find>typeOfFile</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -242,9 +244,9 @@
         <option value="$PROJECT_DIR$/grails-app/views/pointOfInterest/edit.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/pointOfInterest/loadTraduction.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" />
         <option value="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" />
       </list>
     </option>
   </component>
@@ -1167,12 +1169,12 @@
       <workItem from="1493154533814" duration="51000" />
       <workItem from="1494011909943" duration="107181000" />
       <workItem from="1496064717043" duration="7391000" />
-      <workItem from="1496076109248" duration="8257000" />
+      <workItem from="1496076109248" duration="10521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361300000" />
+    <option name="totallyTimeSpent" value="363564000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1185,7 +1187,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1198,7 +1199,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38356164" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38356164" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1212,6 +1213,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2746365" sideWeight="0.47333333" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2746365" sideWeight="0.52666664" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1222,7 +1224,6 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1988,14 +1989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_mapsForm.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/create.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -2004,45 +1997,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_mapsForm.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/assets/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="181" column="12" lean-forward="false" selection-start-line="181" selection-start-column="12" selection-end-line="181" selection-end-column="12" />
+        <state relative-caret-position="214">
+          <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="69" column="53" lean-forward="false" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding>
-            <element signature="e#27#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/edit.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-953">
-          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="48" />
+        <state relative-caret-position="84">
+          <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_form.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="172" column="45" lean-forward="false" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
+        <state relative-caret-position="212">
+          <caret line="155" column="28" lean-forward="false" selection-start-line="153" selection-start-column="20" selection-end-line="155" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="100" column="28" lean-forward="false" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#27#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -35,19 +35,23 @@
         <g:form url="[resource:attractionInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
-                <h2 class="addNewTitle">
-                    <g:if test="${params.type == 'image'}" >
-                        Cargar Imagen (max 10mb):
-                    </g:if>
-                    <g:if test="${params.type == 'map'}" >
-                        Cargar Mapa (max 10mb):
-                    </g:if>
-                    <g:if test="${params.type == 'video'}" >
-                        Cargar Video (max 20mb):
-                    </g:if>
-                </h2>
-                <input type='file' name='documentFile' />
-                <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
+                <div class="addVideo">
+                    <h2 class="addNewTitle">
+                        <g:if test="${params.type == 'image'}" >
+                            Cargar Imagen (max 10mb):
+                        </g:if>
+                        <g:if test="${params.type == 'map'}" >
+                            Cargar Mapa (max 10mb):
+                        </g:if>
+                        <g:if test="${params.type == 'video'}" >
+                            Cargar Video (max 20mb):
+                        </g:if>
+                    </h2>
+                </div>
+                <div>
+                    <input type='file' name='documentFile' />
+                    <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
+                </div>
             </fieldset>
 
             <g:hiddenField name="typeOfFile" value="${params.type}"/>
@@ -88,8 +92,12 @@
                         <g:each var="video" in="${attractionInstance?.videos}" status="i">
                             <label> Video ${i+1} </label>
                             <g:if test="video">
-                                <span> ${video.path}</span>
-                                <g:link params="[id: attractionInstance?.id, videoId: video.id]" action="deleteImage" class="btn btn-danger"> Borrar Video </g:link>
+                                <div>
+                                    <video width="550" height="320" controls>
+                                        <source src="${resource(dir: 'videos/', file: video.path)}" type="video/mp4">
+                                    </video>
+                                </div>
+                                <a  class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/attraction/deleteImage?id=${attractionInstance?.id}&videoId=${video.id}" data-toggle="modal" data-target="#confirm-delete-point"> Borrar Video</a>
                             </g:if>
                         </g:each>
                     </g:if>
@@ -100,6 +108,26 @@
             </div>
         </g:form>
     </div>
-
+    <div class="modal fade" id="confirm-delete-point" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Borrar video
+                </div>
+                <div class="modal-body">
+                    ¿ Está seguro que desea eliminar el video ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Cancelar </button>
+                    <a class="btn btn-danger btn-ok"> Eliminar </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#confirm-delete-point').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    </script>
 </body>
 </html>
