@@ -180,9 +180,6 @@
 				</g:if>
 			</g:each>
 		</g:if>
-		<g:else>
-			<span> No hay imágenes cargadas todavía </span>
-		</g:else>
 		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary manageImages"> Administrar Imágenes </g:link>
 	</div>
 </g:else>

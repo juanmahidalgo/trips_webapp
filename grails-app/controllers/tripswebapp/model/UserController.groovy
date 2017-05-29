@@ -62,6 +62,7 @@ class UserController {
         def fav = Fav.findByUserAndStop(user, stop)
         if(fav){
             user.removeFromFavourites(Fav.findByStop(stop))
+            fav.delete flush:true
         }
         else {
             def newFav = new Fav()

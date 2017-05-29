@@ -206,8 +206,9 @@ class PointOfInterestController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'PointOfInterest.label', default: 'PointOfInterest'), pointOfInterestInstance.id])
-                redirect pointOfInterestInstance
+                flash.message = pointOfInterestInstance.name + ' actualizado'
+                redirect(controller: "attraction", action: "edit", id: pointOfInterestInstance.attraction.id)
+
             }
             '*'{ respond pointOfInterestInstance, [status: OK] }
         }

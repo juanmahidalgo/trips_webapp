@@ -29,7 +29,7 @@
 			<li><g:link class="list" action="list"> Lista de Atracciones </g:link></li>
 			<li class="active"> Editar Atracción </li>
 		</ol>
-		<div id="edit-attraction" class="content scaffold-edit col-md-6" role="main">
+		<div id="edit-attraction" class="content scaffold-edit col-md-5" role="main">
 			<h1> Editar Atracción </h1>
 			<g:if test="${flash.message}">
 			<div class="message alert alert-info" role="status">${flash.message}</div>
@@ -73,7 +73,6 @@
 				</div>
 			</g:each>
 			<g:if test="${attractionInstance.pointsOfInterest.size() == 0}">
-				<label> No hay puntos de interés para esta atracción</label>
 			</g:if>
 		</div>
 		<div class="botones footer">

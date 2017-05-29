@@ -60,12 +60,13 @@ class AttractionController {
         def newDic = [:]
         counterDic.each() {
             if(i<10){
-                newDic[it] = it.value
+                newDic[it.key] = it.value
             }
             i++
         }
+        def sorted = newDic.sort {-it.value}
         def builder = new JsonBuilder()
-        builder(newDic)
+        builder(sorted)
         respond builder, [formats:['json']]
     }
 
