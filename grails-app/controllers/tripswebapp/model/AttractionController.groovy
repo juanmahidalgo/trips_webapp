@@ -240,7 +240,7 @@ class AttractionController {
                 CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("mapFile")
                 String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.mapFile.fileItem.fileName, "images/maps/" )
                 def image = new Image()
-                image.path =  params.imageFile.fileItem.fileName.toString()
+                image.path =  params.mapFile.fileItem.fileName.toString()
                 image.save flush: true
                 attractionInstance.addToMaps(image)
             }

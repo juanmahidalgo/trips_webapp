@@ -156,7 +156,7 @@
 		<g:each var="map" in="${attractionInstance?.maps}" status="i">
 			<label> Mapa ${i+1} </label>
 			<g:if test="map">
-				<img src="${resource(dir: 'images/maps', file: image.path)}" alt="image"/>
+				<img src="${resource(dir: 'images/maps', file: map.path)}" alt="image"/>
 				<g:link params="[id: attractionInstance?.id, imgId: map.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
 
 			</g:if>
