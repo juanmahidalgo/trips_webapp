@@ -1,43 +1,7 @@
-[
+{
+    "content":
     {
-        "name": "obelisco",
-        "popularity": 1091
-    },
-    {
-        "name": "cementerio",
-        "popularity": 1290
-    },
-    {
-        "name": "papalula",
-        "popularity": 3200
-    },
-    {
-        "name": "obelisco",
-        "popularity": 1091
-    },
-    {
-        "name": "cementerio",
-        "popularity": 1290
-    },
-    {
-        "name": "papalula",
-        "popularity": 3200
-    },
-    {
-        "name": "obelisco",
-        "popularity": 1091
-    },
-    {
-        "name": "cementerio",
-        "popularity": 1290
-    },
-    {
-        "name": "papalula",
-        "popularity": 3200
-    },
-    {
-        "name": "papalula",
-        "popularity": 3200
+        "London Eye": 2,
+        "I love vintage": 1
     }
-
-]
+}
