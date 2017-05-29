@@ -99,7 +99,6 @@
 							<div class="fieldcontain inputField ">
 								<label for="description">
 									<g:message code="pointOfInterest.description.label" default="Description" />
-
 								</label>
 								<g:textField name="description" value="${pointOfInterestInstance?.description}"/>
 							</div>
@@ -108,19 +107,19 @@
 									<g:message code="pointOfInterest.audioGuide.label" default="Audio Guide" />
 									<span class="required-indicator">*</span>
 								</label>
-								<input type="file" name="audioGuideFile">
+								<input type="file" name="audioGuideFile" id="audioGuideFile">
 							</div>
 							<div class="fieldcontain required">
 								<label for="image">
 									<g:message code="pointOfInterest.image.label" default="Image" />
 									<span class="required-indicator">*</span>
 								</label>
-								<input type="file" name="imageFile">
+								<input type="file" name="imageFile" id="imageFile">
 							</div>
 						</fieldset>
 					</div>
 					<div class="modal-footer">
-						<g:submitButton name="create" class="btn btn-success btn-ok" value="${message(code: 'default.button.create.label', default: 'Crear ')}" />
+						<g:submitButton name="create" class="btn btn-success btn-ok" value="Crear" />
 						<button type="button" class="btn btn-default" data-dismiss="modal"> Cancelar </button>
 					</div>
 				</g:form>
@@ -131,7 +130,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					Borrar Punto
+					Borrar punto de interés
 				</div>
 				<div class="modal-body">
 					¿ Está seguro que desea eliminar el punto de interés ?
@@ -145,17 +144,20 @@
 	</div>
 
 	<script>
+		var pointToDelete;
+		$('.btn-delete-point').click(function(){
+		   pointToDelete = this.id;
+		});
 		$('#confirm-delete-point').on('show.bs.modal', function(e) {
 			$(this).find('.btn-ok-point').attr('href', $(e.relatedTarget).data('href'));
 		});
-		$('.btn-delete-point').click(function(){
-		    var point = this.id;
+		$('.btn-ok-point').click(function(){
             $.ajax({
                 type: 'POST',
                 url: '/TripsWebApp/pointOfInterest/deletePoint',
-                data: {id: point},
+                data: {id: pointToDelete},
                 success: function() {
-                    $('#point-'+point).remove();
+                    $('#point-'+pointToDelete).remove();
                     $('#confirm-delete-point').modal('hide');
                 },
             });
@@ -171,14 +173,21 @@
 					processData: false,
 					contentType: false,
 					success: function(json) {
-						var html = '<div class="attractionsContainer"> '
+						var html = '<div class="attractionsContainer" id="point-'+ json.id+'"> '
 								+ '<img src="/TripsWebApp/images/pointsofinterest/' + json.image.path + '" alt="image"/>'
-							+ '<a href="/TripsWebApp/pointsofinterest/"'+ json.id + '>' + json.name + '</a>'
-							+ '<a class="btn btn-danger" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=' + json.id +'" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a> '+
+							+ '<a href="/TripsWebApp/pointsOfInterest/'+ json.id + '">' + json.name + '</a>'
+							+ '<a id="' + json.id + '" class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=' + json.id +'" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a> '+
 								' </div>';
 						$('.routes').append(html);
 						$('#confirm-delete').modal('hide');
-					},
+						$('.btn-delete-point').click(function(){
+                            pointToDelete = this.id;
+						});
+                        $('.modal-body').find('#name').val('')
+                        $('.modal-body').find('#description').val('')
+                        $('.modal-body').find('#audioGuideFile').val('')
+                        $('.modal-body').find('#imageFile').val('')
+                    },
 				});
 				return false;
 			});

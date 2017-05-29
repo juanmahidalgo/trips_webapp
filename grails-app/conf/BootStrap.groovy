@@ -40,6 +40,7 @@ class BootStrap {
             def map = [:]
             map.putAll(it.properties)
             map['image'] = it.image
+            map['id'] = it.id
             return map
         }
         JSON.registerObjectMarshaller(Review) {

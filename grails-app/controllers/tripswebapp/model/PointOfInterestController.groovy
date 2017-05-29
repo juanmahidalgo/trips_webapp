@@ -30,6 +30,47 @@ class PointOfInterestController {
         respond new PointOfInterest(params)
     }
 
+    def loadTraduction() {
+        def pointOfInterestInstance = PointOfInterest.get(params.id)
+        def traductionInstance
+        if(params.traductionId){
+            traductionInstance = PointTraduction.get(params.traductionId)
+        }
+        respond pointOfInterestInstance, model:[traductionInstance: traductionInstance]
+    }
+
+    @Transactional
+    def saveTraduction(PointOfInterest pointInstance){
+        def traduction
+        if(params.traduction_id){
+            traduction = PointTraduction.get(params.traduction_id)
+            flash.message = "Traducción en " + traduction.lang.name + " modificada"
+        }
+        else{
+            traduction = new PointTraduction()
+            traduction.lang = Language.findById(params.language.id)
+            flash.message = "Traducción en " + traduction.lang.name + " creada"
+        }
+        traduction.description = params.descripcion
+        traduction.point = pointInstance
+        if(params.audioGuideFile?.size>0){
+            if(request instanceof MultipartHttpServletRequest)
+            {
+                MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request
+                CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile("audioGuideFile")
+                String fileUploaded = fileUploadService.uploadFile( downloadedFile, params.audioGuideFile.fileItem.fileName, "audios/" )
+                def audioGuide = new AudioGuide()
+                audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
+                audioGuide.save flush: true
+                traduction.audioGuide = audioGuide
+            }
+        }
+        traduction.save flush:true
+        pointInstance.addToTraductions(traduction)
+        pointInstance.save flush:true
+        redirect(action: "edit", id: pointInstance.id)
+    }
+
     @Transactional
     def savePoint(PointOfInterest pointOfInterestInstance) {
 
@@ -90,9 +131,10 @@ class PointOfInterestController {
 
     @Transactional
     def deletePoint(){
-        def point = PointOfInterest.get(params.id)
+        def point = PointOfInterest.get((params.id).toLong())
         point.delete flush:true
-        return
+        response.status = 200
+        render status: NO_CONTENT
     }
 
     @Transactional

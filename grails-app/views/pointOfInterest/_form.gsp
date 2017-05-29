@@ -44,6 +44,14 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="image" name="image.id" from="${tripswebapp.media.Image.list()}" optionKey="id" required="" value="${pointOfInterestInstance?.image?.id}" class="many-to-one"/>
-
 </div>
 
+<div class="">
+	<label for="traductions">
+		<g:message code="pointOfInterest.traductions.label" default="Idiomas" />
+	</label>
+	<g:each var="traduction" in="${pointOfInterestInstance?.traductions}" status="i">
+		<g:link params="[id: pointOfInterestInstance?.id, traductionId: traduction.id]" action="loadTraduction" class=""> ${traduction} </g:link>
+	</g:each>
+	<g:link params="[id: pointOfInterestInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
+</div>

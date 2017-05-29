@@ -18,6 +18,22 @@ class AttractionController {
 
     FileUploadService fileUploadService
 
+    def stats(){
+        def counterDic = [:]
+        Fav.findAll().each() { def fav ->
+            if(!counterDic[fav.stop.name as String] && fav.date > new Date()-365){
+                counterDic[fav.stop.name as String] = 1
+            } else if(counterDic[fav.stop.name as String] && fav.date > new Date()-365){
+                counterDic[fav.stop.name as String] = counterDic[fav.stop.name as String].toLong() + 1
+            }
+        }
+        def builder = new JsonBuilder()
+        builder(counterDic)
+        render(view: "stats", model: [book: counterDic])
+
+
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def attractions
@@ -33,15 +49,23 @@ class AttractionController {
     def getMostFavs(){
         def counterDic = [:]
         Fav.findAll().each() { def fav ->
-            if(!counterDic[fav.stop.name as String]){
+            if(!counterDic[fav.stop.name as String] && fav.date > new Date()-365){
                 counterDic[fav.stop.name as String] = 1
-            } else {
+            } else if(counterDic[fav.stop.name as String] && fav.date > new Date()-365){
                 counterDic[fav.stop.name as String] = counterDic[fav.stop.name as String].toLong() + 1
             }
         }
+        counterDic.sort {it.value}
+        def i = 0
+        def newDic = [:]
+        counterDic.each() {
+            if(i<10){
+                newDic[it] = it.value
+            }
+            i++
+        }
         def builder = new JsonBuilder()
-        builder(counterDic)
-
+        builder(newDic)
         respond builder, [formats:['json']]
     }
 
@@ -82,13 +106,21 @@ class AttractionController {
 
     def show(Attraction attractionInstance) {
         if(params.lang){
-            def trad = StopTraduction.findByStopAndLang(attractionInstance, Language.findByCode(params.lang))
+            def lang = Language.findByCode(params.lang)
+            def trad = StopTraduction.findByStopAndLang(attractionInstance, lang)
             if(!trad){
                 respond attractionInstance
             }
             attractionInstance.description = trad.description
             attractionInstance.audioGuides = []
             attractionInstance.audioGuides.add(trad.audioGuide)
+            attractionInstance.pointsOfInterest.each() { def point ->
+                def pointTrad = PointTraduction.findByPointAndLang(point, lang)
+                if(pointTrad){
+                    point.description = pointTrad.description
+                    point.audioGuide = pointTrad.audioGuide
+                }
+            }
         }
         respond attractionInstance
     }

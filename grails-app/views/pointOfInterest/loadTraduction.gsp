@@ -15,18 +15,17 @@
 <div class="mainContainer">
     <ol class="breadcrumb">
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="list" action="list"> Lista de Atracciones </g:link></li>
-        <li><g:link class="list" action="edit" id="${attractionInstance?.id}"> ${attractionInstance} </g:link></li>
+        <li><g:link class="list" action="edit" id="${pointOfInterestInstance?.id}"> ${pointOfInterestInstance} </g:link></li>
         <li class="active"> Agregar Traducción</li>
     </ol>
     <div class="col-md-5">
         <g:if test="${traductionInstance}">
-            <h1> Editando Traducción en ${traductionInstance.lang} para ${attractionInstance?.name}  </h1>
+            <h1> Editando Traducción en ${traductionInstance.lang} para ${pointOfInterestInstance?.name}  </h1>
         </g:if>
         <g:else>
-            <h1> Creando Traducción para ${attractionInstance?.name} </h1>
+            <h1> Creando Traducción para ${pointOfInterestInstance?.name} </h1>
         </g:else>
-        <g:form url="[resource:attractionInstance, action:'saveTraduction']" enctype='multipart/form-data' >
+        <g:form url="[resource:pointOfInterestInstance, action:'saveTraduction']" enctype='multipart/form-data' >
             <fieldset class="form">
                 <div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'name', 'error')}">
                     <label for="name">

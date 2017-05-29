@@ -245,6 +245,14 @@
 				<h4> <a href="advertisment/list" target="_self">Buscador de Publicidades</a>  </h4>
 			</div>
 		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> Estadísticas</h3>
+			</div>
+			<div class="panel-body boxReseñas">
+				<h4> <a href="attraction/stats" target="_self"> Atracciones más populares entre los usuarios </a>  </h4>
+			</div>
+		</div>
 	</div>
 </div>
 </body>

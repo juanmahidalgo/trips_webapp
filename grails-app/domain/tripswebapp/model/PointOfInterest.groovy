@@ -9,7 +9,9 @@ class PointOfInterest{
     Image image
     String description
     String name
+    Set<PointTraduction> traductions
 
+    static hasMany = [traductions: PointTraduction]
     static belongsTo = [attraction: Attraction]
     static constraints = {
         name nullable: true
