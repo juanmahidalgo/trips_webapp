@@ -122,8 +122,8 @@
 	<input type="file" name="mapFile">
 </g:if>
 <g:else>
-	<div class="fieldcontain">
-		<label> Mapas </label>
+	<div class="fieldcontain maps">
+		<label> Mapas: </label>
 		<g:if test="${attractionInstance?.maps}">
 			<g:each var="map" in="${attractionInstance?.maps}" status="i">
 				<label> Mapa ${i+1} </label>
@@ -146,7 +146,7 @@
 </g:if>
 <g:else>
 	<div class="fieldcontain">
-		<div> <label> Videos </label></div>
+		<div> <label> Videos: </label></div>
         <g:if test="${attractionInstance?.videos}">
             <g:each var="video" in="${attractionInstance?.videos}" status="i">
                 <label> Video ${i+1} </label>
@@ -170,7 +170,7 @@
 </g:if>
 <g:else>
 	<div class="fieldcontain">
-		<label> Imágenes </label>
+		<div><label> Imágenes: </label></div>
 		<g:if test="${attractionInstance?.images}">
 			<g:each var="image" in="${attractionInstance?.images}" status="i">
 				<label> Imagen ${i+1} </label>

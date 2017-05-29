@@ -67,7 +67,7 @@
                         <b> No hay imágenes todavía.. </b>
                     </g:else>
                 </g:if>
-                <g:elseif test="${params.type == 'image'}">
+                <g:elseif test="${params.type == 'map'}">
                     <h2> Mapas cargados: </h2>
                     <g:if test="${attractionInstance?.maps}">
                         <g:each var="map" in="${attractionInstance?.maps}" status="i">
