@@ -400,6 +400,15 @@ class AttractionController {
                 it.delete flush: true
             }
         }
+        def favs = Fav.findAllByStop(attractionInstance)
+        favs.each() { def fav ->
+            fav.delete flush: true
+        }
+        /*if(favs){
+            flash.message = ' No se puede borrar porque tiene favoritos asociados '
+            redirect action:"list"
+            return
+        }*/
         flash.message =  attractionInstance.name + ' Borrada'
         attractionInstance.delete flush:true
         redirect action:"list"
