@@ -184,6 +184,25 @@
 	</div>
 </g:else>
 
+<g:if test="${context == 'create'}">
+    <div class="fieldcontain">
+        <label> Cargar audioguia (max 10mb) </label>
+    </div>
+    <input type="file" name="audioGuideFile">
+</g:if>
+<g:else>
+    <div class="fieldcontain maps">
+        <label> Audioguía: </label>
+        <g:if test="${attractionInstance?.audioGuides}">
+            <g:each var="audioguide" in="${attractionInstance?.audioGuides}" status="i">
+                <label> Audioguia ${i+1} </label>
+                <g:if test="audioguide">
+                    <img src="${resource(dir: 'audios/', file: audioguide.path)}" alt="image"/>
+                </g:if>
+            </g:each>
+        </g:if>
+    </div>
+</g:else>
 
 %{--
 
