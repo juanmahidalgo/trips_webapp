@@ -132,24 +132,31 @@ class AttractionController {
 
     def manageImages() {
         def attractionInstance = Attraction.get(params.id)
-
         respond attractionInstance
     }
 
     @Transactional
     def deleteImage(){
         def attractionInstance = Attraction.get(params.id)
-        def img = Image.get(params.imgId)
-        if(img in attractionInstance.maps){
-            attractionInstance.removeFromMaps(img)
+        if(params.imgId){
+            def img = Image.get(params.imgId)
+            if(img in attractionInstance.maps){
+                attractionInstance.removeFromMaps(img)
+            }
+            else if(img in attractionInstance.images) {
+                attractionInstance.removeFromImages(img)
+            }
+            attractionInstance.save flush: true
+            img.delete flush: true
         }
-        else if(img in attractionInstance.images) {
-            attractionInstance.removeFromImages(img)
+        else if(params.videoId){
+            def video = Video.get(params.videoId)
+            attractionInstance.removeFromVideos(video)
+            attractionInstance.save flush: true
+            video.delete flush:true
         }
-        attractionInstance.save flush: true
-        img.delete flush: true
 
-        redirect(action: "show", id: attractionInstance.id)
+        redirect(action: "edit", id: attractionInstance.id)
     }
 
     @Transactional
@@ -158,6 +165,9 @@ class AttractionController {
         if(params.typeOfFile == 'image'){
             path = 'images/attractions'
         }
+        if(params.typeOfFile == 'video'){
+            path = 'videos/'
+        }
         if (params.documentFile.fileItem?.fileName) {
             if (request instanceof MultipartHttpServletRequest) {
                 params.documentFile.each {
@@ -165,16 +175,25 @@ class AttractionController {
                         MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request
                         CommonsMultipartFile downloadedFile = (CommonsMultipartFile) mpr.getFile(it.fileItem.fieldName)
                         String fileUploaded = fileUploadService.uploadFile(downloadedFile, it.fileItem.fileName, path)
-                        def image = new Image()
-                        image.path = it.fileItem.fileName.toString()
-                        image.save flush: true
-                        if(params.typeOfFile == 'map'){
-                            attractionInstance.addToMaps(image)
+                        if(params.typeOfFile == 'map' || params.typeOfFile == 'image'){
+                            def image = new Image()
+                            image.path = it.fileItem.fileName.toString()
+                            image.save flush: true
+                            if(params.typeOfFile == 'map'){
+                                attractionInstance.addToMaps(image)
+                            }
+                            else{
+                                attractionInstance.addToImages(image)
+                            }
                         }
-                        else{
-                            attractionInstance.addToImages(image)
+                        else if(params.typeOfFile == 'video'){
+                            def video = new Video()
+                            video.path = it.fileItem.fileName.toString()
+                            video.save flush: true
+                            attractionInstance.addToVideos(video)
                         }
-                        attractionInstance.save flush: true                    }
+                        attractionInstance.save flush: true
+                    }
                 }
             }
         }
@@ -318,7 +337,7 @@ class AttractionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = attractionInstance.name + ' Creado / Actualizado'
+                flash.message = attractionInstance.name + ' Creado'
                 redirect(action: "list")
             }
             '*' { respond attractionInstance, [status: CREATED] }

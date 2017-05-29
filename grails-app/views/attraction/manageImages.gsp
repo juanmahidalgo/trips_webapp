@@ -35,12 +35,22 @@
         <g:form url="[resource:attractionInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
-                <h2 class="addNewTitle"> Cargar Imagen (max 10mb): </h2>
+                <h2 class="addNewTitle">
+                    <g:if test="${params.type == 'image'}" >
+                        Cargar Imagen (max 10mb):
+                    </g:if>
+                    <g:if test="${params.type == 'map'}" >
+                        Cargar Mapa (max 10mb):
+                    </g:if>
+                    <g:if test="${params.type == 'video'}" >
+                        Cargar Video (max 20mb):
+                    </g:if>
+                </h2>
                 <input type='file' name='documentFile' />
                 <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
             </fieldset>
 
-            <g:hiddenField name="typeOfFile" value="${params.type == 'image' ? 'image' : 'map'}"/>
+            <g:hiddenField name="typeOfFile" value="${params.type}"/>
             <div class="fieldcontain maps">
                 <g:if test="${params.type == 'image'}">
                     <h2> Imágenes cargadas: </h2>
@@ -58,7 +68,7 @@
                     </g:else>
                 </g:if>
                 <g:elseif test="${params.type == 'image'}">
-                    <h2> Loaded Maps: </h2>
+                    <h2> Mapas cargados: </h2>
                     <g:if test="${attractionInstance?.maps}">
                         <g:each var="map" in="${attractionInstance?.maps}" status="i">
                             <label> Map ${i+1} </label>
@@ -67,20 +77,9 @@
                                 <g:link params="[id: attractionInstance?.id, imgId: map.id]" action="deleteImage" class="btn btn-danger"> Delete Map</g:link>
                             </g:if>
                         </g:each>
-
-                    %{-- <g:each var="i" in="${ (0..<3) }">
-                         <label> Map ${i+1} </label>
-                         <g:if test="${attractionInstance?.maps[i]}">
-                             <img src="${resource(dir: 'images/maps', file: attractionInstance?.maps[i].path)}" alt="mapa"/>
-                             <input type='file' name='documentFile.${i+1}' value="${attractionInstance?.maps[i]}" />
-                         </g:if>
-                     <g:else>
-                         <input type='file' name='documentFile.${i+1}' />
-                     </g:else>
-                     </g:each>--}%
                     </g:if>
                     <g:else>
-                        <b> No maps loaded yet.. </b>
+                        <b> No hay mapas cargados todavía.. </b>
                     </g:else>
                 </g:elseif>
                 <g:elseif test="${params.type == 'video'}">
@@ -90,7 +89,7 @@
                             <label> Video ${i+1} </label>
                             <g:if test="video">
                                 <span> ${video.path}</span>
-                                <g:link params="[id: attractionInstance?.id, imgId: video.id]" action="deleteImage" class="btn btn-danger"> Borrar Video </g:link>
+                                <g:link params="[id: attractionInstance?.id, videoId: video.id]" action="deleteImage" class="btn btn-danger"> Borrar Video </g:link>
                             </g:if>
                         </g:each>
                     </g:if>

@@ -172,3 +172,12 @@ h1 {
 .table-container{
     width:50%;
 }
+
+.buttons {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+video{
+    border: 2px solid #333
+}

@@ -124,8 +124,18 @@
 <g:else>
 	<div class="fieldcontain">
 		<label> Mapas </label>
+		<g:if test="${attractionInstance?.maps}">
+			<g:each var="map" in="${attractionInstance?.maps}" status="i">
+				<label> Mapa ${i+1} </label>
+				<g:if test="map">
+					<img src="${resource(dir: 'images/maps', file: map.path)}" alt="image"/>
+					<g:link params="[id: attractionInstance?.id, imgId: map.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
+
+				</g:if>
+			</g:each>
+		</g:if>
+		<g:link params="[id: attractionInstance?.id, type: 'map']" action="manageImages" class="btn btn-primary manageImages"> Administrar Mapas </g:link>
 	</div>
-	<g:link params="[id: attractionInstance?.id, type: 'map']" action="manageImages" class="btn btn-primary manageImages"> Administrar Mapas </g:link>
 </g:else>
 
 <g:if test="${context == 'create'}">
@@ -135,50 +145,49 @@
 </div>
 </g:if>
 <g:else>
-	<label> Videos </label>
-	<g:link params="[id: attractionInstance?.id, type: 'video']" action="manageImages" class="btn btn-primary manageImages"> Administrar Videos </g:link>
+	<div class="fieldcontain">
+		<div> <label> Videos </label></div>
+        <g:if test="${attractionInstance?.videos}">
+            <g:each var="video" in="${attractionInstance?.videos}" status="i">
+                <label> Video ${i+1} </label>
+                <g:if test="video">
+                    <video width="480" height="320" controls>
+                        <source src="${resource(dir: 'videos/', file: video.path)}" type="video/mp4">
+                    </video>
+                </g:if>
+            </g:each>
+        </g:if>
+		<g:link params="[id: attractionInstance?.id, type: 'video']" action="manageImages" class="btn btn-primary manageImages"> Administrar Videos </g:link>
+	</div>
 </g:else>
 
 
-
-<div class="fieldcontain">
-	<g:if test="${attractionInstance?.images}">
-		<g:each var="image" in="${attractionInstance?.images}" status="i">
-			<label> Imagen ${i+1} </label>
-			<g:if test="image">
-				<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="image"/>
-				<g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
-
-			</g:if>
-		</g:each>
-	</g:if>
-	<g:else>
-		%{--<b> No hay imágenes cargadas todavía </b><br>--}%
-	</g:else>
-	<g:if test="${context == 'create'}">
+<g:if test="${context == 'create'}">
+	<div class="fieldcontain">
 		<label> Cargar Imagen (max 10mb)</label>
-		<input  type="file" name="imageFile">
-	</g:if>
-	<g:if test="${context == 'create'}">
-		<label> Cargar Audioguia (max 10mb)</label>
-		<input  type="file" name="audioGuideFile">
-	</g:if>
-	<g:else>
+	</div>
+	<input  type="file" name="imageFile">
+</g:if>
+<g:else>
+	<div class="fieldcontain">
+		<label> Imágenes </label>
+		<g:if test="${attractionInstance?.images}">
+			<g:each var="image" in="${attractionInstance?.images}" status="i">
+				<label> Imagen ${i+1} </label>
+				<g:if test="image">
+					<img src="${resource(dir: 'images/attractions', file: image.path)}" alt="image"/>
+					<g:link params="[id: attractionInstance?.id, imgId: image.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
+				</g:if>
+			</g:each>
+		</g:if>
+		<g:else>
+			<span> No hay imágenes cargadas todavía </span>
+		</g:else>
 		<g:link params="[id: attractionInstance?.id, type: 'image']" action="manageImages" class="btn btn-primary manageImages"> Administrar Imágenes </g:link>
-	</g:else>
-	<g:if test="${attractionInstance?.maps}">
-		<g:each var="map" in="${attractionInstance?.maps}" status="i">
-			<label> Mapa ${i+1} </label>
-			<g:if test="map">
-				<img src="${resource(dir: 'images/maps', file: map.path)}" alt="image"/>
-				<g:link params="[id: attractionInstance?.id, imgId: map.id]" action="deleteImage" id="btnEditImages" class="btn btn-danger invisible"> Delete Image</g:link>
-
-			</g:if>
-		</g:each>
-	</g:if>
+	</div>
+</g:else>
 
 
-</div>
 %{--
 
 <script type="application/javascript">
