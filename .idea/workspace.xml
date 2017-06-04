@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ef0f9ce-2baf-403d-9614-a61a26858f35" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" afterPath="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/PointOfInterest.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/tripswebapp/model/PointOfInterest.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/attraction/edit.gsp" afterPath="$PROJECT_DIR$/grails-app/views/attraction/edit.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" afterPath="$PROJECT_DIR$/grails-app/views/attraction/manageImages.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/city/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/city/_form.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/pointOfInterest/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/pointOfInterest/_form.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/pointOfInterest/edit.gsp" afterPath="$PROJECT_DIR$/grails-app/views/pointOfInterest/edit.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/pointOfInterest/loadTraduction.gsp" afterPath="$PROJECT_DIR$/grails-app/views/pointOfInterest/loadTraduction.gsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -40,8 +28,8 @@
       <file leaf-file-name="edit.gsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/edit.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="229" column="39" lean-forward="false" selection-start-line="229" selection-start-column="39" selection-end-line="229" selection-end-column="39" />
+            <state relative-caret-position="24">
+              <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -107,7 +95,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AttractionController.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AttractionController.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/AttractionController.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -119,7 +107,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PointOfInterestController.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PointOfInterestController.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -181,10 +169,10 @@
       <find>input type=&quot;file</find>
       <find>input type=&quot;file&quot;</find>
       <find>maps</find>
-      <find>Idiomas</find>
-      <find>mainForm</find>
       <find>saveP</find>
       <find>uploadImage</find>
+      <find>Idiomas</find>
+      <find>mainForm</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -257,8 +245,8 @@
         <option value="$PROJECT_DIR$/grails-app/views/advertisment/_form.gsp" />
         <option value="$PROJECT_DIR$/grails-app/assets/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/grails-app/views/attraction/_form.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/attraction/edit.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/attraction/edit.gsp" />
       </list>
     </option>
   </component>
@@ -1247,12 +1235,12 @@
       <workItem from="1493154533814" duration="51000" />
       <workItem from="1494011909943" duration="107181000" />
       <workItem from="1496064717043" duration="7391000" />
-      <workItem from="1496076109248" duration="28307000" />
+      <workItem from="1496076109248" duration="28524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381350000" />
+    <option name="totallyTimeSpent" value="381567000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1277,7 +1265,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.360274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.360274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2144,6 +2132,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding>
+            <element signature="e#27#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/_form.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -2154,8 +2152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/attraction/edit.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="229" column="39" lean-forward="false" selection-start-line="229" selection-start-column="39" selection-end-line="229" selection-end-column="39" />
+        <state relative-caret-position="24">
+          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -2164,16 +2162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="358" column="0" lean-forward="false" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
-          <folding>
-            <element signature="e#27#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/tripswebapp/model/PointOfInterestController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="e#27#56#0" expanded="true" />
           </folding>

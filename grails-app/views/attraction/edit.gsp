@@ -59,8 +59,9 @@
 	<div class="mapContainer col-md-6">
 		<div id="map"></div>
         <div id="points">
+            <label> Puntos de interés </label>
+
             <div class="routes col-md-12">
-                <label> Puntos de interés </label>
                 <g:each in="${attractionInstance.pointsOfInterest}" status="i" var="point">
                     <div class="attractionsContainer" id="point-${point.id}">
                         <g:if test="${point.image}">
