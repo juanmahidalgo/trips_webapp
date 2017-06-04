@@ -56,20 +56,24 @@
                     </label>
                     <g:textField name="descripcion" required="" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Por favor ingrese una descripcón')" value="${traductionInstance ? traductionInstance.description : pointOfInterestInstance?.description}" />
                 </div>
-                <g:if test="${traductionInstance?.audioGuide}">
+                <div class="fieldcontain inputField required">
+                    <g:if test="${traductionInstance?.audioGuide}">
                         <label for="audioGuideFile"> Audioguia cargada:
                         </label>
                         ${traductionInstance.audioGuide.path}
+                        <audio controls>
+                            <source src="${resource(dir: 'audios/', file: traductionInstance.audioGuide.path)}" type="audio/ogg">
+                        </audio>
                         <div>
                             <label> Cargar otra audioguia: </label>
                         </div>
-                </g:if>
-                <g:else>
-                    <label for="audioGuideFile"> Subir AudioGuia
-                    </label>
-                </g:else>
-                <input  type="file" name="audioGuideFile" id="audioGuideFile">
-
+                    </g:if>
+                    <g:else>
+                        <label for="audioGuideFile"> Subir AudioGuia
+                        </label>
+                    </g:else>
+                    <input  type="file" name="audioGuideFile" accept=".mp4,.mp3" id="audioGuideFile">
+                </div>
             </fieldset>
             <fieldset class="buttons">
                 <g:submitButton name="create" class="save btn btn-success createButton" value="Cargar Traducción" />

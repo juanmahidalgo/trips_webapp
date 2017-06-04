@@ -2,16 +2,16 @@
 
 
 
-<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'name', 'error')} ">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'Nombre', 'error')} ">
 	<label for="name">
-		<g:message code="pointOfInterest.name.label" default="Name" />
+		<g:message code="pointOfInterest.name.label" default="Nombre" />
 		
 	</label>
 	<g:textField name="name" value="${pointOfInterestInstance?.name}"/>
 
 </div>
 
-<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'description', 'error')} ">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'Descripción', 'error')} ">
 	<label for="description">
 		Descripción
 	</label>
@@ -19,7 +19,7 @@
 
 </div>
 
-<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'attraction', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'Atracción', 'error')} required">
 	<label for="attraction">
 		Atracción
 		<span class="required-indicator">*</span>
@@ -28,7 +28,7 @@
 
 </div>
 
-<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'audioGuide', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'Audio Guia', 'error')} required">
 	<label for="audioGuide">
 		AudioGuia
 		<span class="required-indicator">*</span>
@@ -37,7 +37,7 @@
 
 </div>
 
-<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'image', 'error')} required">
+<div class="fieldcontain inputField ${hasErrors(bean: pointOfInterestInstance, field: 'Imagen', 'error')} required">
 	<label for="image">
 		Imagen
 		<span class="required-indicator">*</span>

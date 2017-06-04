@@ -169,6 +169,9 @@ class AttractionController {
         if(params.typeOfFile == 'video'){
             path = 'videos/'
         }
+        if(params.typeOfFile == 'audio'){
+            path = 'audios/'
+        }
         if (params.documentFile.fileItem?.fileName) {
             if (request instanceof MultipartHttpServletRequest) {
                 params.documentFile.each {
@@ -192,6 +195,12 @@ class AttractionController {
                             video.path = it.fileItem.fileName.toString()
                             video.save flush: true
                             attractionInstance.addToVideos(video)
+                        }
+                        else if(params.typeOfFile == 'audio'){
+                            def audioGuide = new AudioGuide()
+                            audioGuide.path =  params.audioGuideFile.fileItem.fileName.toString()
+                            audioGuide.save flush: true
+                            attractionInstance.addToAudioGuides(audioGuide)
                         }
                         attractionInstance.save flush: true
                     }
@@ -346,6 +355,7 @@ class AttractionController {
     }
 
     def edit(Attraction attractionInstance) {
+        attractionInstance.pointsOfInterest = attractionInstance.pointsOfInterest.sort {it.position}
         respond attractionInstance
     }
 
@@ -430,6 +440,13 @@ class AttractionController {
         }
 
         attractionInstance.save flush:true
+
+        def positions = JSON.parse(params.pointsPosition)
+        positions.each {
+            def point = PointOfInterest.get(it.value)
+            point.position = it.key.toInteger()
+            point.save flush: true
+        }
 
         request.withFormat {
             form multipartForm {

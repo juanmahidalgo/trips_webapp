@@ -97,6 +97,12 @@ class PointOfInterestController {
                 pointOfInterestInstance.image = image
             }
         }
+        else {
+            def image = new Image()
+            image.path = 'noimage.png'
+            image.save flush: true
+            pointOfInterestInstance.image = image
+        }
 
         if(params.audioGuideFile?.size>0){
             if(params.imageFile?.size> 10000000){

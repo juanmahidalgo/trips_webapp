@@ -82,12 +82,12 @@
 
 </div>
 
-<div class="fieldcontain inputField ${hasErrors(bean: attractionInstance, field: 'classification', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: attractionInstance, field: 'classification', 'error')} required">
 	<label for="classification">
 		<g:message code="attraction.classification.label" default="Clasificación" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="classification" name="classification.id" from="${tripswebapp.utils.Classification.list()}" optionKey="id"  value="${attractionInstance?.classification?.id}" class="many-to-one chosen-select"/>
+	<g:select style="width: 350px;" id="classification" name="classification.id" from="${tripswebapp.utils.Classification.list()}" optionKey="id"  value="${attractionInstance?.classification?.id}" class="many-to-one chosen-select"/>
 
 </div>
 
@@ -106,12 +106,12 @@
 			<g:message code="attraction.traductions.label" default="Idiomas" />
 		</label>
 		<g:each var="traduction" in="${attractionInstance?.traductions}" status="i">
-			<g:link params="[id: attractionInstance?.id, traductionId: traduction.id]" action="loadTraduction" class=""> ${traduction} </g:link>
+			<g:link params="[id: attractionInstance?.id, traductionId: traduction.id]" action="loadTraduction" class="btn btn-warning"> ${traduction} </g:link>
 		</g:each>
 		%{--
             <span id="traductions"> ${attractionInstance?.traductions ?: 'Ninguna traducción cargada todavía'}</span>
         --}%
-		<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-info"> Cargar Traducción </g:link>
+		<g:link params="[id: attractionInstance?.id]" action="loadTraduction" class="btn btn-primary"> Cargar Traducción </g:link>
 	</div>
 </g:if>
 
@@ -119,11 +119,11 @@
 	<div class="fieldcontain">
 		<label> Cargar Mapa (max 10mb) </label>
 	</div>
-	<input type="file" name="mapFile">
+	<input type="file" name="mapFile" accept=".jpeg,.png">>
 </g:if>
 <g:else>
 	<div class="fieldcontain maps">
-		<label> Mapas: </label>
+		<h3> Mapas: </h3>
 		<g:if test="${attractionInstance?.maps}">
 			<g:each var="map" in="${attractionInstance?.maps}" status="i">
 				<label> Mapa ${i+1} </label>
@@ -146,7 +146,7 @@
 </g:if>
 <g:else>
 	<div class="fieldcontain">
-		<div> <label> Videos: </label></div>
+		<div> <h3> Videos: </h3></div>
         <g:if test="${attractionInstance?.videos}">
             <g:each var="video" in="${attractionInstance?.videos}" status="i">
                 <label> Video ${i+1} </label>
@@ -170,7 +170,7 @@
 </g:if>
 <g:else>
 	<div class="fieldcontain maps">
-		<div><label> Imágenes: </label></div>
+		<div><h3> Imágenes: </h3></div>
 		<g:if test="${attractionInstance?.images}">
 			<g:each var="image" in="${attractionInstance?.images}" status="i">
 				<label> Imagen ${i+1} </label>
@@ -188,29 +188,25 @@
     <div class="fieldcontain">
         <label> Cargar audioguia (max 10mb) </label>
     </div>
-    <input type="file" name="audioGuideFile">
+    <input type="file" name="audioGuideFile" accept=".mp4,.mp3">
 </g:if>
 <g:else>
     <div class="fieldcontain maps">
-        <label> Audioguía: </label>
+        <h3> Audioguías: </h3>
         <g:if test="${attractionInstance?.audioGuides}">
             <g:each var="audioguide" in="${attractionInstance?.audioGuides}" status="i">
                 <label> Audioguia ${i+1} </label>
+				<span> ${audioguide.path}</span>
                 <g:if test="audioguide">
-                    <img src="${resource(dir: 'audios/', file: audioguide.path)}" alt="image"/>
+					<audio controls>
+						<source src="${resource(dir: 'audios/', file: audioguide.path)}" type="audio/ogg">
+					</audio>
                 </g:if>
             </g:each>
         </g:if>
-    </div>
+		<g:link params="[id: attractionInstance?.id, type: 'audio']" action="manageImages" class="btn btn-primary manageImages"> Administrar Audios </g:link>
+	</div>
 </g:else>
-
-%{--
-
-<script type="application/javascript">
-    $().ready(function(){
-        $("#images").chosen({no_results_text: "No se encontraron resultados!"});
-    });
-</script>--}%
 
 <script type="application/javascript">
     $(".chosen-select ").chosen({no_results_text: "No se encontraron resultados!"});

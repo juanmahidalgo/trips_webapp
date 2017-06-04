@@ -30,7 +30,7 @@
 			<li class="active"> Editar Atracción </li>
 		</ol>
 		<div id="edit-attraction" class="content scaffold-edit col-md-5" role="main">
-			<h1> Editar Atracción </h1>
+			<h1> Editando ${attractionInstance.name} </h1>
 			<g:if test="${flash.message}">
 			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>
@@ -46,7 +46,7 @@
 				<input id="autocomplete" placeholder=" Ingrese una atracción o ciudad.. "
 					   onFocus="geolocate()" type="text"></input>
 			</div>
-			<g:form action="update" enctype='multipart/form-data' >
+			<g:form name="mainForm" url="[resource:attractionInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${attractionInstance?.version}" />
 				<fieldset class="form" >
 					<g:render template="form" model="[context: 'edit']"/>
@@ -58,26 +58,31 @@
 		</div>
 	<div class="mapContainer col-md-6">
 		<div id="map"></div>
-		<label> Puntos de interés </label>
-		<div class="routes col-md-10">
-			<g:each in="${attractionInstance.pointsOfInterest}" status="i" var="point">
-				<div class="attractionsContainer" id="point-${point.id}">
-					<g:if test="${point.image}">
-                        <img src="${resource(dir: 'images/pointsofinterest', file: point.image.path)}" alt="image"/>
-                    </g:if>
-                    <g:else>
-                        <img src="${resource(dir: 'images', file: 'noimage.png')}" alt="image"/>
-                    </g:else>
-					<g:link controller="pointOfInterest" action="edit" id="${point.id}">${point.name}</g:link>
-					<a id="${point.id}" class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=${point.id}" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a>
-				</div>
-			</g:each>
-			<g:if test="${attractionInstance.pointsOfInterest.size() == 0}">
-			</g:if>
-		</div>
-		<div class="botones footer">
-			<a class="btn btn-success" data-href="/TripsWebApp/pointOfInterest/save?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Agregar Punto de Interés </a>
-		</div>
+        <div id="points">
+            <div class="routes col-md-12">
+                <label> Puntos de interés </label>
+                <g:each in="${attractionInstance.pointsOfInterest}" status="i" var="point">
+                    <div class="attractionsContainer" id="point-${point.id}">
+                        <g:if test="${point.image}">
+                            <img src="${resource(dir: 'images/pointsofinterest', file: point.image.path)}" alt="image"/>
+                        </g:if>
+                        <g:else>
+                            <img src="${resource(dir: 'images', file: 'noimage.png')}" alt="image"/>
+                        </g:else>
+                        <g:link controller="pointOfInterest" action="edit" id="${point.id}">${point.name}</g:link>
+                        <button type="button" class="btn btn-info glyphicon glyphicon-arrow-up"></button>
+                        <button type="button" class="btn btn-info glyphicon glyphicon-arrow-down"></button>
+                        <a id="${point.id}" class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=${point.id}" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a>
+                    </div>
+                </g:each>
+                <g:if test="${attractionInstance.pointsOfInterest.size() == 0}">
+                </g:if>
+            </div>
+            <div class="botones footer">
+                <a class="btn btn-success btn-add-point" data-href="/TripsWebApp/pointOfInterest/save?id=${attractionInstance.id}" data-toggle="modal" data-target="#confirm-delete"> Agregar Punto de Interés </a>
+            </div>
+        </div>
+
 	</div>
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -90,30 +95,30 @@
 						<fieldset class="form">
 							<div class="fieldcontain inputField ">
 								<label for="name">
-									<g:message code="pointOfInterest.name.label" default="Name" />
+									Nombre
 								</label>
 								<g:textField name="name" value="${pointOfInterestInstance?.name}"/>
 							</div>
 							<input type="hidden" name="attractionId" value="${attractionInstance.id}">
 							<div class="fieldcontain inputField ">
 								<label for="description">
-									<g:message code="pointOfInterest.description.label" default="Description" />
+									Descripción
 								</label>
 								<g:textField name="description" value="${pointOfInterestInstance?.description}"/>
 							</div>
 							<div class="fieldcontain required">
 								<label for="audioGuide">
-									<g:message code="pointOfInterest.audioGuide.label" default="Audio Guide" />
+									Audioguía (max 10mb, formato mp3,mp4):
 									<span class="required-indicator">*</span>
 								</label>
-								<input type="file" name="audioGuideFile" id="audioGuideFile">
+								<input type="file" name="audioGuideFile" id="audioGuideFile" accept=".mp4,.mp3">
 							</div>
 							<div class="fieldcontain required">
 								<label for="image">
-									<g:message code="pointOfInterest.image.label" default="Image" />
-									<span class="required-indicator">*</span>
+									Imagen (max 10mb, formato jpeg, png):
+                                    <span class="required-indicator">*</span>
 								</label>
-								<input type="file" name="imageFile" id="imageFile">
+								<input type="file" name="imageFile" id="imageFile" accept=".jpeg,.png">
 							</div>
 						</fieldset>
 					</div>
@@ -143,6 +148,34 @@
 	</div>
 
 	<script>
+        if($('#hasPoints').prop('checked')){
+            $('#points').removeClass('invisible')
+        }
+        else{
+            $('#points').addClass('invisible')
+        }
+        $('#hasPoints').click(function(){ $('#points').toggleClass('invisible') });
+		$('.glyphicon-arrow-up').click(function() {
+			var div = $(this).parent();
+			div.insertBefore(div.prev());
+        });
+        $('.glyphicon-arrow-down').click(function() {
+            var div = $(this).parent();
+            div.insertAfter(div.next());
+        });
+
+        $('.save').click(function(){
+            var arrayPosition = {};
+            var points =  $('.routes').find('.attractionsContainer');
+            points.each(function(index){
+                arrayPosition[index] = $(this).attr('id').split('-')[1];
+            });
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "pointsPosition").val(JSON.stringify(arrayPosition));
+            $('#mainForm').append($(input));
+        });
+
 		var pointToDelete;
 		$('.btn-delete-point').click(function(){
 		   pointToDelete = this.id;
@@ -175,17 +208,28 @@
 						var html = '<div class="attractionsContainer" id="point-'+ json.id+'"> '
 								+ '<img src="/TripsWebApp/images/pointsofinterest/' + json.image.path + '" alt="image"/>'
 							+ '<a href="/TripsWebApp/pointOfInterest/edit/'+ json.id + '">' + json.name + '</a>'
+                            + '<button type="button" class="btn btn-info glyphicon glyphicon-arrow-up"></button>'
+                            + '<button type="button" class="btn btn-info glyphicon glyphicon-arrow-down"></button>'
 							+ '<a id="' + json.id + '" class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/pointOfInterest/deletePoint?id=' + json.id +'" data-toggle="modal" data-target="#confirm-delete-point"> Borrar </a> '+
 								' </div>';
 						$('.routes').append(html);
+
 						$('#confirm-delete').modal('hide');
 						$('.btn-delete-point').click(function(){
                             pointToDelete = this.id;
 						});
-                        $('.modal-body').find('#name').val('')
-                        $('.modal-body').find('#description').val('')
-                        $('.modal-body').find('#audioGuideFile').val('')
-                        $('.modal-body').find('#imageFile').val('')
+                        $('.modal-body').find('#name').val('');
+                        $('.modal-body').find('#description').val('');
+                        $('.modal-body').find('#audioGuideFile').val('');
+                        $('.modal-body').find('#imageFile').val('');
+                        $('.glyphicon-arrow-up').click(function() {
+                            var div = $(this).parent();
+                            div.insertBefore(div.prev());
+                        });
+                        $('.glyphicon-arrow-down').click(function() {
+                            var div = $(this).parent();
+                            div.insertAfter(div.next());
+                        });
                     },
 				});
 				return false;

@@ -10,12 +10,16 @@ class PointOfInterest{
     String description
     String name
     Set<PointTraduction> traductions
+    Integer position
 
     static hasMany = [traductions: PointTraduction]
     static belongsTo = [attraction: Attraction]
     static constraints = {
-        name nullable: true
-        description nullable: true
+        name nullable: false
+        description nullable: false
+        position nullable: true
+        audioGuide nullable: true
+        image nullable: true
     }
     static mapping = {
         image lazy: false

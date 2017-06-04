@@ -4,7 +4,7 @@
 	<head>
 		<meta name="layout" content="mainLayout">
 		<g:set var="entityName" value="${message(code: 'pointOfInterest.label', default: 'PointOfInterest')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<title> Editando punto de interés</title>
 	</head>
 	<body>
 		<ol class="breadcrumb">
@@ -12,8 +12,8 @@
 			<li><g:link class="" action="edit" controller="attraction"> Editando atracción </g:link></li>
 			<li class="active"> Editar Punto de Interés </li>
 		</ol>
-		<div id="edit-pointOfInterest" class="content scaffold-edit col-md-6" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+		<div id="edit-pointOfInterest" class="content scaffold-edit col-md-5" role="main">
+			<h1> Editando punto de interés </h1>
 			<g:if test="${flash.message}">
 			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>

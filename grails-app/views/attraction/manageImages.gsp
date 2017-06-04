@@ -16,7 +16,7 @@
         <ol class="breadcrumb">
             <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
             <li><g:link class="list" action="index"> Lista de Atracciones </g:link></li>
-            <li class="active"> Editar Imagenes</li>
+            <li class="active"> Editar atracción </li>
         </ol>
 
 %{--
@@ -32,13 +32,16 @@
         <g:elseif test="${params.type == 'video'}">
             <h1> Editando Video from ${attractionInstance?.name} </h1>
         </g:elseif>
+        <g:elseif test="${params.type == 'audio'}">
+            <h1> Editando Audios from ${attractionInstance?.name} </h1>
+        </g:elseif>
         <g:form url="[resource:attractionInstance, action:'uploadImage']" enctype='multipart/form-data' >
 
             <fieldset class="buttons addNewImage">
                 <div class="addVideo">
                     <h2 class="addNewTitle">
                         <g:if test="${params.type == 'image'}" >
-                            Cargar Imagen (max 10mb):
+                            Cargar Imagen (max 10mb, formato jpeg, png):
                         </g:if>
                         <g:if test="${params.type == 'map'}" >
                             Cargar Mapa (max 10mb):
@@ -46,10 +49,21 @@
                         <g:if test="${params.type == 'video'}" >
                             Cargar Video (max 20mb):
                         </g:if>
+                        <g:if test="${params.type == 'audio'}" >
+                            Cargar Audio (max 10mb, formato mp3,mp4):
+                        </g:if>
                     </h2>
                 </div>
                 <div>
-                    <input type='file' name='documentFile' />
+                    <g:if test="${params.type == 'audio'}">
+                        <input type='file' name='documentFile' accept=".mp4,.mp3"/>
+                    </g:if>
+                    <g:elseif test="${params.type == 'video'}">
+                        <input type='file' name='documentFile' accept=".mp4"/>
+                    </g:elseif>
+                    <g:else>
+                        <input type='file' name='documentFile'/>
+                    </g:else>
                     <g:submitButton name="create" class="save btn btn-success" value="Cargar" />
                 </div>
             </fieldset>
@@ -103,6 +117,25 @@
                     </g:if>
                     <g:else>
                         <b> No hay video cargado todavía.. </b>
+                    </g:else>
+                </g:elseif>
+                <g:elseif test="${params.type == 'audio'}">
+                    <h2> Audios cargados: </h2>
+                    <g:if test="${attractionInstance?.audioGuides}">
+                        <g:each var="audio" in="${attractionInstance?.audioGuides}" status="i">
+                            <label> Audio ${i+1} </label>
+                            <g:if test="audio">
+                                <div>
+                                    <audio controls>
+                                        <source src="${resource(dir: 'audios/', file: audio.path)}" type="audio/ogg">
+                                    </audio>
+                                </div>
+                                <a  class="btn btn-danger btn-delete-point" data-href="/TripsWebApp/attraction/deleteImage?id=${attractionInstance?.id}&audioId=${audio.id}" data-toggle="modal" data-target="#confirm-delete-point"> Borrar Video</a>
+                            </g:if>
+                        </g:each>
+                    </g:if>
+                    <g:else>
+                        <b> No hay audios cargados todavía.. </b>
                     </g:else>
                 </g:elseif>
             </div>
