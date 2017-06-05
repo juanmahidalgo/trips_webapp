@@ -112,8 +112,8 @@ class RouteController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Route.label', default: 'Route'), routeInstance.id])
-                redirect routeInstance
+                flash.message = routeInstance.name + ' Creado '
+                redirect(action: "list")
             }
             '*'{ respond routeInstance, [status: OK] }
         }

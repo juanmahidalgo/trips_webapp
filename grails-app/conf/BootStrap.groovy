@@ -43,6 +43,13 @@ class BootStrap {
             map['id'] = it.id
             return map
         }
+        JSON.registerObjectMarshaller(Fav) {
+            def map = [:]
+            map.putAll(it.properties)
+            map['stop'] = it.stop
+            map['id'] = it.id
+            return map
+        }
         JSON.registerObjectMarshaller(Review) {
             def returnArray = [:]
             returnArray['id'] = it.id

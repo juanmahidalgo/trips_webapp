@@ -405,7 +405,11 @@ class AttractionController {
     def deleteAtracction(Long id){
         def attractionInstance = Attraction.findById(id)
         if(attractionInstance.reviews){
-            attractionInstance.reviews.each(){
+            def revs = []
+            attractionInstance.reviews.each() {
+                revs.add(it)
+            }
+            revs.each(){
                 attractionInstance.removeFromReviews(it)
                 it.delete flush: true
             }
@@ -414,11 +418,17 @@ class AttractionController {
         favs.each() { def fav ->
             fav.delete flush: true
         }
-        /*if(favs){
-            flash.message = ' No se puede borrar porque tiene favoritos asociados '
+        def hasRoutes
+        def routes = Route.findAll().each() {
+            if(attractionInstance in it.stops){
+                hasRoutes = true
+            }
+        }
+        if(hasRoutes){
+            flash.message = ' No se puede borrar porque pertenece a recorridos existentes'
             redirect action:"list"
             return
-        }*/
+        }
         flash.message =  attractionInstance.name + ' Borrada'
         attractionInstance.delete flush:true
         redirect action:"list"
