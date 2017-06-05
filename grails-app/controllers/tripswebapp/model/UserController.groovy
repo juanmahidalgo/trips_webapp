@@ -80,7 +80,11 @@ class UserController {
         def userId = params.id
         def user = User.get(userId)
         def favs = user.getFavourites()
-        respond favs, [formats:['json']]
+        def stops = []
+        favs.each(){
+            stops.add(it)
+        }
+        respond stops, [formats:['json']]
     }
 
     @Transactional
