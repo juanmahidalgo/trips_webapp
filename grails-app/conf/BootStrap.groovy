@@ -50,6 +50,12 @@ class BootStrap {
             map['id'] = it.id
             return map
         }
+        JSON.registerObjectMarshaller(User) {
+            def map = [:]
+            map.putAll(it.properties)
+            map['favourites'] = it.favourites
+            return map
+        }
         JSON.registerObjectMarshaller(Review) {
             def returnArray = [:]
             returnArray['id'] = it.id

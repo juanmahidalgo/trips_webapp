@@ -24,7 +24,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:routeInstance, action:'update']" method="PUT" >
+			<g:form id='form' url="[resource:routeInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${routeInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
@@ -39,6 +39,12 @@
 		<div id="warnings-panel" style="display:none;"></div>
 	</div>
 	<script>
+        $( "#form" ).submit(function( event ) {
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "mydata").val($('#stops').getSelectionOrder());
+            $('#form').append($(input));
+        });
         var attractions = {};
         var markerArray = [];
         var order = "${routeInstance.stopsOrder?.join(',') ?: []}";

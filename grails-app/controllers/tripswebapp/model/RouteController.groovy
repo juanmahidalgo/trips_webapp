@@ -98,6 +98,7 @@ class RouteController {
 
     @Transactional
     def update(Route routeInstance) {
+        routeInstance.stopsOrder = params.mydata.split(',')
         if (routeInstance == null) {
             notFound()
             return
